@@ -9,4 +9,10 @@ interface Element {
      * @return string
      */
     public function getName();
+
+    /**
+     * Return contents of the element
+     * @return array|string
+     */
+    public function getContent();
 }
