@@ -12,6 +12,7 @@
     "minimum-stability": "stable",
     "require": {},
     "require-dev": {
+        "codeclimate/php-test-reporter": "^0.3.2",
         "phpunit/phpunit": "^5.0",
         "symfony/var-dumper": "^3.1"
     },
