@@ -2,22 +2,13 @@
 
 namespace Hmaus\Reynaldo\Elements;
 
-class MasterCategoryElement extends BaseElement
+class MasterCategoryElement extends BaseElement implements ApiElement, ApiDescriptionRoot
 {
-    /**
-     * @return string
-     */
     public function getApiTitle()
     {
         return $this->getTitle();
     }
 
-    /**
-     * Returns meta data defined at the top of the document
-     *
-     * E.g.: for API Blueprint, one will find the format `FORMAT: 1A`
-     * @return array|null Key value pairs
-     */
     public function getApiMetaData()
     {
         $meta = [];
@@ -29,31 +20,16 @@ class MasterCategoryElement extends BaseElement
         return $meta;
     }
 
-    /**
-     * Get all resource groups
-     *
-     * @return ResourceGroupElement[]
-     */
     public function getResourceGroups()
     {
         return $this->getElementsByType(ResourceGroupElement::class);
     }
 
-    /**
-     * Get raw markdown string of everything above the first api description element
-     *
-     * @return null|string
-     */
     public function getApiDocumentDescription()
     {
         return $this->getCopyText();
     }
 
-    /**
-     * Get the category holding all the data structures inside the document
-     *
-     * @return DataStructureCategoryElement|null
-     */
     public function getDataStructureCategory()
     {
         $elements = $this->getElementsByType(DataStructureCategoryElement::class);

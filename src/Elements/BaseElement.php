@@ -2,7 +2,7 @@
 
 namespace Hmaus\Reynaldo\Elements;
 
-class BaseElement
+class BaseElement // todo implement a builder interface to hide methods from the outside e.g. addContentElement etc
 {
     /**
      * @var array|null
@@ -47,7 +47,6 @@ class BaseElement
      * As you can see `raw array element (1)` was replaced with `resource element`
      * So *you* need to make sure that *you* turned the raw array element into the resource element.
      *
-     * @internal
      * @param BaseElement $element
      */
     public function addContentElement(BaseElement $element)
@@ -77,7 +76,6 @@ class BaseElement
     /**
      * Useful helper when creating elements that have api elements in their attributes
      *
-     * @internal
      * @param string $attributeName
      * @param BaseElement $element
      */
@@ -99,6 +97,7 @@ class BaseElement
     /**
      * Check if the first content element is a copy element
      *
+     * @api
      * @return bool
      */
     public function hasCopy()
@@ -108,6 +107,8 @@ class BaseElement
 
     /**
      * Get the copy text of the current element; raw markdown likely
+     *
+     * @api
      * @return string|null
      */
     public function getCopyText()
@@ -129,7 +130,6 @@ class BaseElement
     /**
      * Query content of current element (single level) for elements of given type
      *
-     * @internal
      * @param string $type Fully Qualified Class Name, e.g. ResourceElement::class
      * @return BaseElement[]
      */
@@ -182,6 +182,7 @@ class BaseElement
     /**
      * Meta data sitting on the element, e.g. classes
      *
+     * @api
      * @return array|null
      */
     public function getMetaData()
@@ -192,6 +193,7 @@ class BaseElement
     /**
      * Get title of the element, may be an empty string
      *
+     * @api
      * @return string
      */
     public function getTitle()

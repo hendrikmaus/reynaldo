@@ -2,14 +2,8 @@
 
 namespace Hmaus\Reynaldo\Elements;
 
-class ParseResultElement extends BaseElement
+class ParseResultElement extends BaseElement implements ApiElement, ApiParseResult
 {
-    /**
-     * Return the parsed API description
-     *
-     * @return MasterCategoryElement
-     * @throws \Exception
-     */
     public function getApi()
     {
         return $this->getElementsByType(MasterCategoryElement::class)[0];
