@@ -12,8 +12,10 @@ It should ease the processing of [Drafter](https://github.com/apiaryio/drafter) 
 
 You read your Drafter parse result, either JSON or YAML, you convert that to a PHP assoc array,
 e.g. `json_decode($parseresult, true)` in PHP and pass it into `\Hmaus\Reynaldo\Parser\RefractParser::parse`.
- 
-Out comes an easily traversable object:
+
+Out comes an easily traversable object.
+
+You can find a little example in `/example`.
 
 ```php
 $result = $parser->parse($apiDescription);
