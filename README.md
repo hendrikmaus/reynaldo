@@ -18,6 +18,7 @@ Out comes an easily traversable object.
 You can find a little example in `/example`.
 
 ```php
+$parser = new RefractParser();
 $result = $parser->parse($apiDescription);
 $api = $result->getApi();
 
