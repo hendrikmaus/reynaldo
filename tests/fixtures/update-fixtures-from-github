@@ -1,8 +1,8 @@
 #!/usr/bin/env php
 <?php
 /**
- * A script o download all the example apib files from the official
- * API Blueprint repo and turn them into both refract and ast using drafter.
+ * A script to download all the example apib files from the official
+ * API Blueprint repo and turn them into both refract drafter.
  *
  * @author    Hendrik Maus <aidentailor@gmail.com>
  * @since     2016-08-13
@@ -32,12 +32,6 @@ foreach ($fileList as $file) {
     file_put_contents($path, $contents);
 
     $drafter->input($path);
-
-    echo "Generating AST ...\n";
-    $drafter
-        ->type('ast')
-        ->output($path . '.ast.json')
-        ->run();
 
     echo "Generating refract parse result ...\n";
     $drafter
