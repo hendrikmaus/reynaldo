@@ -3,7 +3,8 @@ Turn API Blueprint Refract Parse Result (Drafter's output) into a traversable PH
 
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%205.6-8892BF.svg)](https://php.net/)
 [![Build Status](https://travis-ci.org/hendrikmaus/reynaldo.svg?branch=master)](https://travis-ci.org/hendrikmaus/reynaldo)
-[![codecov.io](http://codecov.io/github/hendrikmaus/reynaldo/coverage.svg?branch=master)](http://codecov.io/github/hendrikmaus/reynaldo?branch=master) 
+[![codecov.io](http://codecov.io/github/hendrikmaus/reynaldo/coverage.svg?branch=master)](http://codecov.io/github/hendrikmaus/reynaldo?branch=master)
+[![Dependency Status](https://www.versioneye.com/user/projects/57c4422a968d640039516a68/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/57c4422a968d640039516a68)
 [![Code Climate](https://img.shields.io/codeclimate/github/kabisaict/flow.svg)](https://codeclimate.com/github/hendrikmaus/reynaldo)
 
 ## What is Reynaldo?
