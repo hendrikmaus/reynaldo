@@ -1,0 +1,1659 @@
+{
+  "_version": "2.2",
+  "ast": {
+    "_version": "4.0",
+    "metadata": [
+      {
+        "name": "FORMAT",
+        "value": "1A"
+      }
+    ],
+    "name": "Gist Fox API",
+    "description": "Gist Fox API is a **pastes service** similar to [GitHub's Gist](http://gist.github.com).\n\n## Authentication\n\n*Gist Fox API* uses OAuth Authorization. First you create a new (or acquire existing) OAuth token using Basic Authentication. After you have acquired your token you can use it to access other resources within token' scope.\n\n## Media Types\n\nWhere applicable this API uses the [HAL+JSON](https://github.com/mikekelly/hal_specification/blob/master/hal_specification.md) media-type to represent resources states and affordances.\n\nRequests with a message-body are using plain JSON to set or update resource states.\n\n## Error States\n\nThe common [HTTP Response Status Codes](https://github.com/for-GET/know-your-http-well/blob/master/status-codes.md) are used.\n\n",
+    "element": "category",
+    "resourceGroups": [
+      {
+        "name": "",
+        "description": "",
+        "resources": [
+          {
+            "element": "resource",
+            "name": "Gist Fox API Root",
+            "description": "Gist Fox API entry point.\n\nThis resource does not have any attributes. Instead it offers the initial API affordances in the form of the HTTP Link header and\nHAL links.\n\n",
+            "uriTemplate": "/",
+            "model": {},
+            "parameters": [],
+            "actions": [
+              {
+                "name": "Retrieve the Entry Point",
+                "description": "",
+                "method": "GET",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [],
+                    "responses": [
+                      {
+                        "name": "200",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/hal+json"
+                          },
+                          {
+                            "name": "Link",
+                            "value": "<http:/api.gistfox.com/>;rel=\"self\",<http:/api.gistfox.com/gists>;rel=\"gists\",<http:/api.gistfox.com/authorization>;rel=\"authorization\""
+                          }
+                        ],
+                        "body": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/\" },\n        \"gists\": { \"href\": \"/gists?{since}\", \"templated\": true },\n        \"authorization\": { \"href\": \"/authorization\"}\n    }\n}\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/\" },\n        \"gists\": { \"href\": \"/gists?{since}\", \"templated\": true },\n        \"authorization\": { \"href\": \"/authorization\"}\n    }\n}\n"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "content": []
+          }
+        ]
+      },
+      {
+        "name": "Gist",
+        "description": "Gist-related resources of *Gist Fox API*.\n\n",
+        "resources": [
+          {
+            "element": "resource",
+            "name": "Gist",
+            "description": "A single Gist object. The Gist resource is the central resource in the Gist Fox API. It represents one paste - a single text note.\n\nThe Gist resource has the following attributes:\n\n+ id\n\n+ created_at\n\n+ description\n\n+ content\n\nThe states *id* and *created_at* are assigned by the Gist Fox API at the moment of creation.\n\n",
+            "uriTemplate": "/gists/{id}{?access_token}",
+            "model": {
+              "name": "Gist",
+              "description": "HAL+JSON representation of Gist Resource. In addition to representing its state in the JSON form it offers affordances in the form of the HTTP Link header and HAL links.\n",
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "application/hal+json"
+                },
+                {
+                  "name": "Link",
+                  "value": "<http:/api.gistfox.com/gists/42>;rel=\"self\", <http:/api.gistfox.com/gists/42/star>;rel=\"star\""
+                }
+              ],
+              "body": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists/42\" },\n        \"star\": { \"href\": \"/gists/42/star\" },\n    },\n    \"id\": \"42\",\n    \"created_at\": \"2014-04-14T02:15:15Z\",\n    \"description\": \"Description of Gist\",\n    \"content\": \"String contents\"\n}\n",
+              "schema": "",
+              "content": [
+                {
+                  "element": "asset",
+                  "attributes": {
+                    "role": "bodyExample"
+                  },
+                  "content": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists/42\" },\n        \"star\": { \"href\": \"/gists/42/star\" },\n    },\n    \"id\": \"42\",\n    \"created_at\": \"2014-04-14T02:15:15Z\",\n    \"description\": \"Description of Gist\",\n    \"content\": \"String contents\"\n}\n"
+                }
+              ]
+            },
+            "parameters": [
+              {
+                "name": "id",
+                "description": "ID of the Gist in the form of a hash.",
+                "type": "string",
+                "required": true,
+                "default": "",
+                "example": "",
+                "values": []
+              },
+              {
+                "name": "access_token",
+                "description": "Gist Fox API access token.",
+                "type": "string",
+                "required": false,
+                "default": "",
+                "example": "",
+                "values": []
+              }
+            ],
+            "actions": [
+              {
+                "name": "Retrieve a Single Gist",
+                "description": "",
+                "method": "GET",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [],
+                    "responses": [
+                      {
+                        "reference": {
+                          "id": "Gist"
+                        },
+                        "name": "200",
+                        "description": "HAL+JSON representation of Gist Resource. In addition to representing its state in the JSON form it offers affordances in the form of the HTTP Link header and HAL links.\n",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/hal+json"
+                          },
+                          {
+                            "name": "Link",
+                            "value": "<http:/api.gistfox.com/gists/42>;rel=\"self\", <http:/api.gistfox.com/gists/42/star>;rel=\"star\""
+                          }
+                        ],
+                        "body": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists/42\" },\n        \"star\": { \"href\": \"/gists/42/star\" },\n    },\n    \"id\": \"42\",\n    \"created_at\": \"2014-04-14T02:15:15Z\",\n    \"description\": \"Description of Gist\",\n    \"content\": \"String contents\"\n}\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists/42\" },\n        \"star\": { \"href\": \"/gists/42/star\" },\n    },\n    \"id\": \"42\",\n    \"created_at\": \"2014-04-14T02:15:15Z\",\n    \"description\": \"Description of Gist\",\n    \"content\": \"String contents\"\n}\n"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Edit a Gist",
+                "description": "To update a Gist send a JSON with updated value for one or more of the Gist resource attributes. All attributes values (states) from the previous version of this Gist are carried over by default if not included in the hash.\n\n",
+                "method": "PATCH",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [
+                      {
+                        "name": "",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": "{\n    \"content\": \"Updated file contents\"\n}\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "{\n    \"content\": \"Updated file contents\"\n}\n"
+                          }
+                        ]
+                      }
+                    ],
+                    "responses": [
+                      {
+                        "reference": {
+                          "id": "Gist"
+                        },
+                        "name": "200",
+                        "description": "HAL+JSON representation of Gist Resource. In addition to representing its state in the JSON form it offers affordances in the form of the HTTP Link header and HAL links.\n",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/hal+json"
+                          },
+                          {
+                            "name": "Link",
+                            "value": "<http:/api.gistfox.com/gists/42>;rel=\"self\", <http:/api.gistfox.com/gists/42/star>;rel=\"star\""
+                          }
+                        ],
+                        "body": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists/42\" },\n        \"star\": { \"href\": \"/gists/42/star\" },\n    },\n    \"id\": \"42\",\n    \"created_at\": \"2014-04-14T02:15:15Z\",\n    \"description\": \"Description of Gist\",\n    \"content\": \"String contents\"\n}\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists/42\" },\n        \"star\": { \"href\": \"/gists/42/star\" },\n    },\n    \"id\": \"42\",\n    \"created_at\": \"2014-04-14T02:15:15Z\",\n    \"description\": \"Description of Gist\",\n    \"content\": \"String contents\"\n}\n"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Delete a Gist",
+                "description": "",
+                "method": "DELETE",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [],
+                    "responses": [
+                      {
+                        "name": "204",
+                        "description": "",
+                        "headers": [],
+                        "body": "",
+                        "schema": "",
+                        "content": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "content": []
+          },
+          {
+            "element": "resource",
+            "name": "Gists Collection",
+            "description": "Collection of all Gists.\n\nThe Gist Collection resource has the following attribute:\n\n+ total\n\nIn addition it **embeds** *Gist Resources* in the Gist Fox API.\n\n",
+            "uriTemplate": "/gists{?access_token,since}",
+            "model": {
+              "name": "Gists Collection",
+              "description": "HAL+JSON representation of Gist Collection Resource. The Gist resources in collections are embedded. Note the embedded Gists resource are incomplete representations of the Gist in question. Use the respective Gist link to retrieve its full representation.\n",
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "application/hal+json"
+                },
+                {
+                  "name": "Link",
+                  "value": "<http:/api.gistfox.com/gists>;rel=\"self\""
+                }
+              ],
+              "body": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists\" }\n    },\n    \"_embedded\": {\n        \"gists\": [\n            {\n                \"_links\" : {\n                    \"self\": { \"href\": \"/gists/42\" }\n                },\n                \"id\": \"42\",\n                \"created_at\": \"2014-04-14T02:15:15Z\",\n                \"description\": \"Description of Gist\"\n            }\n        ]\n    },\n    \"total\": 1\n}\n",
+              "schema": "",
+              "content": [
+                {
+                  "element": "asset",
+                  "attributes": {
+                    "role": "bodyExample"
+                  },
+                  "content": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists\" }\n    },\n    \"_embedded\": {\n        \"gists\": [\n            {\n                \"_links\" : {\n                    \"self\": { \"href\": \"/gists/42\" }\n                },\n                \"id\": \"42\",\n                \"created_at\": \"2014-04-14T02:15:15Z\",\n                \"description\": \"Description of Gist\"\n            }\n        ]\n    },\n    \"total\": 1\n}\n"
+                }
+              ]
+            },
+            "parameters": [],
+            "actions": [
+              {
+                "name": "List All Gists",
+                "description": "",
+                "method": "GET",
+                "parameters": [
+                  {
+                    "name": "since",
+                    "description": "Timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ` Only gists updated at or after this time are returned.",
+                    "type": "string",
+                    "required": false,
+                    "default": "",
+                    "example": "",
+                    "values": []
+                  }
+                ],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [],
+                    "responses": [
+                      {
+                        "reference": {
+                          "id": "Gists Collection"
+                        },
+                        "name": "200",
+                        "description": "HAL+JSON representation of Gist Collection Resource. The Gist resources in collections are embedded. Note the embedded Gists resource are incomplete representations of the Gist in question. Use the respective Gist link to retrieve its full representation.\n",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/hal+json"
+                          },
+                          {
+                            "name": "Link",
+                            "value": "<http:/api.gistfox.com/gists>;rel=\"self\""
+                          }
+                        ],
+                        "body": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists\" }\n    },\n    \"_embedded\": {\n        \"gists\": [\n            {\n                \"_links\" : {\n                    \"self\": { \"href\": \"/gists/42\" }\n                },\n                \"id\": \"42\",\n                \"created_at\": \"2014-04-14T02:15:15Z\",\n                \"description\": \"Description of Gist\"\n            }\n        ]\n    },\n    \"total\": 1\n}\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists\" }\n    },\n    \"_embedded\": {\n        \"gists\": [\n            {\n                \"_links\" : {\n                    \"self\": { \"href\": \"/gists/42\" }\n                },\n                \"id\": \"42\",\n                \"created_at\": \"2014-04-14T02:15:15Z\",\n                \"description\": \"Description of Gist\"\n            }\n        ]\n    },\n    \"total\": 1\n}\n"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Create a Gist",
+                "description": "To create a new Gist simply provide a JSON hash of the *description* and *content* attributes for the new Gist.\n\nThis action requires an `access_token` with `gist_write` scope.\n\n",
+                "method": "POST",
+                "parameters": [
+                  {
+                    "name": "access_token",
+                    "description": "Gist Fox API access token.",
+                    "type": "string",
+                    "required": false,
+                    "default": "",
+                    "example": "",
+                    "values": []
+                  }
+                ],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [
+                      {
+                        "name": "",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": "{\n    \"description\": \"Description of Gist\",\n    \"content\": \"String content\"\n}\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "{\n    \"description\": \"Description of Gist\",\n    \"content\": \"String content\"\n}\n"
+                          }
+                        ]
+                      }
+                    ],
+                    "responses": [
+                      {
+                        "reference": {
+                          "id": "Gist"
+                        },
+                        "name": "201",
+                        "description": "HAL+JSON representation of Gist Resource. In addition to representing its state in the JSON form it offers affordances in the form of the HTTP Link header and HAL links.\n",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/hal+json"
+                          },
+                          {
+                            "name": "Link",
+                            "value": "<http:/api.gistfox.com/gists/42>;rel=\"self\", <http:/api.gistfox.com/gists/42/star>;rel=\"star\""
+                          }
+                        ],
+                        "body": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists/42\" },\n        \"star\": { \"href\": \"/gists/42/star\" },\n    },\n    \"id\": \"42\",\n    \"created_at\": \"2014-04-14T02:15:15Z\",\n    \"description\": \"Description of Gist\",\n    \"content\": \"String contents\"\n}\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists/42\" },\n        \"star\": { \"href\": \"/gists/42/star\" },\n    },\n    \"id\": \"42\",\n    \"created_at\": \"2014-04-14T02:15:15Z\",\n    \"description\": \"Description of Gist\",\n    \"content\": \"String contents\"\n}\n"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "content": []
+          },
+          {
+            "element": "resource",
+            "name": "Star",
+            "description": "Star resource represents a Gist starred status.\n\nThe Star resource has the following attribute:\n\n+ starred\n\n",
+            "uriTemplate": "/gists/{id}/star{?access_token}",
+            "model": {
+              "name": "Star",
+              "description": "HAL+JSON representation of Star Resource.\n",
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "application/hal+json"
+                },
+                {
+                  "name": "Link",
+                  "value": "<http:/api.gistfox.com/gists/42/star>;rel=\"self\""
+                }
+              ],
+              "body": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists/42/star\" },\n    },\n    \"starred\": true\n}\n",
+              "schema": "",
+              "content": [
+                {
+                  "element": "asset",
+                  "attributes": {
+                    "role": "bodyExample"
+                  },
+                  "content": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists/42/star\" },\n    },\n    \"starred\": true\n}\n"
+                }
+              ]
+            },
+            "parameters": [
+              {
+                "name": "id",
+                "description": "ID of the gist in the form of a hash",
+                "type": "string",
+                "required": true,
+                "default": "",
+                "example": "",
+                "values": []
+              },
+              {
+                "name": "access_token",
+                "description": "Gist Fox API access token.",
+                "type": "string",
+                "required": false,
+                "default": "",
+                "example": "",
+                "values": []
+              }
+            ],
+            "actions": [
+              {
+                "name": "Star a Gist",
+                "description": "This action requires an `access_token` with `gist_write` scope.\n\n",
+                "method": "PUT",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [],
+                    "responses": [
+                      {
+                        "name": "204",
+                        "description": "",
+                        "headers": [],
+                        "body": "",
+                        "schema": "",
+                        "content": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Unstar a Gist",
+                "description": "This action requires an `access_token` with `gist_write` scope.\n\n",
+                "method": "DELETE",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [],
+                    "responses": [
+                      {
+                        "name": "204",
+                        "description": "",
+                        "headers": [],
+                        "body": "",
+                        "schema": "",
+                        "content": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Check if a Gist is Starred",
+                "description": "",
+                "method": "GET",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [],
+                    "responses": [
+                      {
+                        "reference": {
+                          "id": "Star"
+                        },
+                        "name": "200",
+                        "description": "HAL+JSON representation of Star Resource.\n",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/hal+json"
+                          },
+                          {
+                            "name": "Link",
+                            "value": "<http:/api.gistfox.com/gists/42/star>;rel=\"self\""
+                          }
+                        ],
+                        "body": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists/42/star\" },\n    },\n    \"starred\": true\n}\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists/42/star\" },\n    },\n    \"starred\": true\n}\n"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "content": []
+          }
+        ]
+      },
+      {
+        "name": "Access Authorization and Control",
+        "description": "Access and Control of *Gist Fox API* OAuth token.\n\n",
+        "resources": [
+          {
+            "element": "resource",
+            "name": "Authorization",
+            "description": "Authorization Resource represents an authorization granted to the user. You can **only** access your own authorization, and only through **Basic Authentication**.\n\nThe Authorization Resource has the following attribute:\n\n+ token\n\n+ scopes\n\nWhere *token* represents an OAuth token and *scopes* is an array of scopes granted for the given authorization. At this moment the only available scope is `gist_write`.\n\n",
+            "uriTemplate": "/authorization",
+            "model": {
+              "name": "Authorization",
+              "description": "",
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "application/hal+json"
+                },
+                {
+                  "name": "Link",
+                  "value": "<http:/api.gistfox.com/authorizations/1>;rel=\"self\""
+                }
+              ],
+              "body": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/authorizations\" },\n    },\n    \"scopes\": [\n        \"gist_write\"\n    ],\n    \"token\": \"abc123\"\n}\n",
+              "schema": "",
+              "content": [
+                {
+                  "element": "asset",
+                  "attributes": {
+                    "role": "bodyExample"
+                  },
+                  "content": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/authorizations\" },\n    },\n    \"scopes\": [\n        \"gist_write\"\n    ],\n    \"token\": \"abc123\"\n}\n"
+                }
+              ]
+            },
+            "parameters": [],
+            "actions": [
+              {
+                "name": "Retrieve Authorization",
+                "description": "",
+                "method": "GET",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [
+                      {
+                        "name": "",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Authorization",
+                            "value": "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=="
+                          }
+                        ],
+                        "body": "",
+                        "schema": "",
+                        "content": []
+                      }
+                    ],
+                    "responses": [
+                      {
+                        "reference": {
+                          "id": "Authorization"
+                        },
+                        "name": "200",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/hal+json"
+                          },
+                          {
+                            "name": "Link",
+                            "value": "<http:/api.gistfox.com/authorizations/1>;rel=\"self\""
+                          }
+                        ],
+                        "body": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/authorizations\" },\n    },\n    \"scopes\": [\n        \"gist_write\"\n    ],\n    \"token\": \"abc123\"\n}\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/authorizations\" },\n    },\n    \"scopes\": [\n        \"gist_write\"\n    ],\n    \"token\": \"abc123\"\n}\n"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Create Authorization",
+                "description": "",
+                "method": "POST",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [
+                      {
+                        "name": "",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "name": "Authorization",
+                            "value": "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=="
+                          }
+                        ],
+                        "body": "{\n    \"scopes\": [\n        \"gist_write\"\n    ]\n}\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "{\n    \"scopes\": [\n        \"gist_write\"\n    ]\n}\n"
+                          }
+                        ]
+                      }
+                    ],
+                    "responses": [
+                      {
+                        "name": "201",
+                        "description": "",
+                        "headers": [],
+                        "body": "[Authorization][]\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "[Authorization][]\n"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Remove an Authorization",
+                "description": "",
+                "method": "DELETE",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [
+                      {
+                        "name": "",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Authorization",
+                            "value": "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=="
+                          }
+                        ],
+                        "body": "",
+                        "schema": "",
+                        "content": []
+                      }
+                    ],
+                    "responses": [
+                      {
+                        "name": "204",
+                        "description": "",
+                        "headers": [],
+                        "body": "",
+                        "schema": "",
+                        "content": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "content": []
+          }
+        ]
+      }
+    ],
+    "content": [
+      {
+        "element": "category",
+        "content": [
+          {
+            "element": "resource",
+            "name": "Gist Fox API Root",
+            "description": "Gist Fox API entry point.\n\nThis resource does not have any attributes. Instead it offers the initial API affordances in the form of the HTTP Link header and\nHAL links.\n\n",
+            "uriTemplate": "/",
+            "model": {},
+            "parameters": [],
+            "actions": [
+              {
+                "name": "Retrieve the Entry Point",
+                "description": "",
+                "method": "GET",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [],
+                    "responses": [
+                      {
+                        "name": "200",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/hal+json"
+                          },
+                          {
+                            "name": "Link",
+                            "value": "<http:/api.gistfox.com/>;rel=\"self\",<http:/api.gistfox.com/gists>;rel=\"gists\",<http:/api.gistfox.com/authorization>;rel=\"authorization\""
+                          }
+                        ],
+                        "body": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/\" },\n        \"gists\": { \"href\": \"/gists?{since}\", \"templated\": true },\n        \"authorization\": { \"href\": \"/authorization\"}\n    }\n}\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/\" },\n        \"gists\": { \"href\": \"/gists?{since}\", \"templated\": true },\n        \"authorization\": { \"href\": \"/authorization\"}\n    }\n}\n"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "content": []
+          }
+        ]
+      },
+      {
+        "element": "category",
+        "attributes": {
+          "name": "Gist"
+        },
+        "content": [
+          {
+            "element": "copy",
+            "content": "Gist-related resources of *Gist Fox API*.\n\n"
+          },
+          {
+            "element": "resource",
+            "name": "Gist",
+            "description": "A single Gist object. The Gist resource is the central resource in the Gist Fox API. It represents one paste - a single text note.\n\nThe Gist resource has the following attributes:\n\n+ id\n\n+ created_at\n\n+ description\n\n+ content\n\nThe states *id* and *created_at* are assigned by the Gist Fox API at the moment of creation.\n\n",
+            "uriTemplate": "/gists/{id}{?access_token}",
+            "model": {
+              "name": "Gist",
+              "description": "HAL+JSON representation of Gist Resource. In addition to representing its state in the JSON form it offers affordances in the form of the HTTP Link header and HAL links.\n",
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "application/hal+json"
+                },
+                {
+                  "name": "Link",
+                  "value": "<http:/api.gistfox.com/gists/42>;rel=\"self\", <http:/api.gistfox.com/gists/42/star>;rel=\"star\""
+                }
+              ],
+              "body": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists/42\" },\n        \"star\": { \"href\": \"/gists/42/star\" },\n    },\n    \"id\": \"42\",\n    \"created_at\": \"2014-04-14T02:15:15Z\",\n    \"description\": \"Description of Gist\",\n    \"content\": \"String contents\"\n}\n",
+              "schema": "",
+              "content": [
+                {
+                  "element": "asset",
+                  "attributes": {
+                    "role": "bodyExample"
+                  },
+                  "content": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists/42\" },\n        \"star\": { \"href\": \"/gists/42/star\" },\n    },\n    \"id\": \"42\",\n    \"created_at\": \"2014-04-14T02:15:15Z\",\n    \"description\": \"Description of Gist\",\n    \"content\": \"String contents\"\n}\n"
+                }
+              ]
+            },
+            "parameters": [
+              {
+                "name": "id",
+                "description": "ID of the Gist in the form of a hash.",
+                "type": "string",
+                "required": true,
+                "default": "",
+                "example": "",
+                "values": []
+              },
+              {
+                "name": "access_token",
+                "description": "Gist Fox API access token.",
+                "type": "string",
+                "required": false,
+                "default": "",
+                "example": "",
+                "values": []
+              }
+            ],
+            "actions": [
+              {
+                "name": "Retrieve a Single Gist",
+                "description": "",
+                "method": "GET",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [],
+                    "responses": [
+                      {
+                        "reference": {
+                          "id": "Gist"
+                        },
+                        "name": "200",
+                        "description": "HAL+JSON representation of Gist Resource. In addition to representing its state in the JSON form it offers affordances in the form of the HTTP Link header and HAL links.\n",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/hal+json"
+                          },
+                          {
+                            "name": "Link",
+                            "value": "<http:/api.gistfox.com/gists/42>;rel=\"self\", <http:/api.gistfox.com/gists/42/star>;rel=\"star\""
+                          }
+                        ],
+                        "body": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists/42\" },\n        \"star\": { \"href\": \"/gists/42/star\" },\n    },\n    \"id\": \"42\",\n    \"created_at\": \"2014-04-14T02:15:15Z\",\n    \"description\": \"Description of Gist\",\n    \"content\": \"String contents\"\n}\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists/42\" },\n        \"star\": { \"href\": \"/gists/42/star\" },\n    },\n    \"id\": \"42\",\n    \"created_at\": \"2014-04-14T02:15:15Z\",\n    \"description\": \"Description of Gist\",\n    \"content\": \"String contents\"\n}\n"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Edit a Gist",
+                "description": "To update a Gist send a JSON with updated value for one or more of the Gist resource attributes. All attributes values (states) from the previous version of this Gist are carried over by default if not included in the hash.\n\n",
+                "method": "PATCH",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [
+                      {
+                        "name": "",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": "{\n    \"content\": \"Updated file contents\"\n}\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "{\n    \"content\": \"Updated file contents\"\n}\n"
+                          }
+                        ]
+                      }
+                    ],
+                    "responses": [
+                      {
+                        "reference": {
+                          "id": "Gist"
+                        },
+                        "name": "200",
+                        "description": "HAL+JSON representation of Gist Resource. In addition to representing its state in the JSON form it offers affordances in the form of the HTTP Link header and HAL links.\n",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/hal+json"
+                          },
+                          {
+                            "name": "Link",
+                            "value": "<http:/api.gistfox.com/gists/42>;rel=\"self\", <http:/api.gistfox.com/gists/42/star>;rel=\"star\""
+                          }
+                        ],
+                        "body": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists/42\" },\n        \"star\": { \"href\": \"/gists/42/star\" },\n    },\n    \"id\": \"42\",\n    \"created_at\": \"2014-04-14T02:15:15Z\",\n    \"description\": \"Description of Gist\",\n    \"content\": \"String contents\"\n}\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists/42\" },\n        \"star\": { \"href\": \"/gists/42/star\" },\n    },\n    \"id\": \"42\",\n    \"created_at\": \"2014-04-14T02:15:15Z\",\n    \"description\": \"Description of Gist\",\n    \"content\": \"String contents\"\n}\n"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Delete a Gist",
+                "description": "",
+                "method": "DELETE",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [],
+                    "responses": [
+                      {
+                        "name": "204",
+                        "description": "",
+                        "headers": [],
+                        "body": "",
+                        "schema": "",
+                        "content": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "content": []
+          },
+          {
+            "element": "resource",
+            "name": "Gists Collection",
+            "description": "Collection of all Gists.\n\nThe Gist Collection resource has the following attribute:\n\n+ total\n\nIn addition it **embeds** *Gist Resources* in the Gist Fox API.\n\n",
+            "uriTemplate": "/gists{?access_token,since}",
+            "model": {
+              "name": "Gists Collection",
+              "description": "HAL+JSON representation of Gist Collection Resource. The Gist resources in collections are embedded. Note the embedded Gists resource are incomplete representations of the Gist in question. Use the respective Gist link to retrieve its full representation.\n",
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "application/hal+json"
+                },
+                {
+                  "name": "Link",
+                  "value": "<http:/api.gistfox.com/gists>;rel=\"self\""
+                }
+              ],
+              "body": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists\" }\n    },\n    \"_embedded\": {\n        \"gists\": [\n            {\n                \"_links\" : {\n                    \"self\": { \"href\": \"/gists/42\" }\n                },\n                \"id\": \"42\",\n                \"created_at\": \"2014-04-14T02:15:15Z\",\n                \"description\": \"Description of Gist\"\n            }\n        ]\n    },\n    \"total\": 1\n}\n",
+              "schema": "",
+              "content": [
+                {
+                  "element": "asset",
+                  "attributes": {
+                    "role": "bodyExample"
+                  },
+                  "content": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists\" }\n    },\n    \"_embedded\": {\n        \"gists\": [\n            {\n                \"_links\" : {\n                    \"self\": { \"href\": \"/gists/42\" }\n                },\n                \"id\": \"42\",\n                \"created_at\": \"2014-04-14T02:15:15Z\",\n                \"description\": \"Description of Gist\"\n            }\n        ]\n    },\n    \"total\": 1\n}\n"
+                }
+              ]
+            },
+            "parameters": [],
+            "actions": [
+              {
+                "name": "List All Gists",
+                "description": "",
+                "method": "GET",
+                "parameters": [
+                  {
+                    "name": "since",
+                    "description": "Timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ` Only gists updated at or after this time are returned.",
+                    "type": "string",
+                    "required": false,
+                    "default": "",
+                    "example": "",
+                    "values": []
+                  }
+                ],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [],
+                    "responses": [
+                      {
+                        "reference": {
+                          "id": "Gists Collection"
+                        },
+                        "name": "200",
+                        "description": "HAL+JSON representation of Gist Collection Resource. The Gist resources in collections are embedded. Note the embedded Gists resource are incomplete representations of the Gist in question. Use the respective Gist link to retrieve its full representation.\n",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/hal+json"
+                          },
+                          {
+                            "name": "Link",
+                            "value": "<http:/api.gistfox.com/gists>;rel=\"self\""
+                          }
+                        ],
+                        "body": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists\" }\n    },\n    \"_embedded\": {\n        \"gists\": [\n            {\n                \"_links\" : {\n                    \"self\": { \"href\": \"/gists/42\" }\n                },\n                \"id\": \"42\",\n                \"created_at\": \"2014-04-14T02:15:15Z\",\n                \"description\": \"Description of Gist\"\n            }\n        ]\n    },\n    \"total\": 1\n}\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists\" }\n    },\n    \"_embedded\": {\n        \"gists\": [\n            {\n                \"_links\" : {\n                    \"self\": { \"href\": \"/gists/42\" }\n                },\n                \"id\": \"42\",\n                \"created_at\": \"2014-04-14T02:15:15Z\",\n                \"description\": \"Description of Gist\"\n            }\n        ]\n    },\n    \"total\": 1\n}\n"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Create a Gist",
+                "description": "To create a new Gist simply provide a JSON hash of the *description* and *content* attributes for the new Gist.\n\nThis action requires an `access_token` with `gist_write` scope.\n\n",
+                "method": "POST",
+                "parameters": [
+                  {
+                    "name": "access_token",
+                    "description": "Gist Fox API access token.",
+                    "type": "string",
+                    "required": false,
+                    "default": "",
+                    "example": "",
+                    "values": []
+                  }
+                ],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [
+                      {
+                        "name": "",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": "{\n    \"description\": \"Description of Gist\",\n    \"content\": \"String content\"\n}\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "{\n    \"description\": \"Description of Gist\",\n    \"content\": \"String content\"\n}\n"
+                          }
+                        ]
+                      }
+                    ],
+                    "responses": [
+                      {
+                        "reference": {
+                          "id": "Gist"
+                        },
+                        "name": "201",
+                        "description": "HAL+JSON representation of Gist Resource. In addition to representing its state in the JSON form it offers affordances in the form of the HTTP Link header and HAL links.\n",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/hal+json"
+                          },
+                          {
+                            "name": "Link",
+                            "value": "<http:/api.gistfox.com/gists/42>;rel=\"self\", <http:/api.gistfox.com/gists/42/star>;rel=\"star\""
+                          }
+                        ],
+                        "body": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists/42\" },\n        \"star\": { \"href\": \"/gists/42/star\" },\n    },\n    \"id\": \"42\",\n    \"created_at\": \"2014-04-14T02:15:15Z\",\n    \"description\": \"Description of Gist\",\n    \"content\": \"String contents\"\n}\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists/42\" },\n        \"star\": { \"href\": \"/gists/42/star\" },\n    },\n    \"id\": \"42\",\n    \"created_at\": \"2014-04-14T02:15:15Z\",\n    \"description\": \"Description of Gist\",\n    \"content\": \"String contents\"\n}\n"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "content": []
+          },
+          {
+            "element": "resource",
+            "name": "Star",
+            "description": "Star resource represents a Gist starred status.\n\nThe Star resource has the following attribute:\n\n+ starred\n\n",
+            "uriTemplate": "/gists/{id}/star{?access_token}",
+            "model": {
+              "name": "Star",
+              "description": "HAL+JSON representation of Star Resource.\n",
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "application/hal+json"
+                },
+                {
+                  "name": "Link",
+                  "value": "<http:/api.gistfox.com/gists/42/star>;rel=\"self\""
+                }
+              ],
+              "body": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists/42/star\" },\n    },\n    \"starred\": true\n}\n",
+              "schema": "",
+              "content": [
+                {
+                  "element": "asset",
+                  "attributes": {
+                    "role": "bodyExample"
+                  },
+                  "content": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists/42/star\" },\n    },\n    \"starred\": true\n}\n"
+                }
+              ]
+            },
+            "parameters": [
+              {
+                "name": "id",
+                "description": "ID of the gist in the form of a hash",
+                "type": "string",
+                "required": true,
+                "default": "",
+                "example": "",
+                "values": []
+              },
+              {
+                "name": "access_token",
+                "description": "Gist Fox API access token.",
+                "type": "string",
+                "required": false,
+                "default": "",
+                "example": "",
+                "values": []
+              }
+            ],
+            "actions": [
+              {
+                "name": "Star a Gist",
+                "description": "This action requires an `access_token` with `gist_write` scope.\n\n",
+                "method": "PUT",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [],
+                    "responses": [
+                      {
+                        "name": "204",
+                        "description": "",
+                        "headers": [],
+                        "body": "",
+                        "schema": "",
+                        "content": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Unstar a Gist",
+                "description": "This action requires an `access_token` with `gist_write` scope.\n\n",
+                "method": "DELETE",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [],
+                    "responses": [
+                      {
+                        "name": "204",
+                        "description": "",
+                        "headers": [],
+                        "body": "",
+                        "schema": "",
+                        "content": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Check if a Gist is Starred",
+                "description": "",
+                "method": "GET",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [],
+                    "responses": [
+                      {
+                        "reference": {
+                          "id": "Star"
+                        },
+                        "name": "200",
+                        "description": "HAL+JSON representation of Star Resource.\n",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/hal+json"
+                          },
+                          {
+                            "name": "Link",
+                            "value": "<http:/api.gistfox.com/gists/42/star>;rel=\"self\""
+                          }
+                        ],
+                        "body": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists/42/star\" },\n    },\n    \"starred\": true\n}\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/gists/42/star\" },\n    },\n    \"starred\": true\n}\n"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "content": []
+          }
+        ]
+      },
+      {
+        "element": "category",
+        "attributes": {
+          "name": "Access Authorization and Control"
+        },
+        "content": [
+          {
+            "element": "copy",
+            "content": "Access and Control of *Gist Fox API* OAuth token.\n\n"
+          },
+          {
+            "element": "resource",
+            "name": "Authorization",
+            "description": "Authorization Resource represents an authorization granted to the user. You can **only** access your own authorization, and only through **Basic Authentication**.\n\nThe Authorization Resource has the following attribute:\n\n+ token\n\n+ scopes\n\nWhere *token* represents an OAuth token and *scopes* is an array of scopes granted for the given authorization. At this moment the only available scope is `gist_write`.\n\n",
+            "uriTemplate": "/authorization",
+            "model": {
+              "name": "Authorization",
+              "description": "",
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "application/hal+json"
+                },
+                {
+                  "name": "Link",
+                  "value": "<http:/api.gistfox.com/authorizations/1>;rel=\"self\""
+                }
+              ],
+              "body": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/authorizations\" },\n    },\n    \"scopes\": [\n        \"gist_write\"\n    ],\n    \"token\": \"abc123\"\n}\n",
+              "schema": "",
+              "content": [
+                {
+                  "element": "asset",
+                  "attributes": {
+                    "role": "bodyExample"
+                  },
+                  "content": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/authorizations\" },\n    },\n    \"scopes\": [\n        \"gist_write\"\n    ],\n    \"token\": \"abc123\"\n}\n"
+                }
+              ]
+            },
+            "parameters": [],
+            "actions": [
+              {
+                "name": "Retrieve Authorization",
+                "description": "",
+                "method": "GET",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [
+                      {
+                        "name": "",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Authorization",
+                            "value": "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=="
+                          }
+                        ],
+                        "body": "",
+                        "schema": "",
+                        "content": []
+                      }
+                    ],
+                    "responses": [
+                      {
+                        "reference": {
+                          "id": "Authorization"
+                        },
+                        "name": "200",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/hal+json"
+                          },
+                          {
+                            "name": "Link",
+                            "value": "<http:/api.gistfox.com/authorizations/1>;rel=\"self\""
+                          }
+                        ],
+                        "body": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/authorizations\" },\n    },\n    \"scopes\": [\n        \"gist_write\"\n    ],\n    \"token\": \"abc123\"\n}\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "{\n    \"_links\": {\n        \"self\": { \"href\": \"/authorizations\" },\n    },\n    \"scopes\": [\n        \"gist_write\"\n    ],\n    \"token\": \"abc123\"\n}\n"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Create Authorization",
+                "description": "",
+                "method": "POST",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [
+                      {
+                        "name": "",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "name": "Authorization",
+                            "value": "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=="
+                          }
+                        ],
+                        "body": "{\n    \"scopes\": [\n        \"gist_write\"\n    ]\n}\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "{\n    \"scopes\": [\n        \"gist_write\"\n    ]\n}\n"
+                          }
+                        ]
+                      }
+                    ],
+                    "responses": [
+                      {
+                        "name": "201",
+                        "description": "",
+                        "headers": [],
+                        "body": "[Authorization][]\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "[Authorization][]\n"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Remove an Authorization",
+                "description": "",
+                "method": "DELETE",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [
+                      {
+                        "name": "",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Authorization",
+                            "value": "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=="
+                          }
+                        ],
+                        "body": "",
+                        "schema": "",
+                        "content": []
+                      }
+                    ],
+                    "responses": [
+                      {
+                        "name": "204",
+                        "description": "",
+                        "headers": [],
+                        "body": "",
+                        "schema": "",
+                        "content": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "content": []
+          }
+        ]
+      }
+    ]
+  },
+  "error": {
+    "code": 0,
+    "message": "",
+    "location": []
+  },
+  "warnings": [
+    {
+      "code": 5,
+      "message": "found a possible 'Authorization' model reference, a reference must be directly in the message-body section, indented by 4 spaces or 1 tab, without any additional sections",
+      "location": [
+        {
+          "index": 7386,
+          "length": 22
+        }
+      ]
+    }
+  ]
+}

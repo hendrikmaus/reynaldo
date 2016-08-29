@@ -1,0 +1,667 @@
+{
+  "_version": "2.2",
+  "ast": {
+    "_version": "4.0",
+    "metadata": [
+      {
+        "name": "FORMAT",
+        "value": "1A"
+      }
+    ],
+    "name": "Advanced Attributes API",
+    "description": "Improving the previous [Attributes](08.%20Attributes.md) description example,\nthis API example describes the `Coupon` resource attributes (data structure)\nregardless of the serialization format. These attributes can be later\nreferenced using the resource name.\n\nThese attributes are then reused in the `Retrieve a Coupon` action. Since they\ndescribe the complete message, no explicit JSON body example is needed.\n\nMoving forward, the `Coupon` resource data structure is then reused when\ndefining the attributes of the coupons collection resource – `Coupons`.\n\nThe `Create a Coupon` action also demonstrate the description of request\nattributes – once defined, these attributes are implied on every `Create a\nCoupon` request unless the request specifies otherwise. Apparently, the\ndescription of action attributes is somewhat duplicate to the definition of\n`Coupon` resource attributes. We will address this in the next \n[Data Structures](10.%20Data%20Structures.md) example.\n\n## API Blueprint\n\n+ [Previous: Attributes](08.%20Attributes.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/09.%20Advanced%20Attributes.md)\n\n+ [Next: Data Structures](10.%20Data%20Structures.md)\n\n",
+    "element": "category",
+    "resourceGroups": [
+      {
+        "name": "Coupons",
+        "description": "",
+        "resources": [
+          {
+            "element": "resource",
+            "name": "Coupon",
+            "description": "A coupon contains information about a percent-off or amount-off discount you\nmight want to apply to a customer.\n\n",
+            "uriTemplate": "/coupons/{id}",
+            "model": {},
+            "parameters": [
+              {
+                "name": "id",
+                "description": "The ID of the desired coupon.\n",
+                "type": "string",
+                "required": true,
+                "default": "",
+                "example": "",
+                "values": []
+              }
+            ],
+            "actions": [
+              {
+                "name": "Retrieve a Coupon",
+                "description": "Retrieves the coupon with the given ID.\n\n",
+                "method": "GET",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [],
+                    "responses": [
+                      {
+                        "name": "200",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": "{\n  \"id\": \"250FF\",\n  \"created\": 1415203908,\n  \"percent_off\": 25,\n  \"redeem_by\": 0\n}",
+                        "schema": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"id\": {\n      \"type\": \"string\"\n    },\n    \"created\": {\n      \"type\": \"number\",\n      \"description\": \"Time stamp\"\n    },\n    \"percent_off\": {\n      \"type\": \"number\",\n      \"description\": \"A positive integer between 1 and 100 that represents the discount the coupon will apply.\\n\"\n    },\n    \"redeem_by\": {\n      \"type\": \"number\",\n      \"description\": \"Date after which the coupon can no longer be redeemed\"\n    }\n  },\n  \"required\": [\n    \"id\"\n  ]\n}",
+                        "content": [
+                          {
+                            "element": "dataStructure",
+                            "content": [
+                              {
+                                "element": "Coupon"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "content": [
+              {
+                "element": "dataStructure",
+                "content": [
+                  {
+                    "element": "object",
+                    "meta": {
+                      "id": "Coupon"
+                    },
+                    "content": [
+                      {
+                        "element": "member",
+                        "attributes": {
+                          "typeAttributes": [
+                            "required"
+                          ]
+                        },
+                        "content": {
+                          "key": {
+                            "element": "string",
+                            "content": "id"
+                          },
+                          "value": {
+                            "element": "string",
+                            "content": "250FF"
+                          }
+                        }
+                      },
+                      {
+                        "element": "member",
+                        "meta": {
+                          "description": "Time stamp"
+                        },
+                        "content": {
+                          "key": {
+                            "element": "string",
+                            "content": "created"
+                          },
+                          "value": {
+                            "element": "number",
+                            "content": 1415203908
+                          }
+                        }
+                      },
+                      {
+                        "element": "member",
+                        "meta": {
+                          "description": "A positive integer between 1 and 100 that represents the discount the coupon will apply.\n"
+                        },
+                        "content": {
+                          "key": {
+                            "element": "string",
+                            "content": "percent_off"
+                          },
+                          "value": {
+                            "element": "number",
+                            "content": 25
+                          }
+                        }
+                      },
+                      {
+                        "element": "member",
+                        "meta": {
+                          "description": "Date after which the coupon can no longer be redeemed"
+                        },
+                        "content": {
+                          "key": {
+                            "element": "string",
+                            "content": "redeem_by"
+                          },
+                          "value": {
+                            "element": "number"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "element": "resource",
+            "name": "Coupons",
+            "description": "",
+            "uriTemplate": "/coupons{?limit}",
+            "model": {},
+            "parameters": [],
+            "actions": [
+              {
+                "name": "List all Coupons",
+                "description": "Returns a list of your coupons.\n\n",
+                "method": "GET",
+                "parameters": [
+                  {
+                    "name": "limit",
+                    "description": "A limit on the number of objects to be returned. Limit can range\nbetween 1 and 100 items.\n",
+                    "type": "number",
+                    "required": false,
+                    "default": "10",
+                    "example": "",
+                    "values": []
+                  }
+                ],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [],
+                    "responses": [
+                      {
+                        "name": "200",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": "[\n  {\n    \"id\": \"250FF\",\n    \"created\": 1415203908,\n    \"percent_off\": 25,\n    \"redeem_by\": 0\n  }\n]",
+                        "schema": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"array\"\n}",
+                        "content": [
+                          {
+                            "element": "dataStructure",
+                            "content": [
+                              {
+                                "element": "Coupons"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Create a Coupon",
+                "description": "Creates a new Coupon.\n\n",
+                "method": "POST",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [
+                  {
+                    "element": "dataStructure",
+                    "content": [
+                      {
+                        "element": "object",
+                        "content": [
+                          {
+                            "element": "member",
+                            "content": {
+                              "key": {
+                                "element": "string",
+                                "content": "percent_off"
+                              },
+                              "value": {
+                                "element": "number",
+                                "content": 25
+                              }
+                            }
+                          },
+                          {
+                            "element": "member",
+                            "content": {
+                              "key": {
+                                "element": "string",
+                                "content": "redeem_by"
+                              },
+                              "value": {
+                                "element": "number"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [
+                      {
+                        "name": "",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": "{\n  \"percent_off\": 25,\n  \"redeem_by\": 0\n}",
+                        "schema": "",
+                        "content": []
+                      }
+                    ],
+                    "responses": [
+                      {
+                        "name": "200",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": "{\n  \"id\": \"250FF\",\n  \"created\": 1415203908,\n  \"percent_off\": 25,\n  \"redeem_by\": 0\n}",
+                        "schema": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"id\": {\n      \"type\": \"string\"\n    },\n    \"created\": {\n      \"type\": \"number\",\n      \"description\": \"Time stamp\"\n    },\n    \"percent_off\": {\n      \"type\": \"number\",\n      \"description\": \"A positive integer between 1 and 100 that represents the discount the coupon will apply.\\n\"\n    },\n    \"redeem_by\": {\n      \"type\": \"number\",\n      \"description\": \"Date after which the coupon can no longer be redeemed\"\n    }\n  },\n  \"required\": [\n    \"id\"\n  ]\n}",
+                        "content": [
+                          {
+                            "element": "dataStructure",
+                            "content": [
+                              {
+                                "element": "Coupon"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "content": [
+              {
+                "element": "dataStructure",
+                "content": [
+                  {
+                    "element": "array",
+                    "meta": {
+                      "id": "Coupons"
+                    },
+                    "content": [
+                      {
+                        "element": "Coupon"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "content": [
+      {
+        "element": "category",
+        "attributes": {
+          "name": "Coupons"
+        },
+        "content": [
+          {
+            "element": "resource",
+            "name": "Coupon",
+            "description": "A coupon contains information about a percent-off or amount-off discount you\nmight want to apply to a customer.\n\n",
+            "uriTemplate": "/coupons/{id}",
+            "model": {},
+            "parameters": [
+              {
+                "name": "id",
+                "description": "The ID of the desired coupon.\n",
+                "type": "string",
+                "required": true,
+                "default": "",
+                "example": "",
+                "values": []
+              }
+            ],
+            "actions": [
+              {
+                "name": "Retrieve a Coupon",
+                "description": "Retrieves the coupon with the given ID.\n\n",
+                "method": "GET",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [],
+                    "responses": [
+                      {
+                        "name": "200",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": "{\n  \"id\": \"250FF\",\n  \"created\": 1415203908,\n  \"percent_off\": 25,\n  \"redeem_by\": 0\n}",
+                        "schema": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"id\": {\n      \"type\": \"string\"\n    },\n    \"created\": {\n      \"type\": \"number\",\n      \"description\": \"Time stamp\"\n    },\n    \"percent_off\": {\n      \"type\": \"number\",\n      \"description\": \"A positive integer between 1 and 100 that represents the discount the coupon will apply.\\n\"\n    },\n    \"redeem_by\": {\n      \"type\": \"number\",\n      \"description\": \"Date after which the coupon can no longer be redeemed\"\n    }\n  },\n  \"required\": [\n    \"id\"\n  ]\n}",
+                        "content": [
+                          {
+                            "element": "dataStructure",
+                            "content": [
+                              {
+                                "element": "Coupon"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "content": [
+              {
+                "element": "dataStructure",
+                "content": [
+                  {
+                    "element": "object",
+                    "meta": {
+                      "id": "Coupon"
+                    },
+                    "content": [
+                      {
+                        "element": "member",
+                        "attributes": {
+                          "typeAttributes": [
+                            "required"
+                          ]
+                        },
+                        "content": {
+                          "key": {
+                            "element": "string",
+                            "content": "id"
+                          },
+                          "value": {
+                            "element": "string",
+                            "content": "250FF"
+                          }
+                        }
+                      },
+                      {
+                        "element": "member",
+                        "meta": {
+                          "description": "Time stamp"
+                        },
+                        "content": {
+                          "key": {
+                            "element": "string",
+                            "content": "created"
+                          },
+                          "value": {
+                            "element": "number",
+                            "content": 1415203908
+                          }
+                        }
+                      },
+                      {
+                        "element": "member",
+                        "meta": {
+                          "description": "A positive integer between 1 and 100 that represents the discount the coupon will apply.\n"
+                        },
+                        "content": {
+                          "key": {
+                            "element": "string",
+                            "content": "percent_off"
+                          },
+                          "value": {
+                            "element": "number",
+                            "content": 25
+                          }
+                        }
+                      },
+                      {
+                        "element": "member",
+                        "meta": {
+                          "description": "Date after which the coupon can no longer be redeemed"
+                        },
+                        "content": {
+                          "key": {
+                            "element": "string",
+                            "content": "redeem_by"
+                          },
+                          "value": {
+                            "element": "number"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "element": "resource",
+            "name": "Coupons",
+            "description": "",
+            "uriTemplate": "/coupons{?limit}",
+            "model": {},
+            "parameters": [],
+            "actions": [
+              {
+                "name": "List all Coupons",
+                "description": "Returns a list of your coupons.\n\n",
+                "method": "GET",
+                "parameters": [
+                  {
+                    "name": "limit",
+                    "description": "A limit on the number of objects to be returned. Limit can range\nbetween 1 and 100 items.\n",
+                    "type": "number",
+                    "required": false,
+                    "default": "10",
+                    "example": "",
+                    "values": []
+                  }
+                ],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [],
+                    "responses": [
+                      {
+                        "name": "200",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": "[\n  {\n    \"id\": \"250FF\",\n    \"created\": 1415203908,\n    \"percent_off\": 25,\n    \"redeem_by\": 0\n  }\n]",
+                        "schema": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"array\"\n}",
+                        "content": [
+                          {
+                            "element": "dataStructure",
+                            "content": [
+                              {
+                                "element": "Coupons"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Create a Coupon",
+                "description": "Creates a new Coupon.\n\n",
+                "method": "POST",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [
+                  {
+                    "element": "dataStructure",
+                    "content": [
+                      {
+                        "element": "object",
+                        "content": [
+                          {
+                            "element": "member",
+                            "content": {
+                              "key": {
+                                "element": "string",
+                                "content": "percent_off"
+                              },
+                              "value": {
+                                "element": "number",
+                                "content": 25
+                              }
+                            }
+                          },
+                          {
+                            "element": "member",
+                            "content": {
+                              "key": {
+                                "element": "string",
+                                "content": "redeem_by"
+                              },
+                              "value": {
+                                "element": "number"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [
+                      {
+                        "name": "",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": "{\n  \"percent_off\": 25,\n  \"redeem_by\": 0\n}",
+                        "schema": "",
+                        "content": []
+                      }
+                    ],
+                    "responses": [
+                      {
+                        "name": "200",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": "{\n  \"id\": \"250FF\",\n  \"created\": 1415203908,\n  \"percent_off\": 25,\n  \"redeem_by\": 0\n}",
+                        "schema": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"id\": {\n      \"type\": \"string\"\n    },\n    \"created\": {\n      \"type\": \"number\",\n      \"description\": \"Time stamp\"\n    },\n    \"percent_off\": {\n      \"type\": \"number\",\n      \"description\": \"A positive integer between 1 and 100 that represents the discount the coupon will apply.\\n\"\n    },\n    \"redeem_by\": {\n      \"type\": \"number\",\n      \"description\": \"Date after which the coupon can no longer be redeemed\"\n    }\n  },\n  \"required\": [\n    \"id\"\n  ]\n}",
+                        "content": [
+                          {
+                            "element": "dataStructure",
+                            "content": [
+                              {
+                                "element": "Coupon"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "content": [
+              {
+                "element": "dataStructure",
+                "content": [
+                  {
+                    "element": "array",
+                    "meta": {
+                      "id": "Coupons"
+                    },
+                    "content": [
+                      {
+                        "element": "Coupon"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "error": {
+    "code": 0,
+    "message": "",
+    "location": []
+  },
+  "warnings": []
+}

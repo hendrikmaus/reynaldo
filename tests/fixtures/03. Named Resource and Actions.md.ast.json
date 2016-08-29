@@ -1,0 +1,240 @@
+{
+  "_version": "2.2",
+  "ast": {
+    "_version": "4.0",
+    "metadata": [
+      {
+        "name": "FORMAT",
+        "value": "1A"
+      }
+    ],
+    "name": "Named Resource and Actions API",
+    "description": "This API example demonstrates how to name a resource and its actions, to give\nthe reader a better idea about what the resource is used for.\n\n## API Blueprint\n\n+ [Previous: Resource and Actions](02.%20Resource%20and%20Actions.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/03.%20Named%20Resource%20and%20Actions.md)\n\n+ [Next: Grouping Resources](04.%20Grouping%20Resources.md)\n\n",
+    "element": "category",
+    "resourceGroups": [
+      {
+        "name": "",
+        "description": "",
+        "resources": [
+          {
+            "element": "resource",
+            "name": "My Message",
+            "description": "OK, `My Message` probably isn't the best name for our resource but it will do\nfor now. Note the URI `/message` is enclosed in square brackets.\n\n",
+            "uriTemplate": "/message",
+            "model": {},
+            "parameters": [],
+            "actions": [
+              {
+                "name": "Retrieve a Message",
+                "description": "Now this is informative! No extra explanation needed here. This action clearly\nretrieves the message.\n\n",
+                "method": "GET",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [],
+                    "responses": [
+                      {
+                        "name": "200",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "text/plain"
+                          }
+                        ],
+                        "body": "Hello World!\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "Hello World!\n"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Update a Message",
+                "description": "`Update a message` - nice and simple naming is the best way to go.\n\n",
+                "method": "PUT",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [
+                      {
+                        "name": "",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "text/plain"
+                          }
+                        ],
+                        "body": "All your base are belong to us.\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "All your base are belong to us.\n"
+                          }
+                        ]
+                      }
+                    ],
+                    "responses": [
+                      {
+                        "name": "204",
+                        "description": "",
+                        "headers": [],
+                        "body": "",
+                        "schema": "",
+                        "content": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "content": []
+          }
+        ]
+      }
+    ],
+    "content": [
+      {
+        "element": "category",
+        "content": [
+          {
+            "element": "resource",
+            "name": "My Message",
+            "description": "OK, `My Message` probably isn't the best name for our resource but it will do\nfor now. Note the URI `/message` is enclosed in square brackets.\n\n",
+            "uriTemplate": "/message",
+            "model": {},
+            "parameters": [],
+            "actions": [
+              {
+                "name": "Retrieve a Message",
+                "description": "Now this is informative! No extra explanation needed here. This action clearly\nretrieves the message.\n\n",
+                "method": "GET",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [],
+                    "responses": [
+                      {
+                        "name": "200",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "text/plain"
+                          }
+                        ],
+                        "body": "Hello World!\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "Hello World!\n"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Update a Message",
+                "description": "`Update a message` - nice and simple naming is the best way to go.\n\n",
+                "method": "PUT",
+                "parameters": [],
+                "attributes": {
+                  "relation": "",
+                  "uriTemplate": ""
+                },
+                "content": [],
+                "examples": [
+                  {
+                    "name": "",
+                    "description": "",
+                    "requests": [
+                      {
+                        "name": "",
+                        "description": "",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "text/plain"
+                          }
+                        ],
+                        "body": "All your base are belong to us.\n",
+                        "schema": "",
+                        "content": [
+                          {
+                            "element": "asset",
+                            "attributes": {
+                              "role": "bodyExample"
+                            },
+                            "content": "All your base are belong to us.\n"
+                          }
+                        ]
+                      }
+                    ],
+                    "responses": [
+                      {
+                        "name": "204",
+                        "description": "",
+                        "headers": [],
+                        "body": "",
+                        "schema": "",
+                        "content": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "content": []
+          }
+        ]
+      }
+    ]
+  },
+  "error": {
+    "code": 0,
+    "message": "",
+    "location": []
+  },
+  "warnings": []
+}
