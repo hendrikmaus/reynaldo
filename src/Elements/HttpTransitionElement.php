@@ -17,10 +17,6 @@ class HttpTransitionElement extends BaseElement
      */
     public function getHrefVariablesElement()
     {
-        if (!isset($this->attributes['hrefVariables'])) {
-            return null;
-        }
-
-        return $this->attributes['hrefVariables'];
+        return $this->getAttribute('hrefVariables');
     }
 }
