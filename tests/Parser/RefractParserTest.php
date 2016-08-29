@@ -41,7 +41,7 @@ class RefractParserTest extends \PHPUnit_Framework_TestCase
             'NamedEndpoints' => '13. Named Endpoints',
             'JsonSchema' => '14. JSON Schema',
             'AdvancedJsonSchema' => '15. Advanced JSON Schema',
-            'RealWorldApi' => 'Real World Api'
+            'RealWorldApi' => 'Real World API'
         ];
 
         $tests = [];
