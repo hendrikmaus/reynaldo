@@ -2,7 +2,7 @@
 
 namespace Hmaus\Reynaldo\Elements;
 
-interface ApiResource
+interface ApiResource extends ApiElement
 {
     /**
      * @return null|string

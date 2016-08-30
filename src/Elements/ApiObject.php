@@ -2,7 +2,7 @@
 
 namespace Hmaus\Reynaldo\Elements;
 
-interface ApiObject
+interface ApiObject extends ApiElement
 {
 
 }

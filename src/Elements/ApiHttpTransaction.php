@@ -2,7 +2,7 @@
 
 namespace Hmaus\Reynaldo\Elements;
 
-interface ApiHttpTransaction
+interface ApiHttpTransaction extends ApiElement
 {
     /**
      * @return ApiHttpRequest

@@ -2,7 +2,7 @@
 
 namespace Hmaus\Reynaldo\Elements;
 
-interface ApiParseResult
+interface ApiParseResult extends ApiElement
 {
     /**
      * @return ApiDescriptionRoot

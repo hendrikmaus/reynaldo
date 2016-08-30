@@ -2,7 +2,7 @@
 
 namespace Hmaus\Reynaldo\Elements;
 
-interface ApiDescriptionRoot
+interface ApiDescriptionRoot extends ApiElement
 {
     /**
      * Main API Title at the top of the description document

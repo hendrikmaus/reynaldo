@@ -2,7 +2,7 @@
 
 namespace Hmaus\Reynaldo\Elements;
 
-interface ApiHttpRequest
+interface ApiHttpRequest extends ApiElement
 {
     /**
      * Get HTTP Method

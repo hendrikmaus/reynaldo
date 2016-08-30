@@ -2,7 +2,7 @@
 
 namespace Hmaus\Reynaldo\Elements;
 
-interface ApiHttpResponse
+interface ApiHttpResponse extends ApiElement
 {
     /**
      * Get HTTP status code

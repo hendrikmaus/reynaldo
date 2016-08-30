@@ -2,7 +2,7 @@
 
 namespace Hmaus\Reynaldo\Elements;
 
-interface ApiDataStructures
+interface ApiDataStructures extends ApiElement
 {
 
 }

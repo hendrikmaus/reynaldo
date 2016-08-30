@@ -4,7 +4,7 @@ namespace Hmaus\Reynaldo\Elements;
 
 use Hmaus\Reynaldo\Value\HrefVariable;
 
-interface ApiHrefVariables
+interface ApiHrefVariables extends ApiElement
 {
     /**
      * Get all variables as objects

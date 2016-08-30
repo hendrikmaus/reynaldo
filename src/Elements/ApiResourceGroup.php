@@ -2,7 +2,7 @@
 
 namespace Hmaus\Reynaldo\Elements;
 
-interface ApiResourceGroup
+interface ApiResourceGroup extends ApiElement
 {
     /**
      * Get all resources inside this group

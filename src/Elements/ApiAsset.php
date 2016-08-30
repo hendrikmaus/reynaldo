@@ -2,7 +2,7 @@
 
 namespace Hmaus\Reynaldo\Elements;
 
-interface ApiAsset
+interface ApiAsset extends ApiElement
 {
     /**
      * Get content type, e.g. text/plain

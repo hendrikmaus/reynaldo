@@ -2,7 +2,7 @@
 
 namespace Hmaus\Reynaldo\Elements;
 
-interface ApiStateTransition
+interface ApiStateTransition extends ApiElement 
 {
     /**
      * @return ApiHttpTransaction[]
