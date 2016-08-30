@@ -76,11 +76,17 @@ class BaseElement // todo implement a builder interface to hide methods from the
     /**
      * Simple getter for the content of the current element
      *
-     * @return mixed|null
+     * @return array
      */
     public function getContent()
     {
-        return $this->content;
+        $content = $this->content;
+
+        if (!$content) {
+            $content = [];
+        }
+
+        return $content;
     }
 
     /**
