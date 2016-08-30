@@ -2,6 +2,7 @@
 
 namespace Hmaus\Reynaldo\Parser;
 
+use Hmaus\Reynaldo\Elements\ApiParseResult;
 use Hmaus\Reynaldo\Elements\AssetElement;
 use Hmaus\Reynaldo\Elements\BaseElement;
 use Hmaus\Reynaldo\Elements\DataStructureCategoryElement;
@@ -21,7 +22,7 @@ use Hmaus\Reynaldo\Elements\ResourceGroupElement;
 class RefractParser implements Parser
 {
     /**
-     * @var ParseResultElement
+     * @var ApiParseResult
      */
     private $parseResult;
 

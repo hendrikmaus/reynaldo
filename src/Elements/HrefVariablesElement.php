@@ -4,13 +4,8 @@ namespace Hmaus\Reynaldo\Elements;
 
 use Hmaus\Reynaldo\Value\HrefVariable;
 
-class HrefVariablesElement extends BaseElement
+class HrefVariablesElement extends BaseElement implements ApiElement, ApiHrefVariables
 {
-    /**
-     * Get all variables as objects
-     *
-     * @return HrefVariable[]
-     */
     public function getAllVariables()
     {
         $variables = [];

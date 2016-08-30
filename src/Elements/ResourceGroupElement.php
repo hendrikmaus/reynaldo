@@ -2,13 +2,8 @@
 
 namespace Hmaus\Reynaldo\Elements;
 
-class ResourceGroupElement extends BaseElement
+class ResourceGroupElement extends BaseElement implements ApiElement, ApiResourceGroup
 {
-    /**
-     * Get all resources inside this group
-     *
-     * @return ResourceElement[]
-     */
     public function getResources()
     {
         return $this->getElementsByType(ResourceElement::class);

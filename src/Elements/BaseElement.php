@@ -2,7 +2,7 @@
 
 namespace Hmaus\Reynaldo\Elements;
 
-class BaseElement
+class BaseElement // todo implement a builder interface to hide methods from the outside e.g. addContentElement etc
 {
     /**
      * @var array|null
@@ -47,10 +47,9 @@ class BaseElement
      * As you can see `raw array element (1)` was replaced with `resource element`
      * So *you* need to make sure that *you* turned the raw array element into the resource element.
      *
-     * @internal
-     * @param BaseElement $element
+     * @param ApiElement $element
      */
-    public function addContentElement(BaseElement $element)
+    public function addContentElement(ApiElement $element)
     {
         $newContent = [];
         $rawElements = [];
@@ -75,18 +74,6 @@ class BaseElement
     }
 
     /**
-     * Useful helper when creating elements that have api elements in their attributes
-     *
-     * @internal
-     * @param string $attributeName
-     * @param BaseElement $element
-     */
-    public function replaceAttributeWithElement($attributeName, BaseElement $element)
-    {
-        $this->attributes[$attributeName] = $element;
-    }
-
-    /**
      * Simple getter for the content of the current element
      *
      * @return mixed|null
@@ -99,6 +86,7 @@ class BaseElement
     /**
      * Check if the first content element is a copy element
      *
+     * @api
      * @return bool
      */
     public function hasCopy()
@@ -108,6 +96,8 @@ class BaseElement
 
     /**
      * Get the copy text of the current element; raw markdown likely
+     *
+     * @api
      * @return string|null
      */
     public function getCopyText()
@@ -127,24 +117,56 @@ class BaseElement
     }
 
     /**
+     * Useful helper when creating elements that have api elements in their attributes
+     *
+     * @param string $attributeName
+     * @param ApiElement $element
+     */
+    public function replaceAttributeWithElement($attributeName, ApiElement $element)
+    {
+        $this->attributes[$attributeName] = $element;
+    }
+
+    /**
      * Query content of current element (single level) for elements of given type
      *
-     * @internal
-     * @param string $type Fully Qualified Class Name, e.g. ResourceElement::class
-     * @return BaseElement[]
+     * @param string $fqcn Fully Qualified Class Name, e.g. ResourceElement::class
+     * @return ApiElement[]
      */
-    public function getElementsByType($type)
+    public function getElementsByType($fqcn)
     {
         $elements = [];
         $content = $this->getContent();
 
         foreach ($content as $element) {
-            if ($element instanceof $type) {
+            if ($element instanceof $fqcn) {
                 $elements[] = $element;
             }
         }
 
         return $elements;
+    }
+
+    /**
+     * Find the first occurrence of a given element inside the content (single level)
+     *
+     * @param string $fqcn Fully Qualified Class Name, e.g. ResourceElement::class
+     * @return ApiElement|null
+     */
+    public function getFirstElementByType($fqcn)
+    {
+        $match = null;
+
+        foreach ($this->getContent() as $element) {
+            if (!($element instanceof $fqcn)) {
+                continue;
+            }
+
+            $match = $element;
+            break;
+        }
+
+        return $match;
     }
 
     /**
@@ -165,7 +187,7 @@ class BaseElement
     /**
      * Check whether or not this element has a given class
      *
-     * @param string $className
+     * @param string $className e.g. 'resourceGroup', 'messageBody'
      * @return bool
      */
     public function hasClass($className)
@@ -175,27 +197,29 @@ class BaseElement
                 return true;
             }
         }
-        
-        return false;
-    }
 
-    /**
-     * Meta data sitting on the element, e.g. classes
-     *
-     * @return array|null
-     */
-    public function getMetaData()
-    {
-        return $this->meta;
+        return false;
     }
 
     /**
      * Get title of the element, may be an empty string
      *
+     * @api
      * @return string
      */
     public function getTitle()
     {
         return $this->getMetaData()['title'];
+    }
+
+    /**
+     * Meta data sitting on the element, e.g. classes
+     *
+     * @api
+     * @return array|null
+     */
+    public function getMetaData()
+    {
+        return $this->meta;
     }
 }

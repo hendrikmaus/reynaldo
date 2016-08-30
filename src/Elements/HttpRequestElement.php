@@ -2,48 +2,21 @@
 
 namespace Hmaus\Reynaldo\Elements;
 
-class HttpRequestElement extends BaseElement
+class HttpRequestElement extends BaseElement implements ApiElement, ApiHttpRequest
 {
-    /**
-     * Get HTTP Method
-     *
-     * @return string
-     */
     public function getMethod()
     {
         return $this->attributes['method'];
     }
 
-    /**
-     * @return bool
-     */
     public function hasMessageBody()
     {
         return $this->getMessageBodyAsset() !== null;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasMessageBodySchema()
-    {
-        return $this->getMessageBodySchemaAsset() !== null;
-    }
-
-    /**
-     * @return null|AssetElement
-     */
     public function getMessageBodyAsset()
     {
         return $this->getFirstAssetByClass('messageBody');
-    }
-
-    /**
-     * @return AssetElement|null
-     */
-    public function getMessageBodySchemaAsset()
-    {
-        return $this->getFirstAssetByClass('messageBodySchema');
     }
 
     /**
@@ -68,27 +41,16 @@ class HttpRequestElement extends BaseElement
         return $assetHit;
     }
 
-    /**
-     * Get headers as `header name`: `header value` pairs
-     *
-     * @return array
-     */
-    public function getHeaders()
+    public function hasMessageBodySchema()
     {
-        $headers = [];
-
-        foreach ($this->attributes['headers']['content'] as $header) {
-            $headers[$header['content']['key']['content']] = $header['content']['value']['content'];
-        }
-
-        return $headers;
+        return $this->getMessageBodySchemaAsset() !== null;
     }
 
-    /**
-     * Try to fetch content type from headers
-     *
-     * @return string|null
-     */
+    public function getMessageBodySchemaAsset()
+    {
+        return $this->getFirstAssetByClass('messageBodySchema');
+    }
+
     public function getContentType()
     {
         $headers = $this->getHeaders();
@@ -102,5 +64,16 @@ class HttpRequestElement extends BaseElement
         }
 
         return $contentType;
+    }
+
+    public function getHeaders()
+    {
+        $headers = [];
+
+        foreach ($this->attributes['headers']['content'] as $header) {
+            $headers[$header['content']['key']['content']] = $header['content']['value']['content'];
+        }
+
+        return $headers;
     }
 }

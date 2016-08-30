@@ -2,7 +2,7 @@
 
 namespace Hmaus\Reynaldo\Elements;
 
-class ObjectElement extends BaseElement
+class ObjectElement extends BaseElement implements ApiElement, ApiObject
 {
 
 }

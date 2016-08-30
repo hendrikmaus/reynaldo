@@ -2,7 +2,7 @@
 
 namespace Hmaus\Reynaldo\Elements;
 
-class DataStructureElement extends BaseElement
+class DataStructureElement extends BaseElement implements ApiElement, ApiDataStructure
 {
 
 }

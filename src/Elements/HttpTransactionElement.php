@@ -2,21 +2,15 @@
 
 namespace Hmaus\Reynaldo\Elements;
 
-class HttpTransactionElement extends BaseElement
+class HttpTransactionElement extends BaseElement implements ApiElement, ApiHttpTransaction
 {
-    /**
-     * @return HttpRequestElement
-     */
     public function getHttpRequest()
     {
-        return $this->getElementsByType(HttpRequestElement::class)[0];
+        return $this->getFirstElementByType(HttpRequestElement::class);
     }
 
-    /**
-     * @return HttpResponseElement
-     */
     public function getHttpResponse()
     {
-        return $this->getElementsByType(HttpResponseElement::class)[0];
+        return $this->getFirstElementByType(HttpResponseElement::class);
     }
 }

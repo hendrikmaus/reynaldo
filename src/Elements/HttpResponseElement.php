@@ -2,22 +2,13 @@
 
 namespace Hmaus\Reynaldo\Elements;
 
-class HttpResponseElement extends BaseElement
+class HttpResponseElement extends BaseElement implements ApiElement, ApiHttpResponse
 {
-    /**
-     * Get HTTP status code
-     *
-     * @return int
-     */
     public function getStatusCode()
     {
-        return (int) $this->attributes['statusCode'];
+        return (int)$this->attributes['statusCode'];
     }
 
-    /**
-     * Get headers as `header name`: `header value` pairs
-     * @return array|null
-     */
     public function getHeaders()
     {
         $headersFromAttributes = $this->getAttribute('headers');
@@ -30,36 +21,14 @@ class HttpResponseElement extends BaseElement
         return $headers;
     }
 
-    /**
-     * @return bool
-     */
     public function hasMessageBody()
     {
         return $this->getMessageBodyAsset() !== null;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasMessageBodySchema()
-    {
-        return $this->getMessageBodySchemaAsset() !== null;
-    }
-
-    /**
-     * @return null|AssetElement
-     */
     public function getMessageBodyAsset()
     {
         return $this->getFirstAssetByClass('messageBody');
-    }
-
-    /**
-     * @return AssetElement|null
-     */
-    public function getMessageBodySchemaAsset()
-    {
-        return $this->getFirstAssetByClass('messageBodySchema');
     }
 
     /**
@@ -80,11 +49,18 @@ class HttpResponseElement extends BaseElement
         return null;
     }
 
-    /**
-     * @return DataStructureElement
-     */
+    public function hasMessageBodySchema()
+    {
+        return $this->getMessageBodySchemaAsset() !== null;
+    }
+
+    public function getMessageBodySchemaAsset()
+    {
+        return $this->getFirstAssetByClass('messageBodySchema');
+    }
+
     public function getDataStructure()
     {
-        return $this->getElementsByType(DataStructureElement::class)[0];
+        return $this->getFirstElementByType(DataStructureElement::class);
     }
 }
