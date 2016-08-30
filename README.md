@@ -18,18 +18,23 @@ Out comes an easily traversable object.
 You can find a little example in `/example`.
 
 ```php
+// load file and json_decode as assoc array into $apiDescription
+
 $parser = new RefractParser();
-$result = $parser->parse($apiDescription);
-$api = $result->getApi();
+$parseResult = $parser->parse($apiDescription);
+$api = $parseResult->getApi();
 
 // try to get the API title `$api->getApiTitle();`
 // or the document description in markdown `$api->getApiDocumentDescription();`
 
-foreach ($api->getResourceGroups() as $resourceGroup) {
-    foreach ($resourceGroup->getResources() as $resource) {
-        foreach ($resource->getTransitions() as $transition) {
-            foreach ($transition->getHttpTransactions() as $httpTransaction) {
-                // inspect `$httpTransaction->getHttpRequest()`, `$httpTransaction->getHttpResponse()`
+foreach ($parseResult->getApi()->getResourceGroups() as $apiResourceGroup) {
+
+    foreach ($apiResourceGroup->getResources() as $apiResource) {
+    
+        foreach ($apiResource->getTransitions() as $apiStateTransition) {
+        
+            foreach ($apiStateTransition->getHttpTransactions() as $apiHttpTransaction) {
+                // inspect `$apiHttpTransaction->getHttpRequest()`, `$apiHttpTransaction->getHttpResponse()`
             }
         }
     }
