@@ -47,9 +47,9 @@ class BaseElement // todo implement a builder interface to hide methods from the
      * As you can see `raw array element (1)` was replaced with `resource element`
      * So *you* need to make sure that *you* turned the raw array element into the resource element.
      *
-     * @param BaseElement $element
+     * @param ApiElement $element
      */
-    public function addContentElement(BaseElement $element)
+    public function addContentElement(ApiElement $element)
     {
         $newContent = [];
         $rawElements = [];
@@ -71,17 +71,6 @@ class BaseElement // todo implement a builder interface to hide methods from the
         $newContent[] = $element;
 
         $this->content = array_merge($newContent, $rawElements);
-    }
-
-    /**
-     * Useful helper when creating elements that have api elements in their attributes
-     *
-     * @param string $attributeName
-     * @param BaseElement $element
-     */
-    public function replaceAttributeWithElement($attributeName, BaseElement $element)
-    {
-        $this->attributes[$attributeName] = $element;
     }
 
     /**
@@ -128,23 +117,56 @@ class BaseElement // todo implement a builder interface to hide methods from the
     }
 
     /**
+     * Useful helper when creating elements that have api elements in their attributes
+     *
+     * @param string $attributeName
+     * @param ApiElement $element
+     */
+    public function replaceAttributeWithElement($attributeName, ApiElement $element)
+    {
+        $this->attributes[$attributeName] = $element;
+    }
+
+    /**
      * Query content of current element (single level) for elements of given type
      *
-     * @param string $type Fully Qualified Class Name, e.g. ResourceElement::class
-     * @return BaseElement[]
+     * @param string $fqcn Fully Qualified Class Name, e.g. ResourceElement::class
+     * @return ApiElement[]
      */
-    public function getElementsByType($type)
+    public function getElementsByType($fqcn)
     {
         $elements = [];
         $content = $this->getContent();
 
         foreach ($content as $element) {
-            if ($element instanceof $type) {
+            if ($element instanceof $fqcn) {
                 $elements[] = $element;
             }
         }
 
         return $elements;
+    }
+
+    /**
+     * Find the first occurrence of a given element inside the content (single level)
+     *
+     * @param string $fqcn Fully Qualified Class Name, e.g. ResourceElement::class
+     * @return ApiElement|null
+     */
+    public function getFirstElementByType($fqcn)
+    {
+        $match = null;
+
+        foreach ($this->getContent() as $element) {
+            if (!($element instanceof $fqcn)) {
+                continue;
+            }
+
+            $match = $element;
+            break;
+        }
+
+        return $match;
     }
 
     /**
@@ -165,7 +187,7 @@ class BaseElement // todo implement a builder interface to hide methods from the
     /**
      * Check whether or not this element has a given class
      *
-     * @param string $className
+     * @param string $className e.g. 'resourceGroup', 'messageBody'
      * @return bool
      */
     public function hasClass($className)
@@ -175,19 +197,8 @@ class BaseElement // todo implement a builder interface to hide methods from the
                 return true;
             }
         }
-        
-        return false;
-    }
 
-    /**
-     * Meta data sitting on the element, e.g. classes
-     *
-     * @api
-     * @return array|null
-     */
-    public function getMetaData()
-    {
-        return $this->meta;
+        return false;
     }
 
     /**
@@ -199,5 +210,16 @@ class BaseElement // todo implement a builder interface to hide methods from the
     public function getTitle()
     {
         return $this->getMetaData()['title'];
+    }
+
+    /**
+     * Meta data sitting on the element, e.g. classes
+     *
+     * @api
+     * @return array|null
+     */
+    public function getMetaData()
+    {
+        return $this->meta;
     }
 }

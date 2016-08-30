@@ -17,4 +17,11 @@ interface ApiElement
      * @return string|null
      */
     public function getCopyText();
+
+    /**
+     * Get element meta data in their raw format, e.g. classes, title
+     *
+     * @return array|null
+     */
+    public function getMetaData();
 }

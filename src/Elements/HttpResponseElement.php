@@ -61,6 +61,6 @@ class HttpResponseElement extends BaseElement implements ApiElement, ApiHttpResp
 
     public function getDataStructure()
     {
-        return $this->getElementsByType(DataStructureElement::class)[0];
+        return $this->getFirstElementByType(DataStructureElement::class);
     }
 }

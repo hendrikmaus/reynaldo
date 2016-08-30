@@ -13,6 +13,7 @@ interface ApiHttpResponse
 
     /**
      * Get headers as `header name`: `header value` pairs
+     *
      * @return array|null
      */
     public function getHeaders();
@@ -28,12 +29,12 @@ interface ApiHttpResponse
     public function hasMessageBodySchema();
 
     /**
-     * @return null|AssetElement
+     * @return ApiAsset|null
      */
     public function getMessageBodyAsset();
 
     /**
-     * @return AssetElement|null
+     * @return ApiAsset|null
      */
     public function getMessageBodySchemaAsset();
 

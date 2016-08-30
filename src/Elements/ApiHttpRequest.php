@@ -12,22 +12,34 @@ interface ApiHttpRequest
     public function getMethod();
 
     /**
+     * Whether or not the element has a message body.
+     * You'll be able to get the message body as an ApiAsset using `getMessageBodyAsset`
+     *
      * @return bool
      */
     public function hasMessageBody();
 
     /**
+     * Whether or not the element has schema for its message body.
+     * You'll be able to get the schema as an ApiAsset using `getMessageBodySchemaAsset`
+     *
      * @return bool
      */
     public function hasMessageBodySchema();
 
     /**
-     * @return null|AssetElement
+     * Get message body asset.
+     * Call `getBody` to get to the contents.
+     *
+     * @return ApiAsset|null
      */
     public function getMessageBodyAsset();
 
     /**
-     * @return AssetElement|null
+     * Get message body schema asset.
+     * Call `getBody` to get to the contents.
+     *
+     * @return ApiAsset|null
      */
     public function getMessageBodySchemaAsset();
 

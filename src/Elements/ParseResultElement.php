@@ -6,6 +6,6 @@ class ParseResultElement extends BaseElement implements ApiElement, ApiParseResu
 {
     public function getApi()
     {
-        return $this->getElementsByType(MasterCategoryElement::class)[0];
+        return $this->getFirstElementByType(MasterCategoryElement::class);
     }
 }

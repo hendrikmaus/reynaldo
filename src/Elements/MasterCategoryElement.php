@@ -32,13 +32,6 @@ class MasterCategoryElement extends BaseElement implements ApiElement, ApiDescri
 
     public function getDataStructureCategory()
     {
-        $elements = $this->getElementsByType(DataStructureCategoryElement::class);
-
-        if (!$elements) {
-            return null;
-        }
-
-        return $elements[0];
+        return $this->getFirstElementByType(DataStructureCategoryElement::class);
     }
-
 }

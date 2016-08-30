@@ -21,6 +21,6 @@ class ResourceElement extends BaseElement implements ApiElement, ApiResource
 
     public function getDataStructure()
     {
-        return $this->getElementsByType(DataStructureElement::class)[0];
+        return $this->getFirstElementByType(DataStructureElement::class);
     }
 }

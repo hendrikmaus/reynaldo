@@ -6,11 +6,11 @@ class HttpTransactionElement extends BaseElement implements ApiElement, ApiHttpT
 {
     public function getHttpRequest()
     {
-        return $this->getElementsByType(HttpRequestElement::class)[0];
+        return $this->getFirstElementByType(HttpRequestElement::class);
     }
 
     public function getHttpResponse()
     {
-        return $this->getElementsByType(HttpResponseElement::class)[0];
+        return $this->getFirstElementByType(HttpResponseElement::class);
     }
 }
