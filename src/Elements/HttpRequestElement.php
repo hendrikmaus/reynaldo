@@ -68,9 +68,14 @@ class HttpRequestElement extends BaseElement implements ApiElement, ApiHttpReque
 
     public function getHeaders()
     {
+        $attributeHeaders = $this->getAttribute('headers');
         $headers = [];
 
-        foreach ($this->attributes['headers']['content'] as $header) {
+        if (!$attributeHeaders) {
+            return $headers;
+        }
+
+        foreach ($attributeHeaders['content'] as $header) {
             $headers[$header['content']['key']['content']] = $header['content']['value']['content'];
         }
 
