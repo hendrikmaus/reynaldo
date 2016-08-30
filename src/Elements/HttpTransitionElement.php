@@ -11,6 +11,12 @@ class HttpTransitionElement extends BaseElement implements ApiElement, ApiStateT
 
     public function getHrefVariablesElement()
     {
-        return $this->getAttribute('hrefVariables');
+        $element = $this->getAttribute('hrefVariables');
+
+        if (!$element) {
+            $element = new HrefVariablesElement([]);
+        }
+
+        return $element;
     }
 }

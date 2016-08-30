@@ -10,7 +10,7 @@ interface ApiStateTransition extends ApiElement
     public function getHttpTransactions();
 
     /**
-     * @return ApiHrefVariables|null
+     * @return ApiHrefVariables
      */
     public function getHrefVariablesElement();
 }
