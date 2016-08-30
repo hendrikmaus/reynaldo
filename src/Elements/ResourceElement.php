@@ -16,7 +16,13 @@ class ResourceElement extends BaseElement implements ApiElement, ApiResource
 
     public function getHrefVariablesElement()
     {
-        return $this->getAttribute('hrefVariables');
+        $element = $this->getAttribute('hrefVariables');
+
+        if (!$element) {
+            $element = new HrefVariablesElement([]);
+        }
+
+        return $element;
     }
 
     public function getDataStructure()

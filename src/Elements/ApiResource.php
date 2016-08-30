@@ -15,7 +15,7 @@ interface ApiResource extends ApiElement
     public function getTransitions();
 
     /**
-     * @return ApiHrefVariables|null
+     * @return ApiHrefVariables
      */
     public function getHrefVariablesElement();
 
