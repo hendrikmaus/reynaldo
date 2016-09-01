@@ -12,6 +12,11 @@ class HttpResponseElement extends BaseElement implements ApiElement, ApiHttpResp
     public function getHeaders()
     {
         $headersFromAttributes = $this->getAttribute('headers');
+
+        if (!$headersFromAttributes) {
+            return [];
+        }
+
         $headers = [];
 
         foreach ($headersFromAttributes['content'] as $header) {
