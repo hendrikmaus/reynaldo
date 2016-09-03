@@ -125,6 +125,10 @@ class RefractParser implements Parser
             }
         }
 
+        if (!isset($element['content'])) {
+            return;
+        }
+
         if (!is_array($element['content'])) {
             return;
         }
