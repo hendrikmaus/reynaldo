@@ -381,7 +381,7 @@
                 "title": "All My Messages"
               },
               "attributes": {
-                "href": "/messages{?limit}"
+                "href": "/messages{?limit,type}"
               },
               "content": [
                 {
@@ -417,6 +417,56 @@
                               "attributes": {
                                 "default": "20"
                               }
+                            }
+                          }
+                        },
+                        {
+                          "element": "member",
+                          "meta": {
+                            "description": "The type of messages to return."
+                          },
+                          "attributes": {
+                            "typeAttributes": [
+                              "optional"
+                            ]
+                          },
+                          "content": {
+                            "key": {
+                              "element": "string",
+                              "content": "type"
+                            },
+                            "value": {
+                              "element": "enum",
+                              "attributes": {
+                                "samples": [
+                                  [
+                                    {
+                                      "element": "string",
+                                      "content": "unread"
+                                    }
+                                  ]
+                                ],
+                                "default": [
+                                  {
+                                    "element": "string",
+                                    "content": "all"
+                                  }
+                                ]
+                              },
+                              "content": [
+                                {
+                                  "element": "string",
+                                  "content": "all"
+                                },
+                                {
+                                  "element": "string",
+                                  "content": "unread"
+                                },
+                                {
+                                  "element": "string",
+                                  "content": "read"
+                                }
+                              ]
                             }
                           }
                         }

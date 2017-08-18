@@ -332,7 +332,7 @@ class RefractParserTest extends \PHPUnit_Framework_TestCase
         /** All My Messages */
         /** @var ResourceElement $resource */
         $resource = $resources[1];
-        $this->assertSame('/messages{?limit}', $resource->getHref());
+        $this->assertSame('/messages{?limit,type}', $resource->getHref());
 
         /** @var HttpTransitionElement $transition */
         $transition = $resource->getTransitions()[0];
@@ -348,6 +348,17 @@ class RefractParserTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('number', $hrefVariable->dataType);
         $this->assertSame('optional', $hrefVariable->required);
         $this->assertSame('The maximum number of results to return.', $hrefVariable->description);
+        $this->assertEmpty($hrefVariable->values);
+
+        /** @var HrefVariable $hrefVariable */
+        $hrefVariable = array_shift($hrefVariableObjects);
+        $this->assertSame('type', $hrefVariable->name);
+        $this->assertSame('unread', $hrefVariable->example);
+        $this->assertSame('all', $hrefVariable->default);
+        $this->assertSame('string', $hrefVariable->dataType);
+        $this->assertSame('optional', $hrefVariable->required);
+        $this->assertSame('The type of messages to return.', $hrefVariable->description);
+        $this->assertEquals(['all', 'unread', 'read'], $hrefVariable->values);
     }
 
     public function Attributes(Parser $parser, $fixture)
