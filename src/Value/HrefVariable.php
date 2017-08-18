@@ -10,4 +10,5 @@ class HrefVariable
     public $dataType;
     public $required;
     public $description;
+    public $values;
 }
