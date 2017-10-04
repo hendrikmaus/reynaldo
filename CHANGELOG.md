@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 The change log itself is written the way that [keepachangelog.com](http://keepachangelog.com/) describes.
 
+## [0.1.3] - 2017-10-04
+### Fixed:
+- Add support for URI parameters members
+
 ## [0.1.2] - 2016-04-09
 ### Fixed
 - Not all refract elements have a ´content´ field, hence the parser will now check if it exists before accessing it
