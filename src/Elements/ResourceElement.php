@@ -6,7 +6,7 @@ class ResourceElement extends BaseElement implements ApiElement, ApiResource
 {
     public function getHref()
     {
-        return $this->getAttribute('href');
+        return $this->getAttribute('href')['content'];
     }
 
     public function getTransitions()

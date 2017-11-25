@@ -4,69 +4,105 @@
     {
       "element": "category",
       "meta": {
-        "classes": [
-          "api"
-        ],
-        "title": "Responses API"
+        "classes": {
+          "element": "array",
+          "content": [
+            {
+              "element": "string",
+              "content": "api"
+            }
+          ]
+        },
+        "title": {
+          "element": "string",
+          "content": "Responses API"
+        }
       },
       "attributes": {
-        "meta": [
-          {
-            "element": "member",
-            "meta": {
-              "classes": [
-                "user"
-              ]
-            },
-            "content": {
-              "key": {
-                "element": "string",
-                "content": "FORMAT"
+        "metadata": {
+          "element": "array",
+          "content": [
+            {
+              "element": "member",
+              "meta": {
+                "classes": {
+                  "element": "array",
+                  "content": [
+                    {
+                      "element": "string",
+                      "content": "user"
+                    }
+                  ]
+                }
               },
-              "value": {
-                "element": "string",
-                "content": "1A"
+              "content": {
+                "key": {
+                  "element": "string",
+                  "content": "FORMAT"
+                },
+                "value": {
+                  "element": "string",
+                  "content": "1A"
+                }
               }
             }
-          }
-        ]
+          ]
+        }
       },
       "content": [
         {
           "element": "copy",
-          "content": "In this API example we will discuss what information a response can bear and\nhow to define multiple responses. Technically a response is represented by a\npayload that is sent back in response to a request.\n\n## API Blueprint\n\n+ [Previous: Grouping Resources](04.%20Grouping%20Resources.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/05.%20Responses.md)\n\n+ [Next: Requests](06.%20Requests.md)\n\n"
+          "content": "In this API example we will discuss what information a response can bear and\nhow to define multiple responses. Technically a response is represented by a\npayload that is sent back in response to a request.\n\n## API Blueprint\n\n+ [Previous: Grouping Resources](04.%20Grouping%20Resources.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/05.%20Responses.md)\n\n+ [Next: Requests](06.%20Requests.md)"
         },
         {
           "element": "category",
           "meta": {
-            "classes": [
-              "resourceGroup"
-            ],
-            "title": "Messages"
+            "classes": {
+              "element": "array",
+              "content": [
+                {
+                  "element": "string",
+                  "content": "resourceGroup"
+                }
+              ]
+            },
+            "title": {
+              "element": "string",
+              "content": "Messages"
+            }
           },
           "content": [
             {
               "element": "copy",
-              "content": "Group of all messages-related resources.\n\n"
+              "content": "Group of all messages-related resources."
             },
             {
               "element": "resource",
               "meta": {
-                "title": "My Message"
+                "title": {
+                  "element": "string",
+                  "content": "My Message"
+                }
               },
               "attributes": {
-                "href": "/message"
+                "href": {
+                  "element": "string",
+                  "content": "/message"
+                }
               },
               "content": [
                 {
                   "element": "transition",
                   "meta": {
-                    "title": "Retrieve a Message"
+                    "title": {
+                      "element": "string",
+                      "content": "Retrieve a Message"
+                    }
                   },
                   "content": [
                     {
                       "element": "copy",
-                      "content": "This action has **two** responses defined: One returning plain text and the\nother a JSON representation of our resource. Both have the same HTTP status\ncode. Also both responses bear additional information in the form of a custom\nHTTP header. Note that both responses have set the `Content-Type` HTTP header\njust by specifying `(text/plain)` or `(application/json)` in their respective\nsignatures.\n\n"
+                      "content": "This action has **two** responses defined: One returning plain text and the\nother a JSON representation of our resource. Both have the same HTTP status\ncode. Also both responses bear additional information in the form of a custom\nHTTP header. Note that both responses have set the `Content-Type` HTTP header\njust by specifying `(text/plain)` or `(application/json)` in their respective\nsignatures."
                     },
                     {
                       "element": "httpTransaction",
@@ -74,14 +110,20 @@
                         {
                           "element": "httpRequest",
                           "attributes": {
-                            "method": "GET"
+                            "method": {
+                              "element": "string",
+                              "content": "GET"
+                            }
                           },
                           "content": []
                         },
                         {
                           "element": "httpResponse",
                           "attributes": {
-                            "statusCode": "200",
+                            "statusCode": {
+                              "element": "string",
+                              "content": "200"
+                            },
                             "headers": {
                               "element": "httpHeaders",
                               "content": [
@@ -118,12 +160,21 @@
                             {
                               "element": "asset",
                               "meta": {
-                                "classes": [
-                                  "messageBody"
-                                ]
+                                "classes": {
+                                  "element": "array",
+                                  "content": [
+                                    {
+                                      "element": "string",
+                                      "content": "messageBody"
+                                    }
+                                  ]
+                                }
                               },
                               "attributes": {
-                                "contentType": "text/plain"
+                                "contentType": {
+                                  "element": "string",
+                                  "content": "text/plain"
+                                }
                               },
                               "content": "Hello World!\n"
                             }
@@ -137,14 +188,20 @@
                         {
                           "element": "httpRequest",
                           "attributes": {
-                            "method": "GET"
+                            "method": {
+                              "element": "string",
+                              "content": "GET"
+                            }
                           },
                           "content": []
                         },
                         {
                           "element": "httpResponse",
                           "attributes": {
-                            "statusCode": "200",
+                            "statusCode": {
+                              "element": "string",
+                              "content": "200"
+                            },
                             "headers": {
                               "element": "httpHeaders",
                               "content": [
@@ -181,12 +238,21 @@
                             {
                               "element": "asset",
                               "meta": {
-                                "classes": [
-                                  "messageBody"
-                                ]
+                                "classes": {
+                                  "element": "array",
+                                  "content": [
+                                    {
+                                      "element": "string",
+                                      "content": "messageBody"
+                                    }
+                                  ]
+                                }
                               },
                               "attributes": {
-                                "contentType": "application/json"
+                                "contentType": {
+                                  "element": "string",
+                                  "content": "application/json"
+                                }
                               },
                               "content": "{ \"message\": \"Hello World!\" }\n"
                             }
@@ -199,7 +265,10 @@
                 {
                   "element": "transition",
                   "meta": {
-                    "title": "Update a Message"
+                    "title": {
+                      "element": "string",
+                      "content": "Update a Message"
+                    }
                   },
                   "content": [
                     {
@@ -208,7 +277,10 @@
                         {
                           "element": "httpRequest",
                           "attributes": {
-                            "method": "PUT",
+                            "method": {
+                              "element": "string",
+                              "content": "PUT"
+                            },
                             "headers": {
                               "element": "httpHeaders",
                               "content": [
@@ -232,12 +304,21 @@
                             {
                               "element": "asset",
                               "meta": {
-                                "classes": [
-                                  "messageBody"
-                                ]
+                                "classes": {
+                                  "element": "array",
+                                  "content": [
+                                    {
+                                      "element": "string",
+                                      "content": "messageBody"
+                                    }
+                                  ]
+                                }
                               },
                               "attributes": {
-                                "contentType": "text/plain"
+                                "contentType": {
+                                  "element": "string",
+                                  "content": "text/plain"
+                                }
                               },
                               "content": "All your base are belong to us.\n"
                             }
@@ -246,7 +327,10 @@
                         {
                           "element": "httpResponse",
                           "attributes": {
-                            "statusCode": "204"
+                            "statusCode": {
+                              "element": "string",
+                              "content": "204"
+                            }
                           },
                           "content": []
                         }

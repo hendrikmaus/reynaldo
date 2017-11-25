@@ -4,65 +4,116 @@
     {
       "element": "category",
       "meta": {
-        "classes": [
-          "api"
-        ],
-        "title": "Parameters API"
+        "classes": {
+          "element": "array",
+          "content": [
+            {
+              "element": "string",
+              "content": "api"
+            }
+          ]
+        },
+        "title": {
+          "element": "string",
+          "content": "Parameters API"
+        }
       },
       "attributes": {
-        "meta": [
-          {
-            "element": "member",
-            "meta": {
-              "classes": [
-                "user"
-              ]
-            },
-            "content": {
-              "key": {
-                "element": "string",
-                "content": "FORMAT"
+        "metadata": {
+          "element": "array",
+          "content": [
+            {
+              "element": "member",
+              "meta": {
+                "classes": {
+                  "element": "array",
+                  "content": [
+                    {
+                      "element": "string",
+                      "content": "user"
+                    }
+                  ]
+                }
               },
-              "value": {
-                "element": "string",
-                "content": "1A"
+              "content": {
+                "key": {
+                  "element": "string",
+                  "content": "FORMAT"
+                },
+                "value": {
+                  "element": "string",
+                  "content": "1A"
+                }
               }
             }
-          }
-        ]
+          ]
+        }
       },
       "content": [
         {
           "element": "copy",
-          "content": "In this installment of the API Blueprint course we will discuss how to describe URI parameters.\n\nBut first let's add more messages to our system. For that we would need\nintroduce an message identifier – id. This id will be our parameter when\ncommunicating with our API about messages.\n\n## API Blueprint\n\n+ [Previous: Requests](06.%20Requests.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/07.%20Parameters.md)\n\n+ [Next: Attributes](08.%20Attributes.md)\n\n"
+          "content": "In this installment of the API Blueprint course we will discuss how to describe URI parameters.\n\nBut first let's add more messages to our system. For that we would need\nintroduce an message identifier – id. This id will be our parameter when\ncommunicating with our API about messages.\n\n## API Blueprint\n\n+ [Previous: Requests](06.%20Requests.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/07.%20Parameters.md)\n\n+ [Next: Attributes](08.%20Attributes.md)"
         },
         {
           "element": "category",
           "meta": {
-            "classes": [
-              "resourceGroup"
-            ],
-            "title": "Messages"
+            "classes": {
+              "element": "array",
+              "content": [
+                {
+                  "element": "string",
+                  "content": "resourceGroup"
+                }
+              ]
+            },
+            "title": {
+              "element": "string",
+              "content": "Messages"
+            }
           },
           "content": [
             {
               "element": "copy",
-              "content": "Group of all messages-related resources.\n\n"
+              "content": "Group of all messages-related resources."
             },
             {
               "element": "resource",
               "meta": {
-                "title": "My Message"
+                "title": {
+                  "element": "string",
+                  "content": "My Message"
+                }
               },
               "attributes": {
-                "href": "/message/{id}",
+                "href": {
+                  "element": "string",
+                  "content": "/message/{id}"
+                },
                 "hrefVariables": {
                   "element": "hrefVariables",
                   "content": [
                     {
                       "element": "member",
                       "meta": {
-                        "description": "An unique identifier of the message."
+                        "description": {
+                          "element": "string",
+                          "content": "An unique identifier of the message."
+                        },
+                        "title": {
+                          "element": "string",
+                          "content": "number"
+                        }
+                      },
+                      "attributes": {
+                        "typeAttributes": {
+                          "element": "array",
+                          "content": [
+                            {
+                              "element": "string",
+                              "content": "required"
+                            }
+                          ]
+                        }
                       },
                       "content": {
                         "key": {
@@ -70,8 +121,8 @@
                           "content": "id"
                         },
                         "value": {
-                          "element": "number",
-                          "content": 1
+                          "element": "string",
+                          "content": "1"
                         }
                       }
                     }
@@ -81,12 +132,15 @@
               "content": [
                 {
                   "element": "copy",
-                  "content": "Here we have added the message `id` parameter as an \n[URI Template variable](http://tools.ietf.org/html/rfc6570) in the Message\nresource's URI. Note the parameter name `id` is enclosed in curly brackets. We\nwill discuss this parameter in the `Parameters` section below, where we will\nalso set its example value to `1` and declare it of an arbitrary 'number' type.\n\n"
+                  "content": "Here we have added the message `id` parameter as an \n[URI Template variable](http://tools.ietf.org/html/rfc6570) in the Message\nresource's URI. Note the parameter name `id` is enclosed in curly brackets. We\nwill discuss this parameter in the `Parameters` section below, where we will\nalso set its example value to `1` and declare it of an arbitrary 'number' type."
                 },
                 {
                   "element": "transition",
                   "meta": {
-                    "title": "Retrieve a Message"
+                    "title": {
+                      "element": "string",
+                      "content": "Retrieve a Message"
+                    }
                   },
                   "content": [
                     {
@@ -95,10 +149,16 @@
                         {
                           "element": "httpRequest",
                           "meta": {
-                            "title": "Plain Text Message"
+                            "title": {
+                              "element": "string",
+                              "content": "Plain Text Message"
+                            }
                           },
                           "attributes": {
-                            "method": "GET",
+                            "method": {
+                              "element": "string",
+                              "content": "GET"
+                            },
                             "headers": {
                               "element": "httpHeaders",
                               "content": [
@@ -123,7 +183,10 @@
                         {
                           "element": "httpResponse",
                           "attributes": {
-                            "statusCode": "200",
+                            "statusCode": {
+                              "element": "string",
+                              "content": "200"
+                            },
                             "headers": {
                               "element": "httpHeaders",
                               "content": [
@@ -160,12 +223,21 @@
                             {
                               "element": "asset",
                               "meta": {
-                                "classes": [
-                                  "messageBody"
-                                ]
+                                "classes": {
+                                  "element": "array",
+                                  "content": [
+                                    {
+                                      "element": "string",
+                                      "content": "messageBody"
+                                    }
+                                  ]
+                                }
                               },
                               "attributes": {
-                                "contentType": "text/plain"
+                                "contentType": {
+                                  "element": "string",
+                                  "content": "text/plain"
+                                }
                               },
                               "content": "Hello World!\n"
                             }
@@ -179,10 +251,16 @@
                         {
                           "element": "httpRequest",
                           "meta": {
-                            "title": "JSON Message"
+                            "title": {
+                              "element": "string",
+                              "content": "JSON Message"
+                            }
                           },
                           "attributes": {
-                            "method": "GET",
+                            "method": {
+                              "element": "string",
+                              "content": "GET"
+                            },
                             "headers": {
                               "element": "httpHeaders",
                               "content": [
@@ -207,7 +285,10 @@
                         {
                           "element": "httpResponse",
                           "attributes": {
-                            "statusCode": "200",
+                            "statusCode": {
+                              "element": "string",
+                              "content": "200"
+                            },
                             "headers": {
                               "element": "httpHeaders",
                               "content": [
@@ -244,12 +325,21 @@
                             {
                               "element": "asset",
                               "meta": {
-                                "classes": [
-                                  "messageBody"
-                                ]
+                                "classes": {
+                                  "element": "array",
+                                  "content": [
+                                    {
+                                      "element": "string",
+                                      "content": "messageBody"
+                                    }
+                                  ]
+                                }
                               },
                               "attributes": {
-                                "contentType": "application/json"
+                                "contentType": {
+                                  "element": "string",
+                                  "content": "application/json"
+                                }
                               },
                               "content": "{\n  \"id\": 1,\n  \"message\": \"Hello World!\"\n}\n"
                             }
@@ -262,7 +352,10 @@
                 {
                   "element": "transition",
                   "meta": {
-                    "title": "Update a Message"
+                    "title": {
+                      "element": "string",
+                      "content": "Update a Message"
+                    }
                   },
                   "content": [
                     {
@@ -271,10 +364,16 @@
                         {
                           "element": "httpRequest",
                           "meta": {
-                            "title": "Update Plain Text Message"
+                            "title": {
+                              "element": "string",
+                              "content": "Update Plain Text Message"
+                            }
                           },
                           "attributes": {
-                            "method": "PUT",
+                            "method": {
+                              "element": "string",
+                              "content": "PUT"
+                            },
                             "headers": {
                               "element": "httpHeaders",
                               "content": [
@@ -298,12 +397,21 @@
                             {
                               "element": "asset",
                               "meta": {
-                                "classes": [
-                                  "messageBody"
-                                ]
+                                "classes": {
+                                  "element": "array",
+                                  "content": [
+                                    {
+                                      "element": "string",
+                                      "content": "messageBody"
+                                    }
+                                  ]
+                                }
                               },
                               "attributes": {
-                                "contentType": "text/plain"
+                                "contentType": {
+                                  "element": "string",
+                                  "content": "text/plain"
+                                }
                               },
                               "content": "All your base are belong to us.\n"
                             }
@@ -312,7 +420,10 @@
                         {
                           "element": "httpResponse",
                           "attributes": {
-                            "statusCode": "204"
+                            "statusCode": {
+                              "element": "string",
+                              "content": "204"
+                            }
                           },
                           "content": []
                         }
@@ -324,10 +435,16 @@
                         {
                           "element": "httpRequest",
                           "meta": {
-                            "title": "Update JSON Message"
+                            "title": {
+                              "element": "string",
+                              "content": "Update JSON Message"
+                            }
                           },
                           "attributes": {
-                            "method": "PUT",
+                            "method": {
+                              "element": "string",
+                              "content": "PUT"
+                            },
                             "headers": {
                               "element": "httpHeaders",
                               "content": [
@@ -351,12 +468,21 @@
                             {
                               "element": "asset",
                               "meta": {
-                                "classes": [
-                                  "messageBody"
-                                ]
+                                "classes": {
+                                  "element": "array",
+                                  "content": [
+                                    {
+                                      "element": "string",
+                                      "content": "messageBody"
+                                    }
+                                  ]
+                                }
                               },
                               "attributes": {
-                                "contentType": "application/json"
+                                "contentType": {
+                                  "element": "string",
+                                  "content": "application/json"
+                                }
                               },
                               "content": "{ \"message\": \"All your base are belong to us.\" }\n"
                             }
@@ -365,7 +491,10 @@
                         {
                           "element": "httpResponse",
                           "attributes": {
-                            "statusCode": "204"
+                            "statusCode": {
+                              "element": "string",
+                              "content": "204"
+                            }
                           },
                           "content": []
                         }
@@ -378,20 +507,29 @@
             {
               "element": "resource",
               "meta": {
-                "title": "All My Messages"
+                "title": {
+                  "element": "string",
+                  "content": "All My Messages"
+                }
               },
               "attributes": {
-                "href": "/messages{?limit}"
+                "href": {
+                  "element": "string",
+                  "content": "/messages{?limit}"
+                }
               },
               "content": [
                 {
                   "element": "copy",
-                  "content": "A resource representing all of my messages in the system.\n\nWe have added the query URI template parameter - `limit`. This parameter is\nused for limiting the number of results returned by some actions on this\nresource. It does not affect every possible action of this resource, therefore\nwe will discuss it only at the particular action level below.\n\n"
+                  "content": "A resource representing all of my messages in the system.\n\nWe have added the query URI template parameter - `limit`. This parameter is\nused for limiting the number of results returned by some actions on this\nresource. It does not affect every possible action of this resource, therefore\nwe will discuss it only at the particular action level below."
                 },
                 {
                   "element": "transition",
                   "meta": {
-                    "title": "Retrieve all Messages"
+                    "title": {
+                      "element": "string",
+                      "content": "Retrieve all Messages"
+                    }
                   },
                   "attributes": {
                     "hrefVariables": {
@@ -400,12 +538,25 @@
                         {
                           "element": "member",
                           "meta": {
-                            "description": "The maximum number of results to return."
+                            "description": {
+                              "element": "string",
+                              "content": "The maximum number of results to return."
+                            },
+                            "title": {
+                              "element": "string",
+                              "content": "number"
+                            }
                           },
                           "attributes": {
-                            "typeAttributes": [
-                              "optional"
-                            ]
+                            "typeAttributes": {
+                              "element": "array",
+                              "content": [
+                                {
+                                  "element": "string",
+                                  "content": "optional"
+                                }
+                              ]
+                            }
                           },
                           "content": {
                             "key": {
@@ -413,9 +564,12 @@
                               "content": "limit"
                             },
                             "value": {
-                              "element": "number",
+                              "element": "string",
                               "attributes": {
-                                "default": "20"
+                                "default": {
+                                  "element": "string",
+                                  "content": "20"
+                                }
                               }
                             }
                           }
@@ -430,14 +584,20 @@
                         {
                           "element": "httpRequest",
                           "attributes": {
-                            "method": "GET"
+                            "method": {
+                              "element": "string",
+                              "content": "GET"
+                            }
                           },
                           "content": []
                         },
                         {
                           "element": "httpResponse",
                           "attributes": {
-                            "statusCode": "200",
+                            "statusCode": {
+                              "element": "string",
+                              "content": "200"
+                            },
                             "headers": {
                               "element": "httpHeaders",
                               "content": [
@@ -461,12 +621,21 @@
                             {
                               "element": "asset",
                               "meta": {
-                                "classes": [
-                                  "messageBody"
-                                ]
+                                "classes": {
+                                  "element": "array",
+                                  "content": [
+                                    {
+                                      "element": "string",
+                                      "content": "messageBody"
+                                    }
+                                  ]
+                                }
                               },
                               "attributes": {
-                                "contentType": "application/json"
+                                "contentType": {
+                                  "element": "string",
+                                  "content": "application/json"
+                                }
                               },
                               "content": "[\n  {\n    \"id\": 1,\n    \"message\": \"Hello World!\"\n  },\n  {\n    \"id\": 2,\n    \"message\": \"Time is an illusion. Lunchtime doubly so.\"\n  },\n  {\n    \"id\": 3,\n    \"message\": \"So long, and thanks for all the fish.\"\n  }\n]\n"
                             }

@@ -198,8 +198,8 @@ class BaseElement // todo implement a builder interface to hide methods from the
      */
     public function hasClass($className)
     {
-        foreach ($this->meta['classes'] as $classInMeta) {
-            if ($classInMeta === $className) {
+        foreach ($this->meta['classes']['content'] as $classInMeta) {
+            if ($classInMeta['content'] === $className) {
                 return true;
             }
         }
@@ -215,7 +215,7 @@ class BaseElement // todo implement a builder interface to hide methods from the
      */
     public function getTitle()
     {
-        return $this->getMetaData()['title'];
+        return $this->getMetaData()['title']['content'];
     }
 
     /**

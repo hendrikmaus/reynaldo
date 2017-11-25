@@ -6,7 +6,7 @@ class HttpRequestElement extends BaseElement implements ApiElement, ApiHttpReque
 {
     public function getMethod()
     {
-        return $this->attributes['method'];
+        return $this->attributes['method']['content'];
     }
 
     public function hasMessageBody()

@@ -6,7 +6,7 @@ class HttpResponseElement extends BaseElement implements ApiElement, ApiHttpResp
 {
     public function getStatusCode()
     {
-        return (int)$this->attributes['statusCode'];
+        return (int)$this->attributes['statusCode']['content'];
     }
 
     public function getHeaders()

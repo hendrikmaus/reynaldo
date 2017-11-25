@@ -13,19 +13,21 @@ class HrefVariablesElement extends BaseElement implements ApiElement, ApiHrefVar
         /** @var MemberElement $member */
         foreach ($this->getElementsByType(MemberElement::class) as $member) {
             $memberContent = $member->getContent();
+            $memberMetadata = $member->getMetaData();
 
             $hrefVariable = new HrefVariable();
-            $hrefVariable->description = $member->getMetaData()['description'];
+            $hrefVariable->description = $memberMetadata['description']['content'];
             $hrefVariable->name = $memberContent['key']['content'];
 
             $typeAttributes = $member->getAttribute('typeAttributes');
-            if ($typeAttributes) {
-                $hrefVariable->required = $typeAttributes[0];
+            if ($typeAttributes['content']) {
+                $hrefVariable->required = $typeAttributes['content'][0]['content'];
             } else {
                 $hrefVariable->required = 'optional';
             }
 
-            $dataType = $memberContent['value']['element'];
+
+            $dataType = $memberMetadata['title']['content'];
             if ($dataType === 'enum' && isset($memberContent['value']['content'])) {
                 $hrefVariable->dataType = $memberContent['value']['content'][0]['element'];
                 $hrefVariable->values = array_map(function($v) {
@@ -48,7 +50,7 @@ class HrefVariablesElement extends BaseElement implements ApiElement, ApiHrefVar
                 }
 
                 if (isset($memberContent['value']['attributes']['default'])) {
-                    $hrefVariable->default = $memberContent['value']['attributes']['default'];
+                    $hrefVariable->default = $memberContent['value']['attributes']['default']['content'];
                 }
             }
 
