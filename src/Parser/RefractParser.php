@@ -59,7 +59,7 @@ class RefractParser implements Parser
      */
     private function iterate(array $content, $parent = null)
     {
-        $iterator = $content['content'] ?? $content;
+        $iterator = isset($content['content']) ? $content['content'] : $content;
         foreach ($iterator as $element) {
             if (!is_string($element)) {
                 $this->process($element, $parent);
