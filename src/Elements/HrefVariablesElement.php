@@ -52,6 +52,12 @@ class HrefVariablesElement extends BaseElement implements ApiElement, ApiHrefVar
                 if (isset($memberContent['value']['attributes']['default'])) {
                     $hrefVariable->default = $memberContent['value']['attributes']['default']['content'];
                 }
+
+                if (isset($memberContent['value']['attributes']['enumerations'])) {
+                    $hrefVariable->values = array_map(function ($v) {
+                        return is_object($v) ? $v->content : $v['content'];
+                    }, $memberContent['value']['attributes']['enumerations']['content']);
+                }
             }
 
             $variables[] = $hrefVariable;
