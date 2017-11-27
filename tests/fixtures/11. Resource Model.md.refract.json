@@ -4,69 +4,105 @@
     {
       "element": "category",
       "meta": {
-        "classes": [
-          "api"
-        ],
-        "title": "Resource Model API"
+        "classes": {
+          "element": "array",
+          "content": [
+            {
+              "element": "string",
+              "content": "api"
+            }
+          ]
+        },
+        "title": {
+          "element": "string",
+          "content": "Resource Model API"
+        }
       },
       "attributes": {
-        "meta": [
-          {
-            "element": "member",
-            "meta": {
-              "classes": [
-                "user"
-              ]
-            },
-            "content": {
-              "key": {
-                "element": "string",
-                "content": "FORMAT"
+        "metadata": {
+          "element": "array",
+          "content": [
+            {
+              "element": "member",
+              "meta": {
+                "classes": {
+                  "element": "array",
+                  "content": [
+                    {
+                      "element": "string",
+                      "content": "user"
+                    }
+                  ]
+                }
               },
-              "value": {
-                "element": "string",
-                "content": "1A"
+              "content": {
+                "key": {
+                  "element": "string",
+                  "content": "FORMAT"
+                },
+                "value": {
+                  "element": "string",
+                  "content": "1A"
+                }
               }
             }
-          }
-        ]
+          ]
+        }
       },
       "content": [
         {
           "element": "copy",
-          "content": "Resource model is a [resource manifestation](http://www.w3.org/TR/di-gloss/#def-resource-manifestation).\nOne particular representation of your resource.\n\nFurthermore, in API Blueprint, any `resource model` you have defined can be\nreferenced in a request or response section, saving you lots of time\nmaintaining your API blueprint. You simply define a resource model as any\npayload (e.g. [request](https://github.com/apiaryio/api-blueprint/blob/master/examples/06.%20Requests.md)\nor [response](https://github.com/apiaryio/api-blueprint/blob/master/examples/5.%20Responses.md))\nand then reference it later where you would normally write a `request` or\n`response`.\n\n## API Blueprint\n\n+ [Previous: Data Structures](10.%20Data%20Structures.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/11.%20Resource%20Model.md)\n\n+ [Next: Advanced Action](12.%20Advanced%20Action.md)\n\n"
+          "content": "Resource model is a [resource manifestation](http://www.w3.org/TR/di-gloss/#def-resource-manifestation).\nOne particular representation of your resource.\n\nFurthermore, in API Blueprint, any `resource model` you have defined can be\nreferenced in a request or response section, saving you lots of time\nmaintaining your API blueprint. You simply define a resource model as any\npayload (e.g. [request](https://github.com/apiaryio/api-blueprint/blob/master/examples/06.%20Requests.md)\nor [response](https://github.com/apiaryio/api-blueprint/blob/master/examples/5.%20Responses.md))\nand then reference it later where you would normally write a `request` or\n`response`.\n\n## API Blueprint\n\n+ [Previous: Data Structures](10.%20Data%20Structures.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/11.%20Resource%20Model.md)\n\n+ [Next: Advanced Action](12.%20Advanced%20Action.md)"
         },
         {
           "element": "category",
           "meta": {
-            "classes": [
-              "resourceGroup"
-            ],
-            "title": "Messages"
+            "classes": {
+              "element": "array",
+              "content": [
+                {
+                  "element": "string",
+                  "content": "resourceGroup"
+                }
+              ]
+            },
+            "title": {
+              "element": "string",
+              "content": "Messages"
+            }
           },
           "content": [
             {
               "element": "copy",
-              "content": "Group of all messages-related resources.\n\n"
+              "content": "Group of all messages-related resources."
             },
             {
               "element": "resource",
               "meta": {
-                "title": "My Message"
+                "title": {
+                  "element": "string",
+                  "content": "My Message"
+                }
               },
               "attributes": {
-                "href": "/message"
+                "href": {
+                  "element": "string",
+                  "content": "/message"
+                }
               },
               "content": [
                 {
                   "element": "transition",
                   "meta": {
-                    "title": "Retrieve a Message"
+                    "title": {
+                      "element": "string",
+                      "content": "Retrieve a Message"
+                    }
                   },
                   "content": [
                     {
                       "element": "copy",
-                      "content": "At this point we will utilize our `Message` resource model and reference it in\n`Response 200`.\n\n"
+                      "content": "At this point we will utilize our `Message` resource model and reference it in\n`Response 200`."
                     },
                     {
                       "element": "httpTransaction",
@@ -74,14 +110,20 @@
                         {
                           "element": "httpRequest",
                           "attributes": {
-                            "method": "GET"
+                            "method": {
+                              "element": "string",
+                              "content": "GET"
+                            }
                           },
                           "content": []
                         },
                         {
                           "element": "httpResponse",
                           "attributes": {
-                            "statusCode": "200",
+                            "statusCode": {
+                              "element": "string",
+                              "content": "200"
+                            },
                             "headers": {
                               "element": "httpHeaders",
                               "content": [
@@ -117,17 +159,26 @@
                           "content": [
                             {
                               "element": "copy",
-                              "content": "This is the `application/vnd.siren+json` message resource representation.\n"
+                              "content": "This is the `application/vnd.siren+json` message resource representation."
                             },
                             {
                               "element": "asset",
                               "meta": {
-                                "classes": [
-                                  "messageBody"
-                                ]
+                                "classes": {
+                                  "element": "array",
+                                  "content": [
+                                    {
+                                      "element": "string",
+                                      "content": "messageBody"
+                                    }
+                                  ]
+                                }
                               },
                               "attributes": {
-                                "contentType": "application/vnd.siren+json"
+                                "contentType": {
+                                  "element": "string",
+                                  "content": "application/vnd.siren+json"
+                                }
                               },
                               "content": "{\n  \"class\": [ \"message\" ],\n  \"properties\": {\n        \"message\": \"Hello World!\"\n  },\n  \"links\": [\n        { \"rel\": \"self\" , \"href\": \"/message\" }\n  ]\n}\n"
                             }
@@ -140,7 +191,10 @@
                 {
                   "element": "transition",
                   "meta": {
-                    "title": "Update a Message"
+                    "title": {
+                      "element": "string",
+                      "content": "Update a Message"
+                    }
                   },
                   "content": [
                     {
@@ -149,10 +203,16 @@
                         {
                           "element": "httpRequest",
                           "meta": {
-                            "title": "Update Plain Text Message"
+                            "title": {
+                              "element": "string",
+                              "content": "Update Plain Text Message"
+                            }
                           },
                           "attributes": {
-                            "method": "PUT",
+                            "method": {
+                              "element": "string",
+                              "content": "PUT"
+                            },
                             "headers": {
                               "element": "httpHeaders",
                               "content": [
@@ -176,12 +236,21 @@
                             {
                               "element": "asset",
                               "meta": {
-                                "classes": [
-                                  "messageBody"
-                                ]
+                                "classes": {
+                                  "element": "array",
+                                  "content": [
+                                    {
+                                      "element": "string",
+                                      "content": "messageBody"
+                                    }
+                                  ]
+                                }
                               },
                               "attributes": {
-                                "contentType": "text/plain"
+                                "contentType": {
+                                  "element": "string",
+                                  "content": "text/plain"
+                                }
                               },
                               "content": "All your base are belong to us.\n"
                             }
@@ -190,7 +259,10 @@
                         {
                           "element": "httpResponse",
                           "attributes": {
-                            "statusCode": "204"
+                            "statusCode": {
+                              "element": "string",
+                              "content": "204"
+                            }
                           },
                           "content": []
                         }
@@ -202,10 +274,16 @@
                         {
                           "element": "httpRequest",
                           "meta": {
-                            "title": "Update JSON Message"
+                            "title": {
+                              "element": "string",
+                              "content": "Update JSON Message"
+                            }
                           },
                           "attributes": {
-                            "method": "PUT",
+                            "method": {
+                              "element": "string",
+                              "content": "PUT"
+                            },
                             "headers": {
                               "element": "httpHeaders",
                               "content": [
@@ -229,12 +307,21 @@
                             {
                               "element": "asset",
                               "meta": {
-                                "classes": [
-                                  "messageBody"
-                                ]
+                                "classes": {
+                                  "element": "array",
+                                  "content": [
+                                    {
+                                      "element": "string",
+                                      "content": "messageBody"
+                                    }
+                                  ]
+                                }
                               },
                               "attributes": {
-                                "contentType": "application/json"
+                                "contentType": {
+                                  "element": "string",
+                                  "content": "application/json"
+                                }
                               },
                               "content": "{ \"message\": \"All your base are belong to us.\" }\n"
                             }
@@ -243,7 +330,10 @@
                         {
                           "element": "httpResponse",
                           "attributes": {
-                            "statusCode": "204"
+                            "statusCode": {
+                              "element": "string",
+                              "content": "204"
+                            }
                           },
                           "content": []
                         }

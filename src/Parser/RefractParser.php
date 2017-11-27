@@ -59,8 +59,11 @@ class RefractParser implements Parser
      */
     private function iterate(array $content, $parent = null)
     {
-        foreach ($content as $element) {
-            $this->process($element, $parent);
+        $iterator = isset($content['content']) ? $content['content'] : $content;
+        foreach ($iterator as $element) {
+            if (!is_string($element)) {
+                $this->process($element, $parent);
+            }
         }
     }
 
@@ -177,7 +180,11 @@ class RefractParser implements Parser
      */
     private function hasClass($className, array $element)
     {
-        return in_array($className, $element['meta']['classes']);
+        if (!isset($element['meta']['classes']['content'])) {
+            return in_array($className, $element['meta']['classes']);
+        }
+
+        return $className === $element['meta']['classes']['content'][0]['content'];
     }
 
     /**

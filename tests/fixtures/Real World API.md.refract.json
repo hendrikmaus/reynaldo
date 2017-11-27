@@ -4,83 +4,140 @@
     {
       "element": "category",
       "meta": {
-        "classes": [
-          "api"
-        ],
-        "title": "Real World API"
+        "classes": {
+          "element": "array",
+          "content": [
+            {
+              "element": "string",
+              "content": "api"
+            }
+          ]
+        },
+        "title": {
+          "element": "string",
+          "content": "Real World API"
+        }
       },
       "attributes": {
-        "meta": [
-          {
-            "element": "member",
-            "meta": {
-              "classes": [
-                "user"
-              ]
-            },
-            "content": {
-              "key": {
-                "element": "string",
-                "content": "FORMAT"
+        "metadata": {
+          "element": "array",
+          "content": [
+            {
+              "element": "member",
+              "meta": {
+                "classes": {
+                  "element": "array",
+                  "content": [
+                    {
+                      "element": "string",
+                      "content": "user"
+                    }
+                  ]
+                }
               },
-              "value": {
-                "element": "string",
-                "content": "1A"
+              "content": {
+                "key": {
+                  "element": "string",
+                  "content": "FORMAT"
+                },
+                "value": {
+                  "element": "string",
+                  "content": "1A"
+                }
+              }
+            },
+            {
+              "element": "member",
+              "meta": {
+                "classes": {
+                  "element": "array",
+                  "content": [
+                    {
+                      "element": "string",
+                      "content": "user"
+                    }
+                  ]
+                }
+              },
+              "content": {
+                "key": {
+                  "element": "string",
+                  "content": "HOST"
+                },
+                "value": {
+                  "element": "string",
+                  "content": "https://alpha-api.app.net"
+                }
               }
             }
-          },
-          {
-            "element": "member",
-            "meta": {
-              "classes": [
-                "user"
-              ]
-            },
-            "content": {
-              "key": {
-                "element": "string",
-                "content": "HOST"
-              },
-              "value": {
-                "element": "string",
-                "content": "https://alpha-api.app.net"
-              }
-            }
-          }
-        ]
+          ]
+        }
       },
       "content": [
         {
           "element": "copy",
-          "content": "This API Blueprint demonstrates a real world example documenting a portion of\n[App.net API](http://developers.app.net).\n\nNOTE: This document is a **work in progress**.\n\n"
+          "content": "This API Blueprint demonstrates a real world example documenting a portion of\n[App.net API](http://developers.app.net).\n\nNOTE: This document is a **work in progress**."
         },
         {
           "element": "category",
           "meta": {
-            "classes": [
-              "resourceGroup"
-            ],
-            "title": "Posts"
+            "classes": {
+              "element": "array",
+              "content": [
+                {
+                  "element": "string",
+                  "content": "resourceGroup"
+                }
+              ]
+            },
+            "title": {
+              "element": "string",
+              "content": "Posts"
+            }
           },
           "content": [
             {
               "element": "copy",
-              "content": "This section groups App.net post resources.\n\n"
+              "content": "This section groups App.net post resources."
             },
             {
               "element": "resource",
               "meta": {
-                "title": "Post"
+                "title": {
+                  "element": "string",
+                  "content": "Post"
+                }
               },
               "attributes": {
-                "href": "/stream/0/posts/{post_id}",
+                "href": {
+                  "element": "string",
+                  "content": "/stream/0/posts/{post_id}"
+                },
                 "hrefVariables": {
                   "element": "hrefVariables",
                   "content": [
                     {
                       "element": "member",
                       "meta": {
-                        "description": "The id of the Post."
+                        "description": {
+                          "element": "string",
+                          "content": "The id of the Post."
+                        },
+                        "title": {
+                          "element": "string",
+                          "content": "string"
+                        }
+                      },
+                      "attributes": {
+                        "typeAttributes": {
+                          "element": "array",
+                          "content": [
+                            {
+                              "element": "string",
+                              "content": "required"
+                            }
+                          ]
+                        }
                       },
                       "content": {
                         "key": {
@@ -99,17 +156,20 @@
               "content": [
                 {
                   "element": "copy",
-                  "content": "A Post is the other central object utilized by the App.net Stream API. It has\nrich text and annotations which comprise all of the content a users sees in\ntheir feed. Posts are closely tied to the follow graph...\n\n"
+                  "content": "A Post is the other central object utilized by the App.net Stream API. It has\nrich text and annotations which comprise all of the content a users sees in\ntheir feed. Posts are closely tied to the follow graph..."
                 },
                 {
                   "element": "transition",
                   "meta": {
-                    "title": "Retrieve a Post"
+                    "title": {
+                      "element": "string",
+                      "content": "Retrieve a Post"
+                    }
                   },
                   "content": [
                     {
                       "element": "copy",
-                      "content": "Returns a specific Post.\n\n"
+                      "content": "Returns a specific Post."
                     },
                     {
                       "element": "httpTransaction",
@@ -117,14 +177,20 @@
                         {
                           "element": "httpRequest",
                           "attributes": {
-                            "method": "GET"
+                            "method": {
+                              "element": "string",
+                              "content": "GET"
+                            }
                           },
                           "content": []
                         },
                         {
                           "element": "httpResponse",
                           "attributes": {
-                            "statusCode": "200",
+                            "statusCode": {
+                              "element": "string",
+                              "content": "200"
+                            },
                             "headers": {
                               "element": "httpHeaders",
                               "content": [
@@ -148,12 +214,21 @@
                             {
                               "element": "asset",
                               "meta": {
-                                "classes": [
-                                  "messageBody"
-                                ]
+                                "classes": {
+                                  "element": "array",
+                                  "content": [
+                                    {
+                                      "element": "string",
+                                      "content": "messageBody"
+                                    }
+                                  ]
+                                }
                               },
                               "attributes": {
-                                "contentType": "application/json"
+                                "contentType": {
+                                  "element": "string",
+                                  "content": "application/json"
+                                }
                               },
                               "content": "{\n    \"data\": {\n        \"id\": \"1\", // note this is a string\n        \"user\": {\n            ...\n        },\n        \"created_at\": \"2012-07-16T17:25:47Z\",\n        \"text\": \"@berg FIRST post on this new site #newsocialnetwork\",\n        \"html\": \"<span itemprop=\\\"mention\\\" data-mention-name=\\\"berg\\\" data-mention-id=\\\"2\\\">@berg</span> FIRST post on <a href=\\\"https://join.app.net\\\" rel=\\\"nofollow\\\">this new site</a> <span itemprop=\\\"hashtag\\\" data-hashtag-name=\\\"newsocialnetwork\\\">#newsocialnetwork</span>.\",\n        \"source\": {\n            \"client_id\": \"udxGzAVBdXwGtkHmvswR5MbMEeVnq6n4\",\n            \"name\": \"Clientastic for iOS\",\n            \"link\": \"http://app.net\"\n        },\n        \"machine_only\": false,\n        \"reply_to\": null,\n        \"thread_id\": \"1\",\n        \"num_replies\": 3,\n        \"num_reposts\": 0,\n        \"num_stars\": 0,\n        \"entities\": {\n            \"mentions\": [{\n                \"name\": \"berg\",\n                \"id\": \"2\",\n                \"pos\": 0,\n                \"len\": 5\n            }],\n            \"hashtags\": [{\n                \"name\": \"newsocialnetwork\",\n                \"pos\": 34,\n                \"len\": 17\n            }],\n            \"links\": [{\n                \"text\": \"this new site\",\n                \"url\": \"https://join.app.net\"\n                \"pos\": 20,\n                \"len\": 13\n            }]\n        },\n        \"you_reposted\": false,\n        \"you_starred\": false\n    },\n    \"meta\": {\n        \"code\": 200,\n    }\n}\n"
                             }
@@ -166,12 +241,15 @@
                 {
                   "element": "transition",
                   "meta": {
-                    "title": "Delete a Post"
+                    "title": {
+                      "element": "string",
+                      "content": "Delete a Post"
+                    }
                   },
                   "content": [
                     {
                       "element": "copy",
-                      "content": "Delete a Post. The current user must be the same user who created the Post. It\nreturns the deleted Post on success.\n\n"
+                      "content": "Delete a Post. The current user must be the same user who created the Post. It\nreturns the deleted Post on success."
                     },
                     {
                       "element": "httpTransaction",
@@ -179,14 +257,20 @@
                         {
                           "element": "httpRequest",
                           "attributes": {
-                            "method": "DELETE"
+                            "method": {
+                              "element": "string",
+                              "content": "DELETE"
+                            }
                           },
                           "content": []
                         },
                         {
                           "element": "httpResponse",
                           "attributes": {
-                            "statusCode": "204"
+                            "statusCode": {
+                              "element": "string",
+                              "content": "204"
+                            }
                           },
                           "content": []
                         }
@@ -199,25 +283,34 @@
             {
               "element": "resource",
               "meta": {
-                "title": "Posts Collection"
+                "title": {
+                  "element": "string",
+                  "content": "Posts Collection"
+                }
               },
               "attributes": {
-                "href": "/stream/0/posts"
+                "href": {
+                  "element": "string",
+                  "content": "/stream/0/posts"
+                }
               },
               "content": [
                 {
                   "element": "copy",
-                  "content": "A Collection of posts.\n\n"
+                  "content": "A Collection of posts."
                 },
                 {
                   "element": "transition",
                   "meta": {
-                    "title": "Create a Post"
+                    "title": {
+                      "element": "string",
+                      "content": "Create a Post"
+                    }
                   },
                   "content": [
                     {
                       "element": "copy",
-                      "content": "Create a new Post object. Mentions and hashtags will be parsed out of the post\ntext, as will bare URLs...\n\n"
+                      "content": "Create a new Post object. Mentions and hashtags will be parsed out of the post\ntext, as will bare URLs..."
                     },
                     {
                       "element": "httpTransaction",
@@ -225,7 +318,10 @@
                         {
                           "element": "httpRequest",
                           "attributes": {
-                            "method": "POST",
+                            "method": {
+                              "element": "string",
+                              "content": "POST"
+                            },
                             "headers": {
                               "element": "httpHeaders",
                               "content": [
@@ -249,12 +345,21 @@
                             {
                               "element": "asset",
                               "meta": {
-                                "classes": [
-                                  "messageBody"
-                                ]
+                                "classes": {
+                                  "element": "array",
+                                  "content": [
+                                    {
+                                      "element": "string",
+                                      "content": "messageBody"
+                                    }
+                                  ]
+                                }
                               },
                               "attributes": {
-                                "contentType": "application/json"
+                                "contentType": {
+                                  "element": "string",
+                                  "content": "application/json"
+                                }
                               },
                               "content": "{\n    \"data\": {\n        \"id\": \"1\", // note this is a string\n        \"user\": {\n            ...\n        },\n        \"created_at\": \"2012-07-16T17:25:47Z\",\n        \"text\": \"@berg FIRST post on this new site #newsocialnetwork\",\n        \"html\": \"<span itemprop=\\\"mention\\\" data-mention-name=\\\"berg\\\" data-mention-id=\\\"2\\\">@berg</span> FIRST post on <a href=\\\"https://join.app.net\\\" rel=\\\"nofollow\\\">this new site</a> <span itemprop=\\\"hashtag\\\" data-hashtag-name=\\\"newsocialnetwork\\\">#newsocialnetwork</span>.\",\n        \"source\": {\n            \"client_id\": \"udxGzAVBdXwGtkHmvswR5MbMEeVnq6n4\",\n            \"name\": \"Clientastic for iOS\",\n            \"link\": \"http://app.net\"\n        },\n        \"machine_only\": false,\n        \"reply_to\": null,\n        \"thread_id\": \"1\",\n        \"num_replies\": 3,\n        \"num_reposts\": 0,\n        \"num_stars\": 0,\n        \"entities\": {\n            \"mentions\": [{\n                \"name\": \"berg\",\n                \"id\": \"2\",\n                \"pos\": 0,\n                \"len\": 5\n            }],\n            \"hashtags\": [{\n                \"name\": \"newsocialnetwork\",\n                \"pos\": 34,\n                \"len\": 17\n            }],\n            \"links\": [{\n                \"text\": \"this new site\",\n                \"url\": \"https://join.app.net\"\n                \"pos\": 20,\n                \"len\": 13\n            }]\n        },\n        \"you_reposted\": false,\n        \"you_starred\": false\n    },\n    \"meta\": {\n        \"code\": 200,\n    }\n}\n"
                             }
@@ -263,7 +368,10 @@
                         {
                           "element": "httpResponse",
                           "attributes": {
-                            "statusCode": "201",
+                            "statusCode": {
+                              "element": "string",
+                              "content": "201"
+                            },
                             "headers": {
                               "element": "httpHeaders",
                               "content": [
@@ -287,12 +395,21 @@
                             {
                               "element": "asset",
                               "meta": {
-                                "classes": [
-                                  "messageBody"
-                                ]
+                                "classes": {
+                                  "element": "array",
+                                  "content": [
+                                    {
+                                      "element": "string",
+                                      "content": "messageBody"
+                                    }
+                                  ]
+                                }
                               },
                               "attributes": {
-                                "contentType": "application/json"
+                                "contentType": {
+                                  "element": "string",
+                                  "content": "application/json"
+                                }
                               },
                               "content": "{\n    \"data\": {\n        \"id\": \"1\", // note this is a string\n        \"user\": {\n            ...\n        },\n        \"created_at\": \"2012-07-16T17:25:47Z\",\n        \"text\": \"@berg FIRST post on this new site #newsocialnetwork\",\n        \"html\": \"<span itemprop=\\\"mention\\\" data-mention-name=\\\"berg\\\" data-mention-id=\\\"2\\\">@berg</span> FIRST post on <a href=\\\"https://join.app.net\\\" rel=\\\"nofollow\\\">this new site</a> <span itemprop=\\\"hashtag\\\" data-hashtag-name=\\\"newsocialnetwork\\\">#newsocialnetwork</span>.\",\n        \"source\": {\n            \"client_id\": \"udxGzAVBdXwGtkHmvswR5MbMEeVnq6n4\",\n            \"name\": \"Clientastic for iOS\",\n            \"link\": \"http://app.net\"\n        },\n        \"machine_only\": false,\n        \"reply_to\": null,\n        \"thread_id\": \"1\",\n        \"num_replies\": 3,\n        \"num_reposts\": 0,\n        \"num_stars\": 0,\n        \"entities\": {\n            \"mentions\": [{\n                \"name\": \"berg\",\n                \"id\": \"2\",\n                \"pos\": 0,\n                \"len\": 5\n            }],\n            \"hashtags\": [{\n                \"name\": \"newsocialnetwork\",\n                \"pos\": 34,\n                \"len\": 17\n            }],\n            \"links\": [{\n                \"text\": \"this new site\",\n                \"url\": \"https://join.app.net\"\n                \"pos\": 20,\n                \"len\": 13\n            }]\n        },\n        \"you_reposted\": false,\n        \"you_starred\": false\n    },\n    \"meta\": {\n        \"code\": 200,\n    }\n}\n"
                             }
@@ -305,12 +422,15 @@
                 {
                   "element": "transition",
                   "meta": {
-                    "title": "Retrieve all Posts"
+                    "title": {
+                      "element": "string",
+                      "content": "Retrieve all Posts"
+                    }
                   },
                   "content": [
                     {
                       "element": "copy",
-                      "content": "Retrieves all posts.\n\n"
+                      "content": "Retrieves all posts."
                     },
                     {
                       "element": "httpTransaction",
@@ -318,14 +438,20 @@
                         {
                           "element": "httpRequest",
                           "attributes": {
-                            "method": "GET"
+                            "method": {
+                              "element": "string",
+                              "content": "GET"
+                            }
                           },
                           "content": []
                         },
                         {
                           "element": "httpResponse",
                           "attributes": {
-                            "statusCode": "200",
+                            "statusCode": {
+                              "element": "string",
+                              "content": "200"
+                            },
                             "headers": {
                               "element": "httpHeaders",
                               "content": [
@@ -349,12 +475,21 @@
                             {
                               "element": "asset",
                               "meta": {
-                                "classes": [
-                                  "messageBody"
-                                ]
+                                "classes": {
+                                  "element": "array",
+                                  "content": [
+                                    {
+                                      "element": "string",
+                                      "content": "messageBody"
+                                    }
+                                  ]
+                                }
                               },
                               "attributes": {
-                                "contentType": "application/json"
+                                "contentType": {
+                                  "element": "string",
+                                  "content": "application/json"
+                                }
                               },
                               "content": "{\n    \"data\": [\n        {\n            \"id\": \"1\", // note this is a string\n            ...\n        },\n        {\n            \"id\": \"2\",\n            ...\n        },\n        {\n            \"id\": \"3\",\n            ...\n        },\n    ],\n    \"meta\": {\n        \"code\": 200,\n    }\n}\n"
                             }
@@ -369,17 +504,41 @@
             {
               "element": "resource",
               "meta": {
-                "title": "Stars"
+                "title": {
+                  "element": "string",
+                  "content": "Stars"
+                }
               },
               "attributes": {
-                "href": "/stream/0/posts/{post_id}/star",
+                "href": {
+                  "element": "string",
+                  "content": "/stream/0/posts/{post_id}/star"
+                },
                 "hrefVariables": {
                   "element": "hrefVariables",
                   "content": [
                     {
                       "element": "member",
                       "meta": {
-                        "description": "The id of the Post."
+                        "description": {
+                          "element": "string",
+                          "content": "The id of the Post."
+                        },
+                        "title": {
+                          "element": "string",
+                          "content": "string"
+                        }
+                      },
+                      "attributes": {
+                        "typeAttributes": {
+                          "element": "array",
+                          "content": [
+                            {
+                              "element": "string",
+                              "content": "required"
+                            }
+                          ]
+                        }
                       },
                       "content": {
                         "key": {
@@ -398,17 +557,20 @@
               "content": [
                 {
                   "element": "copy",
-                  "content": "A User’s stars are visible to others, but they are not automatically added to\nyour followers’ streams.\n\n"
+                  "content": "A User’s stars are visible to others, but they are not automatically added to\nyour followers’ streams."
                 },
                 {
                   "element": "transition",
                   "meta": {
-                    "title": "Star a Post"
+                    "title": {
+                      "element": "string",
+                      "content": "Star a Post"
+                    }
                   },
                   "content": [
                     {
                       "element": "copy",
-                      "content": "Save a given Post to the current User’s stars. This is just a “save” action,\nnot a sharing action.\n\n*Note: A repost cannot be starred. Please star the parent Post.*\n\n"
+                      "content": "Save a given Post to the current User’s stars. This is just a “save” action,\nnot a sharing action.\n\n*Note: A repost cannot be starred. Please star the parent Post.*"
                     },
                     {
                       "element": "httpTransaction",
@@ -416,14 +578,20 @@
                         {
                           "element": "httpRequest",
                           "attributes": {
-                            "method": "POST"
+                            "method": {
+                              "element": "string",
+                              "content": "POST"
+                            }
                           },
                           "content": []
                         },
                         {
                           "element": "httpResponse",
                           "attributes": {
-                            "statusCode": "200",
+                            "statusCode": {
+                              "element": "string",
+                              "content": "200"
+                            },
                             "headers": {
                               "element": "httpHeaders",
                               "content": [
@@ -447,12 +615,21 @@
                             {
                               "element": "asset",
                               "meta": {
-                                "classes": [
-                                  "messageBody"
-                                ]
+                                "classes": {
+                                  "element": "array",
+                                  "content": [
+                                    {
+                                      "element": "string",
+                                      "content": "messageBody"
+                                    }
+                                  ]
+                                }
                               },
                               "attributes": {
-                                "contentType": "application/json"
+                                "contentType": {
+                                  "element": "string",
+                                  "content": "application/json"
+                                }
                               },
                               "content": "{\n    \"data\": {\n        \"id\": \"1\", // note this is a string\n        \"user\": {\n            ...\n        },\n        \"created_at\": \"2012-07-16T17:25:47Z\",\n        \"text\": \"@berg FIRST post on this new site #newsocialnetwork\",\n        \"html\": \"<span itemprop=\\\"mention\\\" data-mention-name=\\\"berg\\\" data-mention-id=\\\"2\\\">@berg</span> FIRST post on <a href=\\\"https://join.app.net\\\" rel=\\\"nofollow\\\">this new site</a> <span itemprop=\\\"hashtag\\\" data-hashtag-name=\\\"newsocialnetwork\\\">#newsocialnetwork</span>.\",\n        \"source\": {\n            \"client_id\": \"udxGzAVBdXwGtkHmvswR5MbMEeVnq6n4\",\n            \"name\": \"Clientastic for iOS\",\n            \"link\": \"http://app.net\"\n        },\n        \"machine_only\": false,\n        \"reply_to\": null,\n        \"thread_id\": \"1\",\n        \"num_replies\": 3,\n        \"num_reposts\": 0,\n        \"num_stars\": 0,\n        \"entities\": {\n            \"mentions\": [{\n                \"name\": \"berg\",\n                \"id\": \"2\",\n                \"pos\": 0,\n                \"len\": 5\n            }],\n            \"hashtags\": [{\n                \"name\": \"newsocialnetwork\",\n                \"pos\": 34,\n                \"len\": 17\n            }],\n            \"links\": [{\n                \"text\": \"this new site\",\n                \"url\": \"https://join.app.net\"\n                \"pos\": 20,\n                \"len\": 13\n            }]\n        },\n        \"you_reposted\": false,\n        \"you_starred\": false\n    },\n    \"meta\": {\n        \"code\": 200,\n    }\n}\n"
                             }
@@ -465,12 +642,15 @@
                 {
                   "element": "transition",
                   "meta": {
-                    "title": "Unstar a Post"
+                    "title": {
+                      "element": "string",
+                      "content": "Unstar a Post"
+                    }
                   },
                   "content": [
                     {
                       "element": "copy",
-                      "content": "Remove a Star from a Post.\n\n"
+                      "content": "Remove a Star from a Post."
                     },
                     {
                       "element": "httpTransaction",
@@ -478,14 +658,20 @@
                         {
                           "element": "httpRequest",
                           "attributes": {
-                            "method": "DELETE"
+                            "method": {
+                              "element": "string",
+                              "content": "DELETE"
+                            }
                           },
                           "content": []
                         },
                         {
                           "element": "httpResponse",
                           "attributes": {
-                            "statusCode": "200",
+                            "statusCode": {
+                              "element": "string",
+                              "content": "200"
+                            },
                             "headers": {
                               "element": "httpHeaders",
                               "content": [
@@ -509,12 +695,21 @@
                             {
                               "element": "asset",
                               "meta": {
-                                "classes": [
-                                  "messageBody"
-                                ]
+                                "classes": {
+                                  "element": "array",
+                                  "content": [
+                                    {
+                                      "element": "string",
+                                      "content": "messageBody"
+                                    }
+                                  ]
+                                }
                               },
                               "attributes": {
-                                "contentType": "application/json"
+                                "contentType": {
+                                  "element": "string",
+                                  "content": "application/json"
+                                }
                               },
                               "content": "{\n    \"data\": {\n        \"id\": \"1\", // note this is a string\n        \"user\": {\n            ...\n        },\n        \"created_at\": \"2012-07-16T17:25:47Z\",\n        \"text\": \"@berg FIRST post on this new site #newsocialnetwork\",\n        \"html\": \"<span itemprop=\\\"mention\\\" data-mention-name=\\\"berg\\\" data-mention-id=\\\"2\\\">@berg</span> FIRST post on <a href=\\\"https://join.app.net\\\" rel=\\\"nofollow\\\">this new site</a> <span itemprop=\\\"hashtag\\\" data-hashtag-name=\\\"newsocialnetwork\\\">#newsocialnetwork</span>.\",\n        \"source\": {\n            \"client_id\": \"udxGzAVBdXwGtkHmvswR5MbMEeVnq6n4\",\n            \"name\": \"Clientastic for iOS\",\n            \"link\": \"http://app.net\"\n        },\n        \"machine_only\": false,\n        \"reply_to\": null,\n        \"thread_id\": \"1\",\n        \"num_replies\": 3,\n        \"num_reposts\": 0,\n        \"num_stars\": 0,\n        \"entities\": {\n            \"mentions\": [{\n                \"name\": \"berg\",\n                \"id\": \"2\",\n                \"pos\": 0,\n                \"len\": 5\n            }],\n            \"hashtags\": [{\n                \"name\": \"newsocialnetwork\",\n                \"pos\": 34,\n                \"len\": 17\n            }],\n            \"links\": [{\n                \"text\": \"this new site\",\n                \"url\": \"https://join.app.net\"\n                \"pos\": 20,\n                \"len\": 13\n            }]\n        },\n        \"you_reposted\": false,\n        \"you_starred\": false\n    },\n    \"meta\": {\n        \"code\": 200,\n    }\n}\n"
                             }

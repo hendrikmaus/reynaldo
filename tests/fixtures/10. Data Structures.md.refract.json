@@ -4,61 +4,112 @@
     {
       "element": "category",
       "meta": {
-        "classes": [
-          "api"
-        ],
-        "title": "Data Structures API"
+        "classes": {
+          "element": "array",
+          "content": [
+            {
+              "element": "string",
+              "content": "api"
+            }
+          ]
+        },
+        "title": {
+          "element": "string",
+          "content": "Data Structures API"
+        }
       },
       "attributes": {
-        "meta": [
-          {
-            "element": "member",
-            "meta": {
-              "classes": [
-                "user"
-              ]
-            },
-            "content": {
-              "key": {
-                "element": "string",
-                "content": "FORMAT"
+        "metadata": {
+          "element": "array",
+          "content": [
+            {
+              "element": "member",
+              "meta": {
+                "classes": {
+                  "element": "array",
+                  "content": [
+                    {
+                      "element": "string",
+                      "content": "user"
+                    }
+                  ]
+                }
               },
-              "value": {
-                "element": "string",
-                "content": "1A"
+              "content": {
+                "key": {
+                  "element": "string",
+                  "content": "FORMAT"
+                },
+                "value": {
+                  "element": "string",
+                  "content": "1A"
+                }
               }
             }
-          }
-        ]
+          ]
+        }
       },
       "content": [
         {
           "element": "copy",
-          "content": "Following [Advanced Attributes](09.%20Advanced%20Attributes.md), this example\ndemonstrates defining arbitrary data structure to be reused by various\nattribute descriptions.\n\nSince a portion of the `Coupon` data structure is shared between the `Coupon`\ndefinition itself and the `Create a Coupon` action, it was separated into a\n`Coupon Base` data structure in the `Data Structures` API Blueprint Section.\nDoing so enables us to reuse it as a base-type of other attribute definitions.\n\n## API Blueprint\n\n+ [Previous: Advanced Attributes](09.%20Advanced%20Attributes.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/10.%20Data%20Structures.md)\n\n+ [Next: Resource Model](11.%20Resource%20Model.md)\n\n"
+          "content": "Following [Advanced Attributes](09.%20Advanced%20Attributes.md), this example\ndemonstrates defining arbitrary data structure to be reused by various\nattribute descriptions.\n\nSince a portion of the `Coupon` data structure is shared between the `Coupon`\ndefinition itself and the `Create a Coupon` action, it was separated into a\n`Coupon Base` data structure in the `Data Structures` API Blueprint Section.\nDoing so enables us to reuse it as a base-type of other attribute definitions.\n\n## API Blueprint\n\n+ [Previous: Advanced Attributes](09.%20Advanced%20Attributes.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/10.%20Data%20Structures.md)\n\n+ [Next: Resource Model](11.%20Resource%20Model.md)"
         },
         {
           "element": "category",
           "meta": {
-            "classes": [
-              "resourceGroup"
-            ],
-            "title": "Coupons"
+            "classes": {
+              "element": "array",
+              "content": [
+                {
+                  "element": "string",
+                  "content": "resourceGroup"
+                }
+              ]
+            },
+            "title": {
+              "element": "string",
+              "content": "Coupons"
+            }
           },
           "content": [
             {
               "element": "resource",
               "meta": {
-                "title": "Coupon"
+                "title": {
+                  "element": "string",
+                  "content": "Coupon"
+                }
               },
               "attributes": {
-                "href": "/coupons/{id}",
+                "href": {
+                  "element": "string",
+                  "content": "/coupons/{id}"
+                },
                 "hrefVariables": {
                   "element": "hrefVariables",
                   "content": [
                     {
                       "element": "member",
                       "meta": {
-                        "description": "The ID of the desired coupon.\n"
+                        "description": {
+                          "element": "string",
+                          "content": "The ID of the desired coupon."
+                        },
+                        "title": {
+                          "element": "string",
+                          "content": "string"
+                        }
+                      },
+                      "attributes": {
+                        "typeAttributes": {
+                          "element": "array",
+                          "content": [
+                            {
+                              "element": "string",
+                              "content": "required"
+                            }
+                          ]
+                        }
                       },
                       "content": {
                         "key": {
@@ -76,64 +127,77 @@
               "content": [
                 {
                   "element": "copy",
-                  "content": "A coupon contains information about a percent-off or amount-off discount you\nmight want to apply to a customer.\n\n"
+                  "content": "A coupon contains information about a percent-off or amount-off discount you\nmight want to apply to a customer."
                 },
                 {
                   "element": "dataStructure",
-                  "content": [
-                    {
-                      "element": "Coupon Base",
-                      "meta": {
-                        "id": "Coupon"
-                      },
-                      "content": [
-                        {
-                          "element": "member",
-                          "attributes": {
-                            "typeAttributes": [
-                              "required"
+                  "content": {
+                    "element": "Coupon Base",
+                    "meta": {
+                      "id": {
+                        "element": "string",
+                        "content": "Coupon"
+                      }
+                    },
+                    "content": [
+                      {
+                        "element": "member",
+                        "attributes": {
+                          "typeAttributes": {
+                            "element": "array",
+                            "content": [
+                              {
+                                "element": "string",
+                                "content": "required"
+                              }
                             ]
-                          },
-                          "content": {
-                            "key": {
-                              "element": "string",
-                              "content": "id"
-                            },
-                            "value": {
-                              "element": "string",
-                              "content": "250FF"
-                            }
                           }
                         },
-                        {
-                          "element": "member",
-                          "meta": {
-                            "description": "Time stamp"
+                        "content": {
+                          "key": {
+                            "element": "string",
+                            "content": "id"
                           },
-                          "content": {
-                            "key": {
-                              "element": "string",
-                              "content": "created"
-                            },
-                            "value": {
-                              "element": "number",
-                              "content": 1415203908
-                            }
+                          "value": {
+                            "element": "string",
+                            "content": "250FF"
                           }
                         }
-                      ]
-                    }
-                  ]
+                      },
+                      {
+                        "element": "member",
+                        "meta": {
+                          "description": {
+                            "element": "string",
+                            "content": "Time stamp"
+                          }
+                        },
+                        "content": {
+                          "key": {
+                            "element": "string",
+                            "content": "created"
+                          },
+                          "value": {
+                            "element": "number",
+                            "content": 1415203908
+                          }
+                        }
+                      }
+                    ]
+                  }
                 },
                 {
                   "element": "transition",
                   "meta": {
-                    "title": "Retrieve a Coupon"
+                    "title": {
+                      "element": "string",
+                      "content": "Retrieve a Coupon"
+                    }
                   },
                   "content": [
                     {
                       "element": "copy",
-                      "content": "Retrieves the coupon with the given ID.\n\n"
+                      "content": "Retrieves the coupon with the given ID."
                     },
                     {
                       "element": "httpTransaction",
@@ -141,14 +205,20 @@
                         {
                           "element": "httpRequest",
                           "attributes": {
-                            "method": "GET"
+                            "method": {
+                              "element": "string",
+                              "content": "GET"
+                            }
                           },
                           "content": []
                         },
                         {
                           "element": "httpResponse",
                           "attributes": {
-                            "statusCode": "200",
+                            "statusCode": {
+                              "element": "string",
+                              "content": "200"
+                            },
                             "headers": {
                               "element": "httpHeaders",
                               "content": [
@@ -171,35 +241,51 @@
                           "content": [
                             {
                               "element": "dataStructure",
-                              "content": [
-                                {
-                                  "element": "Coupon"
-                                }
-                              ]
+                              "content": {
+                                "element": "Coupon"
+                              }
                             },
                             {
                               "element": "asset",
                               "meta": {
-                                "classes": [
-                                  "messageBody"
-                                ]
+                                "classes": {
+                                  "element": "array",
+                                  "content": [
+                                    {
+                                      "element": "string",
+                                      "content": "messageBody"
+                                    }
+                                  ]
+                                }
                               },
                               "attributes": {
-                                "contentType": "application/json"
+                                "contentType": {
+                                  "element": "string",
+                                  "content": "application/json"
+                                }
                               },
                               "content": "{\n  \"percent_off\": 25,\n  \"redeem_by\": 0,\n  \"id\": \"250FF\",\n  \"created\": 1415203908\n}"
                             },
                             {
                               "element": "asset",
                               "meta": {
-                                "classes": [
-                                  "messageBodySchema"
-                                ]
+                                "classes": {
+                                  "element": "array",
+                                  "content": [
+                                    {
+                                      "element": "string",
+                                      "content": "messageBodySchema"
+                                    }
+                                  ]
+                                }
                               },
                               "attributes": {
-                                "contentType": "application/schema+json"
+                                "contentType": {
+                                  "element": "string",
+                                  "content": "application/schema+json"
+                                }
                               },
-                              "content": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"percent_off\": {\n      \"type\": \"number\",\n      \"description\": \"A positive integer between 1 and 100 that represents the discount the\\ncoupon will apply.\\n\"\n    },\n    \"redeem_by\": {\n      \"type\": \"number\",\n      \"description\": \"Date after which the coupon can no longer be redeemed\"\n    },\n    \"id\": {\n      \"type\": \"string\"\n    },\n    \"created\": {\n      \"type\": \"number\",\n      \"description\": \"Time stamp\"\n    }\n  },\n  \"required\": [\n    \"id\"\n  ]\n}"
+                              "content": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"percent_off\": {\n      \"type\": \"number\",\n      \"description\": \"A positive integer between 1 and 100 that represents the discount the\\ncoupon will apply.\"\n    },\n    \"redeem_by\": {\n      \"type\": \"number\",\n      \"description\": \"Date after which the coupon can no longer be redeemed\"\n    },\n    \"id\": {\n      \"type\": \"string\"\n    },\n    \"created\": {\n      \"type\": \"number\",\n      \"description\": \"Time stamp\"\n    }\n  },\n  \"required\": [\n    \"id\"\n  ]\n}"
                             }
                           ]
                         }
@@ -212,32 +298,42 @@
             {
               "element": "resource",
               "meta": {
-                "title": "Coupons"
+                "title": {
+                  "element": "string",
+                  "content": "Coupons"
+                }
               },
               "attributes": {
-                "href": "/coupons{?limit}"
+                "href": {
+                  "element": "string",
+                  "content": "/coupons{?limit}"
+                }
               },
               "content": [
                 {
                   "element": "dataStructure",
-                  "content": [
-                    {
-                      "element": "array",
-                      "meta": {
-                        "id": "Coupons"
-                      },
-                      "content": [
-                        {
-                          "element": "Coupon"
-                        }
-                      ]
-                    }
-                  ]
+                  "content": {
+                    "element": "array",
+                    "meta": {
+                      "id": {
+                        "element": "string",
+                        "content": "Coupons"
+                      }
+                    },
+                    "content": [
+                      {
+                        "element": "Coupon"
+                      }
+                    ]
+                  }
                 },
                 {
                   "element": "transition",
                   "meta": {
-                    "title": "List all Coupons"
+                    "title": {
+                      "element": "string",
+                      "content": "List all Coupons"
+                    }
                   },
                   "attributes": {
                     "hrefVariables": {
@@ -246,12 +342,25 @@
                         {
                           "element": "member",
                           "meta": {
-                            "description": "A limit on the number of objects to be returned. Limit can range\nbetween 1 and 100 items.\n"
+                            "description": {
+                              "element": "string",
+                              "content": "A limit on the number of objects to be returned. Limit can range\nbetween 1 and 100 items."
+                            },
+                            "title": {
+                              "element": "string",
+                              "content": "number"
+                            }
                           },
                           "attributes": {
-                            "typeAttributes": [
-                              "optional"
-                            ]
+                            "typeAttributes": {
+                              "element": "array",
+                              "content": [
+                                {
+                                  "element": "string",
+                                  "content": "optional"
+                                }
+                              ]
+                            }
                           },
                           "content": {
                             "key": {
@@ -259,9 +368,12 @@
                               "content": "limit"
                             },
                             "value": {
-                              "element": "number",
+                              "element": "string",
                               "attributes": {
-                                "default": "10"
+                                "default": {
+                                  "element": "string",
+                                  "content": "10"
+                                }
                               }
                             }
                           }
@@ -272,7 +384,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "Returns a list of your coupons.\n\n"
+                      "content": "Returns a list of your coupons."
                     },
                     {
                       "element": "httpTransaction",
@@ -280,14 +392,20 @@
                         {
                           "element": "httpRequest",
                           "attributes": {
-                            "method": "GET"
+                            "method": {
+                              "element": "string",
+                              "content": "GET"
+                            }
                           },
                           "content": []
                         },
                         {
                           "element": "httpResponse",
                           "attributes": {
-                            "statusCode": "200",
+                            "statusCode": {
+                              "element": "string",
+                              "content": "200"
+                            },
                             "headers": {
                               "element": "httpHeaders",
                               "content": [
@@ -310,33 +428,49 @@
                           "content": [
                             {
                               "element": "dataStructure",
-                              "content": [
-                                {
-                                  "element": "Coupons"
-                                }
-                              ]
+                              "content": {
+                                "element": "Coupons"
+                              }
                             },
                             {
                               "element": "asset",
                               "meta": {
-                                "classes": [
-                                  "messageBody"
-                                ]
+                                "classes": {
+                                  "element": "array",
+                                  "content": [
+                                    {
+                                      "element": "string",
+                                      "content": "messageBody"
+                                    }
+                                  ]
+                                }
                               },
                               "attributes": {
-                                "contentType": "application/json"
+                                "contentType": {
+                                  "element": "string",
+                                  "content": "application/json"
+                                }
                               },
                               "content": "[\n  {\n    \"percent_off\": 25,\n    \"redeem_by\": 0,\n    \"id\": \"250FF\",\n    \"created\": 1415203908\n  }\n]"
                             },
                             {
                               "element": "asset",
                               "meta": {
-                                "classes": [
-                                  "messageBodySchema"
-                                ]
+                                "classes": {
+                                  "element": "array",
+                                  "content": [
+                                    {
+                                      "element": "string",
+                                      "content": "messageBodySchema"
+                                    }
+                                  ]
+                                }
                               },
                               "attributes": {
-                                "contentType": "application/schema+json"
+                                "contentType": {
+                                  "element": "string",
+                                  "content": "application/schema+json"
+                                }
                               },
                               "content": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"array\"\n}"
                             }
@@ -349,22 +483,23 @@
                 {
                   "element": "transition",
                   "meta": {
-                    "title": "Create a Coupon"
+                    "title": {
+                      "element": "string",
+                      "content": "Create a Coupon"
+                    }
                   },
                   "attributes": {
                     "data": {
                       "element": "dataStructure",
-                      "content": [
-                        {
-                          "element": "Coupon Base"
-                        }
-                      ]
+                      "content": {
+                        "element": "Coupon Base"
+                      }
                     }
                   },
                   "content": [
                     {
                       "element": "copy",
-                      "content": "Creates a new Coupon.\n\n"
+                      "content": "Creates a new Coupon."
                     },
                     {
                       "element": "httpTransaction",
@@ -372,7 +507,10 @@
                         {
                           "element": "httpRequest",
                           "attributes": {
-                            "method": "POST",
+                            "method": {
+                              "element": "string",
+                              "content": "POST"
+                            },
                             "headers": {
                               "element": "httpHeaders",
                               "content": [
@@ -396,12 +534,21 @@
                             {
                               "element": "asset",
                               "meta": {
-                                "classes": [
-                                  "messageBody"
-                                ]
+                                "classes": {
+                                  "element": "array",
+                                  "content": [
+                                    {
+                                      "element": "string",
+                                      "content": "messageBody"
+                                    }
+                                  ]
+                                }
                               },
                               "attributes": {
-                                "contentType": "application/json"
+                                "contentType": {
+                                  "element": "string",
+                                  "content": "application/json"
+                                }
                               },
                               "content": "{\n  \"percent_off\": 25,\n  \"redeem_by\": 0\n}"
                             }
@@ -410,7 +557,10 @@
                         {
                           "element": "httpResponse",
                           "attributes": {
-                            "statusCode": "200",
+                            "statusCode": {
+                              "element": "string",
+                              "content": "200"
+                            },
                             "headers": {
                               "element": "httpHeaders",
                               "content": [
@@ -433,35 +583,51 @@
                           "content": [
                             {
                               "element": "dataStructure",
-                              "content": [
-                                {
-                                  "element": "Coupon"
-                                }
-                              ]
+                              "content": {
+                                "element": "Coupon"
+                              }
                             },
                             {
                               "element": "asset",
                               "meta": {
-                                "classes": [
-                                  "messageBody"
-                                ]
+                                "classes": {
+                                  "element": "array",
+                                  "content": [
+                                    {
+                                      "element": "string",
+                                      "content": "messageBody"
+                                    }
+                                  ]
+                                }
                               },
                               "attributes": {
-                                "contentType": "application/json"
+                                "contentType": {
+                                  "element": "string",
+                                  "content": "application/json"
+                                }
                               },
                               "content": "{\n  \"percent_off\": 25,\n  \"redeem_by\": 0,\n  \"id\": \"250FF\",\n  \"created\": 1415203908\n}"
                             },
                             {
                               "element": "asset",
                               "meta": {
-                                "classes": [
-                                  "messageBodySchema"
-                                ]
+                                "classes": {
+                                  "element": "array",
+                                  "content": [
+                                    {
+                                      "element": "string",
+                                      "content": "messageBodySchema"
+                                    }
+                                  ]
+                                }
                               },
                               "attributes": {
-                                "contentType": "application/schema+json"
+                                "contentType": {
+                                  "element": "string",
+                                  "content": "application/schema+json"
+                                }
                               },
-                              "content": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"percent_off\": {\n      \"type\": \"number\",\n      \"description\": \"A positive integer between 1 and 100 that represents the discount the\\ncoupon will apply.\\n\"\n    },\n    \"redeem_by\": {\n      \"type\": \"number\",\n      \"description\": \"Date after which the coupon can no longer be redeemed\"\n    },\n    \"id\": {\n      \"type\": \"string\"\n    },\n    \"created\": {\n      \"type\": \"number\",\n      \"description\": \"Time stamp\"\n    }\n  },\n  \"required\": [\n    \"id\"\n  ]\n}"
+                              "content": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"percent_off\": {\n      \"type\": \"number\",\n      \"description\": \"A positive integer between 1 and 100 that represents the discount the\\ncoupon will apply.\"\n    },\n    \"redeem_by\": {\n      \"type\": \"number\",\n      \"description\": \"Date after which the coupon can no longer be redeemed\"\n    },\n    \"id\": {\n      \"type\": \"string\"\n    },\n    \"created\": {\n      \"type\": \"number\",\n      \"description\": \"Time stamp\"\n    }\n  },\n  \"required\": [\n    \"id\"\n  ]\n}"
                             }
                           ]
                         }
@@ -476,54 +642,67 @@
         {
           "element": "category",
           "meta": {
-            "classes": [
-              "dataStructures"
-            ]
+            "classes": {
+              "element": "array",
+              "content": [
+                {
+                  "element": "string",
+                  "content": "dataStructures"
+                }
+              ]
+            }
           },
           "content": [
             {
               "element": "dataStructure",
-              "content": [
-                {
-                  "element": "object",
-                  "meta": {
-                    "id": "Coupon Base"
-                  },
-                  "content": [
-                    {
-                      "element": "member",
-                      "meta": {
-                        "description": "A positive integer between 1 and 100 that represents the discount the\ncoupon will apply.\n"
-                      },
-                      "content": {
-                        "key": {
-                          "element": "string",
-                          "content": "percent_off"
-                        },
-                        "value": {
-                          "element": "number",
-                          "content": 25
-                        }
+              "content": {
+                "element": "object",
+                "meta": {
+                  "id": {
+                    "element": "string",
+                    "content": "Coupon Base"
+                  }
+                },
+                "content": [
+                  {
+                    "element": "member",
+                    "meta": {
+                      "description": {
+                        "element": "string",
+                        "content": "A positive integer between 1 and 100 that represents the discount the\ncoupon will apply."
                       }
                     },
-                    {
-                      "element": "member",
-                      "meta": {
-                        "description": "Date after which the coupon can no longer be redeemed"
+                    "content": {
+                      "key": {
+                        "element": "string",
+                        "content": "percent_off"
                       },
-                      "content": {
-                        "key": {
-                          "element": "string",
-                          "content": "redeem_by"
-                        },
-                        "value": {
-                          "element": "number"
-                        }
+                      "value": {
+                        "element": "number",
+                        "content": 25
                       }
                     }
-                  ]
-                }
-              ]
+                  },
+                  {
+                    "element": "member",
+                    "meta": {
+                      "description": {
+                        "element": "string",
+                        "content": "Date after which the coupon can no longer be redeemed"
+                      }
+                    },
+                    "content": {
+                      "key": {
+                        "element": "string",
+                        "content": "redeem_by"
+                      },
+                      "value": {
+                        "element": "number"
+                      }
+                    }
+                  }
+                ]
+              }
             }
           ]
         }

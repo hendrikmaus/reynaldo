@@ -13,7 +13,7 @@ class MasterCategoryElement extends BaseElement implements ApiElement, ApiDescri
     {
         $meta = [];
 
-        foreach ($this->attributes['meta'] as $member) {
+        foreach ($this->attributes['metadata']['content'] as $member) {
             $meta[$member['content']['key']['content']] = $member['content']['value']['content'];
         }
 
