@@ -34,7 +34,7 @@
       "content": [
         {
           "element": "copy",
-          "content": "In this API example we will discuss what information a response can bear and\nhow to define multiple responses. Technically a response is represented by a\npayload that is sent back in response to a request.\n\n## API Blueprint\n\n+ [Previous: Grouping Resources](04.%20Grouping%20Resources.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/05.%20Responses.md)\n\n+ [Next: Requests](06.%20Requests.md)\n\n"
+          "content": "In this API example we will discuss what information a response can bear and\nhow to define multiple responses. Technically a response is represented by a\npayload that is sent back in response to a request.\n\n## API Blueprint\n\n+ [Previous: Grouping Resources](04.%20Grouping%20Resources.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/05.%20Responses.md)\n\n+ [Next: Requests](06.%20Requests.md)"
         },
         {
           "element": "category",
@@ -47,7 +47,7 @@
           "content": [
             {
               "element": "copy",
-              "content": "Group of all messages-related resources.\n\n"
+              "content": "Group of all messages-related resources."
             },
             {
               "element": "resource",
@@ -66,7 +66,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "This action has **two** responses defined: One returning plain text and the\nother a JSON representation of our resource. Both have the same HTTP status\ncode. Also both responses bear additional information in the form of a custom\nHTTP header. Note that both responses have set the `Content-Type` HTTP header\njust by specifying `(text/plain)` or `(application/json)` in their respective\nsignatures.\n\n"
+                      "content": "This action has **two** responses defined: One returning plain text and the\nother a JSON representation of our resource. Both have the same HTTP status\ncode. Also both responses bear additional information in the form of a custom\nHTTP header. Note that both responses have set the `Content-Type` HTTP header\njust by specifying `(text/plain)` or `(application/json)` in their respective\nsignatures."
                     },
                     {
                       "element": "httpTransaction",
@@ -262,3 +262,4 @@
     }
   ]
 }
+

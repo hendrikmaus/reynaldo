@@ -34,7 +34,7 @@
       "content": [
         {
           "element": "copy",
-          "content": "Gist Fox API is a **pastes service** similar to [GitHub's Gist](http://gist.github.com).\n\n## Authentication\n\n*Gist Fox API* uses OAuth Authorization. First you create a new (or acquire existing) OAuth token using Basic Authentication. After you have acquired your token you can use it to access other resources within token' scope.\n\n## Media Types\n\nWhere applicable this API uses the [HAL+JSON](https://github.com/mikekelly/hal_specification/blob/master/hal_specification.md) media-type to represent resources states and affordances.\n\nRequests with a message-body are using plain JSON to set or update resource states.\n\n## Error States\n\nThe common [HTTP Response Status Codes](https://github.com/for-GET/know-your-http-well/blob/master/status-codes.md) are used.\n\n"
+          "content": "Gist Fox API is a **pastes service** similar to [GitHub's Gist](http://gist.github.com).\n\n## Authentication\n\n*Gist Fox API* uses OAuth Authorization. First you create a new (or acquire existing) OAuth token using Basic Authentication. After you have acquired your token you can use it to access other resources within token' scope.\n\n## Media Types\n\nWhere applicable this API uses the [HAL+JSON](https://github.com/mikekelly/hal_specification/blob/master/hal_specification.md) media-type to represent resources states and affordances.\n\nRequests with a message-body are using plain JSON to set or update resource states.\n\n## Error States\n\nThe common [HTTP Response Status Codes](https://github.com/for-GET/know-your-http-well/blob/master/status-codes.md) are used."
         },
         {
           "element": "category",
@@ -56,7 +56,7 @@
               "content": [
                 {
                   "element": "copy",
-                  "content": "Gist Fox API entry point.\n\nThis resource does not have any attributes. Instead it offers the initial API affordances in the form of the HTTP Link header and\nHAL links.\n\n"
+                  "content": "Gist Fox API entry point.\n\nThis resource does not have any attributes. Instead it offers the initial API affordances in the form of the HTTP Link header and\nHAL links."
                 },
                 {
                   "element": "transition",
@@ -144,7 +144,7 @@
           "content": [
             {
               "element": "copy",
-              "content": "Gist-related resources of *Gist Fox API*.\n\n"
+              "content": "Gist-related resources of *Gist Fox API*."
             },
             {
               "element": "resource",
@@ -159,7 +159,13 @@
                     {
                       "element": "member",
                       "meta": {
-                        "description": "ID of the Gist in the form of a hash."
+                        "description": "ID of the Gist in the form of a hash.",
+                        "title": "string"
+                      },
+                      "attributes": {
+                        "typeAttributes": [
+                          "required"
+                        ]
                       },
                       "content": {
                         "key": {
@@ -174,7 +180,8 @@
                     {
                       "element": "member",
                       "meta": {
-                        "description": "Gist Fox API access token."
+                        "description": "Gist Fox API access token.",
+                        "title": "string"
                       },
                       "attributes": {
                         "typeAttributes": [
@@ -197,7 +204,7 @@
               "content": [
                 {
                   "element": "copy",
-                  "content": "A single Gist object. The Gist resource is the central resource in the Gist Fox API. It represents one paste - a single text note.\n\nThe Gist resource has the following attributes:\n\n+ id\n\n+ created_at\n\n+ description\n\n+ content\n\nThe states *id* and *created_at* are assigned by the Gist Fox API at the moment of creation.\n\n"
+                  "content": "A single Gist object. The Gist resource is the central resource in the Gist Fox API. It represents one paste - a single text note.\n\nThe Gist resource has the following attributes:\n\n+ id\n\n+ created_at\n\n+ description\n\n+ content\n\nThe states *id* and *created_at* are assigned by the Gist Fox API at the moment of creation."
                 },
                 {
                   "element": "transition",
@@ -254,7 +261,7 @@
                           "content": [
                             {
                               "element": "copy",
-                              "content": "HAL+JSON representation of Gist Resource. In addition to representing its state in the JSON form it offers affordances in the form of the HTTP Link header and HAL links.\n"
+                              "content": "HAL+JSON representation of Gist Resource. In addition to representing its state in the JSON form it offers affordances in the form of the HTTP Link header and HAL links."
                             },
                             {
                               "element": "asset",
@@ -282,7 +289,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "To update a Gist send a JSON with updated value for one or more of the Gist resource attributes. All attributes values (states) from the previous version of this Gist are carried over by default if not included in the hash.\n\n"
+                      "content": "To update a Gist send a JSON with updated value for one or more of the Gist resource attributes. All attributes values (states) from the previous version of this Gist are carried over by default if not included in the hash."
                     },
                     {
                       "element": "httpTransaction",
@@ -364,7 +371,7 @@
                           "content": [
                             {
                               "element": "copy",
-                              "content": "HAL+JSON representation of Gist Resource. In addition to representing its state in the JSON form it offers affordances in the form of the HTTP Link header and HAL links.\n"
+                              "content": "HAL+JSON representation of Gist Resource. In addition to representing its state in the JSON form it offers affordances in the form of the HTTP Link header and HAL links."
                             },
                             {
                               "element": "asset",
@@ -424,7 +431,7 @@
               "content": [
                 {
                   "element": "copy",
-                  "content": "Collection of all Gists.\n\nThe Gist Collection resource has the following attribute:\n\n+ total\n\nIn addition it **embeds** *Gist Resources* in the Gist Fox API.\n\n"
+                  "content": "Collection of all Gists.\n\nThe Gist Collection resource has the following attribute:\n\n+ total\n\nIn addition it **embeds** *Gist Resources* in the Gist Fox API."
                 },
                 {
                   "element": "transition",
@@ -438,7 +445,8 @@
                         {
                           "element": "member",
                           "meta": {
-                            "description": "Timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ` Only gists updated at or after this time are returned."
+                            "description": "Timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ` Only gists updated at or after this time are returned.",
+                            "title": "string"
                           },
                           "attributes": {
                             "typeAttributes": [
@@ -508,7 +516,7 @@
                           "content": [
                             {
                               "element": "copy",
-                              "content": "HAL+JSON representation of Gist Collection Resource. The Gist resources in collections are embedded. Note the embedded Gists resource are incomplete representations of the Gist in question. Use the respective Gist link to retrieve its full representation.\n"
+                              "content": "HAL+JSON representation of Gist Collection Resource. The Gist resources in collections are embedded. Note the embedded Gists resource are incomplete representations of the Gist in question. Use the respective Gist link to retrieve its full representation."
                             },
                             {
                               "element": "asset",
@@ -540,7 +548,8 @@
                         {
                           "element": "member",
                           "meta": {
-                            "description": "Gist Fox API access token."
+                            "description": "Gist Fox API access token.",
+                            "title": "string"
                           },
                           "attributes": {
                             "typeAttributes": [
@@ -563,7 +572,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "To create a new Gist simply provide a JSON hash of the *description* and *content* attributes for the new Gist.\n\nThis action requires an `access_token` with `gist_write` scope.\n\n"
+                      "content": "To create a new Gist simply provide a JSON hash of the *description* and *content* attributes for the new Gist.\n\nThis action requires an `access_token` with `gist_write` scope."
                     },
                     {
                       "element": "httpTransaction",
@@ -645,7 +654,7 @@
                           "content": [
                             {
                               "element": "copy",
-                              "content": "HAL+JSON representation of Gist Resource. In addition to representing its state in the JSON form it offers affordances in the form of the HTTP Link header and HAL links.\n"
+                              "content": "HAL+JSON representation of Gist Resource. In addition to representing its state in the JSON form it offers affordances in the form of the HTTP Link header and HAL links."
                             },
                             {
                               "element": "asset",
@@ -680,7 +689,13 @@
                     {
                       "element": "member",
                       "meta": {
-                        "description": "ID of the gist in the form of a hash"
+                        "description": "ID of the gist in the form of a hash",
+                        "title": "string"
+                      },
+                      "attributes": {
+                        "typeAttributes": [
+                          "required"
+                        ]
                       },
                       "content": {
                         "key": {
@@ -695,7 +710,8 @@
                     {
                       "element": "member",
                       "meta": {
-                        "description": "Gist Fox API access token."
+                        "description": "Gist Fox API access token.",
+                        "title": "string"
                       },
                       "attributes": {
                         "typeAttributes": [
@@ -718,7 +734,7 @@
               "content": [
                 {
                   "element": "copy",
-                  "content": "Star resource represents a Gist starred status.\n\nThe Star resource has the following attribute:\n\n+ starred\n\n"
+                  "content": "Star resource represents a Gist starred status.\n\nThe Star resource has the following attribute:\n\n+ starred"
                 },
                 {
                   "element": "transition",
@@ -728,7 +744,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "This action requires an `access_token` with `gist_write` scope.\n\n"
+                      "content": "This action requires an `access_token` with `gist_write` scope."
                     },
                     {
                       "element": "httpTransaction",
@@ -759,7 +775,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "This action requires an `access_token` with `gist_write` scope.\n\n"
+                      "content": "This action requires an `access_token` with `gist_write` scope."
                     },
                     {
                       "element": "httpTransaction",
@@ -837,7 +853,7 @@
                           "content": [
                             {
                               "element": "copy",
-                              "content": "HAL+JSON representation of Star Resource.\n"
+                              "content": "HAL+JSON representation of Star Resource."
                             },
                             {
                               "element": "asset",
@@ -872,7 +888,7 @@
           "content": [
             {
               "element": "copy",
-              "content": "Access and Control of *Gist Fox API* OAuth token.\n\n"
+              "content": "Access and Control of *Gist Fox API* OAuth token."
             },
             {
               "element": "resource",
@@ -885,7 +901,7 @@
               "content": [
                 {
                   "element": "copy",
-                  "content": "Authorization Resource represents an authorization granted to the user. You can **only** access your own authorization, and only through **Basic Authentication**.\n\nThe Authorization Resource has the following attribute:\n\n+ token\n\n+ scopes\n\nWhere *token* represents an OAuth token and *scopes* is an array of scopes granted for the given authorization. At this moment the only available scope is `gist_write`.\n\n"
+                  "content": "Authorization Resource represents an authorization granted to the user. You can **only** access your own authorization, and only through **Basic Authentication**.\n\nThe Authorization Resource has the following attribute:\n\n+ token\n\n+ scopes\n\nWhere *token* represents an OAuth token and *scopes* is an array of scopes granted for the given authorization. At this moment the only available scope is `gist_write`."
                 },
                 {
                   "element": "transition",
@@ -1133,3 +1149,4 @@
     }
   ]
 }
+

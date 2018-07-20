@@ -34,7 +34,7 @@
       "content": [
         {
           "element": "copy",
-          "content": "Following the [Responses](05.%20Responses.md) example, this API will show you\nhow to define multiple requests and what data these requests can bear. Let's\ndemonstrate multiple requests on a trivial example of content negotiation.\n\n## API Blueprint\n\n+ [Previous: Responses](05.%20Responses.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/06.%20Requests.md)\n\n+ [Next: Parameters](07.%20Parameters.md)\n\n"
+          "content": "Following the [Responses](05.%20Responses.md) example, this API will show you\nhow to define multiple requests and what data these requests can bear. Let's\ndemonstrate multiple requests on a trivial example of content negotiation.\n\n## API Blueprint\n\n+ [Previous: Responses](05.%20Responses.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/06.%20Requests.md)\n\n+ [Next: Parameters](07.%20Parameters.md)"
         },
         {
           "element": "category",
@@ -47,7 +47,7 @@
           "content": [
             {
               "element": "copy",
-              "content": "Group of all messages-related resources.\n\n"
+              "content": "Group of all messages-related resources."
             },
             {
               "element": "resource",
@@ -66,7 +66,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "In API Blueprint, _requests_ can hold exactly the same kind of information and\ncan be described using exactly the same structure as _responses_, only with\ndifferent signature – using the `Request` keyword. The string that follows\nafter the `Request` keyword is a request identifier. Again, using explanatory\nand simple naming is the best way to go.\n\n"
+                      "content": "In API Blueprint, _requests_ can hold exactly the same kind of information and\ncan be described using exactly the same structure as _responses_, only with\ndifferent signature – using the `Request` keyword. The string that follows\nafter the `Request` keyword is a request identifier. Again, using explanatory\nand simple naming is the best way to go."
                     },
                     {
                       "element": "httpTransaction",
@@ -360,3 +360,4 @@
     }
   ]
 }
+

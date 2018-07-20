@@ -34,7 +34,7 @@
       "content": [
         {
           "element": "copy",
-          "content": "This API example demonstrates how to name a resource and its actions, to give\nthe reader a better idea about what the resource is used for.\n\n## API Blueprint\n\n+ [Previous: Resource and Actions](02.%20Resource%20and%20Actions.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/03.%20Named%20Resource%20and%20Actions.md)\n\n+ [Next: Grouping Resources](04.%20Grouping%20Resources.md)\n\n"
+          "content": "This API example demonstrates how to name a resource and its actions, to give\nthe reader a better idea about what the resource is used for.\n\n## API Blueprint\n\n+ [Previous: Resource and Actions](02.%20Resource%20and%20Actions.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/03.%20Named%20Resource%20and%20Actions.md)\n\n+ [Next: Grouping Resources](04.%20Grouping%20Resources.md)"
         },
         {
           "element": "category",
@@ -56,7 +56,7 @@
               "content": [
                 {
                   "element": "copy",
-                  "content": "OK, `My Message` probably isn't the best name for our resource but it will do\nfor now. Note the URI `/message` is enclosed in square brackets.\n\n"
+                  "content": "OK, `My Message` probably isn't the best name for our resource but it will do\nfor now. Note the URI `/message` is enclosed in square brackets."
                 },
                 {
                   "element": "transition",
@@ -66,7 +66,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "Now this is informative! No extra explanation needed here. This action clearly\nretrieves the message.\n\n"
+                      "content": "Now this is informative! No extra explanation needed here. This action clearly\nretrieves the message."
                     },
                     {
                       "element": "httpTransaction",
@@ -128,7 +128,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "`Update a message` - nice and simple naming is the best way to go.\n\n"
+                      "content": "`Update a message` - nice and simple naming is the best way to go."
                     },
                     {
                       "element": "httpTransaction",
@@ -190,3 +190,4 @@
     }
   ]
 }
+

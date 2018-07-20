@@ -34,7 +34,7 @@
       "content": [
         {
           "element": "copy",
-          "content": "Following [Advanced Attributes](09.%20Advanced%20Attributes.md), this example\ndemonstrates defining arbitrary data structure to be reused by various\nattribute descriptions.\n\nSince a portion of the `Coupon` data structure is shared between the `Coupon`\ndefinition itself and the `Create a Coupon` action, it was separated into a\n`Coupon Base` data structure in the `Data Structures` API Blueprint Section.\nDoing so enables us to reuse it as a base-type of other attribute definitions.\n\n## API Blueprint\n\n+ [Previous: Advanced Attributes](09.%20Advanced%20Attributes.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/10.%20Data%20Structures.md)\n\n+ [Next: Resource Model](11.%20Resource%20Model.md)\n\n"
+          "content": "Following [Advanced Attributes](09.%20Advanced%20Attributes.md), this example\ndemonstrates defining arbitrary data structure to be reused by various\nattribute descriptions.\n\nSince a portion of the `Coupon` data structure is shared between the `Coupon`\ndefinition itself and the `Create a Coupon` action, it was separated into a\n`Coupon Base` data structure in the `Data Structures` API Blueprint Section.\nDoing so enables us to reuse it as a base-type of other attribute definitions.\n\n## API Blueprint\n\n+ [Previous: Advanced Attributes](09.%20Advanced%20Attributes.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/10.%20Data%20Structures.md)\n\n+ [Next: Resource Model](11.%20Resource%20Model.md)"
         },
         {
           "element": "category",
@@ -58,7 +58,13 @@
                     {
                       "element": "member",
                       "meta": {
-                        "description": "The ID of the desired coupon.\n"
+                        "description": "The ID of the desired coupon.",
+                        "title": "string"
+                      },
+                      "attributes": {
+                        "typeAttributes": [
+                          "required"
+                        ]
                       },
                       "content": {
                         "key": {
@@ -76,7 +82,7 @@
               "content": [
                 {
                   "element": "copy",
-                  "content": "A coupon contains information about a percent-off or amount-off discount you\nmight want to apply to a customer.\n\n"
+                  "content": "A coupon contains information about a percent-off or amount-off discount you\nmight want to apply to a customer."
                 },
                 {
                   "element": "dataStructure",
@@ -133,7 +139,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "Retrieves the coupon with the given ID.\n\n"
+                      "content": "Retrieves the coupon with the given ID."
                     },
                     {
                       "element": "httpTransaction",
@@ -199,7 +205,7 @@
                               "attributes": {
                                 "contentType": "application/schema+json"
                               },
-                              "content": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"percent_off\": {\n      \"type\": \"number\",\n      \"description\": \"A positive integer between 1 and 100 that represents the discount the\\ncoupon will apply.\\n\"\n    },\n    \"redeem_by\": {\n      \"type\": \"number\",\n      \"description\": \"Date after which the coupon can no longer be redeemed\"\n    },\n    \"id\": {\n      \"type\": \"string\"\n    },\n    \"created\": {\n      \"type\": \"number\",\n      \"description\": \"Time stamp\"\n    }\n  },\n  \"required\": [\n    \"id\"\n  ]\n}"
+                              "content": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"percent_off\": {\n      \"type\": \"number\",\n      \"description\": \"A positive integer between 1 and 100 that represents the discount the\\ncoupon will apply.\"\n    },\n    \"redeem_by\": {\n      \"type\": \"number\",\n      \"description\": \"Date after which the coupon can no longer be redeemed\"\n    },\n    \"id\": {\n      \"type\": \"string\"\n    },\n    \"created\": {\n      \"type\": \"number\",\n      \"description\": \"Time stamp\"\n    }\n  },\n  \"required\": [\n    \"id\"\n  ]\n}"
                             }
                           ]
                         }
@@ -246,7 +252,8 @@
                         {
                           "element": "member",
                           "meta": {
-                            "description": "A limit on the number of objects to be returned. Limit can range\nbetween 1 and 100 items.\n"
+                            "description": "A limit on the number of objects to be returned. Limit can range\nbetween 1 and 100 items.",
+                            "title": "number"
                           },
                           "attributes": {
                             "typeAttributes": [
@@ -259,7 +266,7 @@
                               "content": "limit"
                             },
                             "value": {
-                              "element": "number",
+                              "element": "string",
                               "attributes": {
                                 "default": "10"
                               }
@@ -272,7 +279,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "Returns a list of your coupons.\n\n"
+                      "content": "Returns a list of your coupons."
                     },
                     {
                       "element": "httpTransaction",
@@ -364,7 +371,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "Creates a new Coupon.\n\n"
+                      "content": "Creates a new Coupon."
                     },
                     {
                       "element": "httpTransaction",
@@ -461,7 +468,7 @@
                               "attributes": {
                                 "contentType": "application/schema+json"
                               },
-                              "content": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"percent_off\": {\n      \"type\": \"number\",\n      \"description\": \"A positive integer between 1 and 100 that represents the discount the\\ncoupon will apply.\\n\"\n    },\n    \"redeem_by\": {\n      \"type\": \"number\",\n      \"description\": \"Date after which the coupon can no longer be redeemed\"\n    },\n    \"id\": {\n      \"type\": \"string\"\n    },\n    \"created\": {\n      \"type\": \"number\",\n      \"description\": \"Time stamp\"\n    }\n  },\n  \"required\": [\n    \"id\"\n  ]\n}"
+                              "content": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"percent_off\": {\n      \"type\": \"number\",\n      \"description\": \"A positive integer between 1 and 100 that represents the discount the\\ncoupon will apply.\"\n    },\n    \"redeem_by\": {\n      \"type\": \"number\",\n      \"description\": \"Date after which the coupon can no longer be redeemed\"\n    },\n    \"id\": {\n      \"type\": \"string\"\n    },\n    \"created\": {\n      \"type\": \"number\",\n      \"description\": \"Time stamp\"\n    }\n  },\n  \"required\": [\n    \"id\"\n  ]\n}"
                             }
                           ]
                         }
@@ -493,7 +500,7 @@
                     {
                       "element": "member",
                       "meta": {
-                        "description": "A positive integer between 1 and 100 that represents the discount the\ncoupon will apply.\n"
+                        "description": "A positive integer between 1 and 100 that represents the discount the\ncoupon will apply."
                       },
                       "content": {
                         "key": {
@@ -531,3 +538,4 @@
     }
   ]
 }
+

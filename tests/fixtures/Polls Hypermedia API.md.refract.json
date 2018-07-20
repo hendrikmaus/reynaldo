@@ -52,7 +52,7 @@
       "content": [
         {
           "element": "copy",
-          "content": "Polls is a simple API allowing consumers to view polls and vote in them. You can view this documentation over at [Apiary](http://docs.pollshypermedia.apiary.io/).\n\n"
+          "content": "Polls is a simple API allowing consumers to view polls and vote in them. You can view this documentation over at [Apiary](http://docs.pollshypermedia.apiary.io/)."
         },
         {
           "element": "category",
@@ -74,7 +74,7 @@
               "content": [
                 {
                   "element": "copy",
-                  "content": "This resource does not have any attributes. Instead it offers the initial API affordances.\n\n"
+                  "content": "This resource does not have any attributes. Instead it offers the initial API affordances."
                 },
                 {
                   "element": "transition",
@@ -199,7 +199,8 @@
                     {
                       "element": "member",
                       "meta": {
-                        "description": "The page of questions to return"
+                        "description": "The page of questions to return",
+                        "title": "number"
                       },
                       "attributes": {
                         "typeAttributes": [
@@ -212,8 +213,8 @@
                           "content": "page"
                         },
                         "value": {
-                          "element": "number",
-                          "content": 1
+                          "element": "string",
+                          "content": "1"
                         }
                       }
                     }
@@ -343,7 +344,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "You may create your own question using this action. It takes a JSON object containing a question and a collection of answers in the form of choices.\n\n+ question (string) - The question\n\n+ choices (array[string]) - A collection of choices.\n\n"
+                      "content": "You may create your own question using this action. It takes a JSON object containing a question and a collection of answers in the form of choices.\n\n+ question (string) - The question\n\n+ choices (array[string]) - A collection of choices."
                     },
                     {
                       "element": "httpTransaction",
@@ -524,7 +525,7 @@
           "content": [
             {
               "element": "copy",
-              "content": "Resources related to questions in the API.\n\n"
+              "content": "Resources related to questions in the API."
             },
             {
               "element": "resource",
@@ -539,7 +540,8 @@
                     {
                       "element": "member",
                       "meta": {
-                        "description": "ID of the Question in form of an integer"
+                        "description": "ID of the Question in form of an integer",
+                        "title": "number"
                       },
                       "attributes": {
                         "typeAttributes": [
@@ -552,8 +554,8 @@
                           "content": "question_id"
                         },
                         "value": {
-                          "element": "number",
-                          "content": 1
+                          "element": "string",
+                          "content": "1"
                         }
                       }
                     }
@@ -563,7 +565,7 @@
               "content": [
                 {
                   "element": "copy",
-                  "content": "A Question object has the following attributes:\n\n+ question\n\n+ published_at - An ISO8601 date when the question was published.\n\n+ url\n\n+ choices - An array of Choice objects.\n\n"
+                  "content": "A Question object has the following attributes:\n\n+ question\n\n+ published_at - An ISO8601 date when the question was published.\n\n+ url\n\n+ choices - An array of Choice objects."
                 },
                 {
                   "element": "transition",
@@ -691,7 +693,8 @@
                     {
                       "element": "member",
                       "meta": {
-                        "description": "ID of the Question in form of an integer"
+                        "description": "ID of the Question in form of an integer",
+                        "title": "number"
                       },
                       "attributes": {
                         "typeAttributes": [
@@ -704,15 +707,16 @@
                           "content": "question_id"
                         },
                         "value": {
-                          "element": "number",
-                          "content": 1
+                          "element": "string",
+                          "content": "1"
                         }
                       }
                     },
                     {
                       "element": "member",
                       "meta": {
-                        "description": "ID of the Choice in form of an integer"
+                        "description": "ID of the Choice in form of an integer",
+                        "title": "number"
                       },
                       "attributes": {
                         "typeAttributes": [
@@ -725,8 +729,8 @@
                           "content": "choice_id"
                         },
                         "value": {
-                          "element": "number",
-                          "content": 1
+                          "element": "string",
+                          "content": "1"
                         }
                       }
                     }
@@ -856,7 +860,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "This action allows you to vote on a question's choice.\n\n"
+                      "content": "This action allows you to vote on a question's choice."
                     },
                     {
                       "element": "httpTransaction",
@@ -968,3 +972,4 @@
     }
   ]
 }
+

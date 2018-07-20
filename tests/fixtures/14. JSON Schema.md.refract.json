@@ -34,7 +34,7 @@
       "content": [
         {
           "element": "copy",
-          "content": "Every request and response can have a schema. Below you will find examples\nusing [JSON Schema](http://json-schema.org/) to describe the format of request\nand response body content.\n\n## API Blueprint\n\n+ [Previous: Named Endpoints](13.%20Named%20Endpoints.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/14.%20JSON%20Schema.md)\n\n+ [Next: Advanced JSON Schema](15.%20Advanced%20JSON%20Schema.md)\n\n"
+          "content": "Every request and response can have a schema. Below you will find examples\nusing [JSON Schema](http://json-schema.org/) to describe the format of request\nand response body content.\n\n## API Blueprint\n\n+ [Previous: Named Endpoints](13.%20Named%20Endpoints.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/14.%20JSON%20Schema.md)\n\n+ [Next: Advanced JSON Schema](15.%20Advanced%20JSON%20Schema.md)"
         },
         {
           "element": "category",
@@ -88,7 +88,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "Gets a single note by its unique identifier.\n\n"
+                      "content": "Gets a single note by its unique identifier."
                     },
                     {
                       "element": "httpTransaction",
@@ -144,7 +144,7 @@
                                 ]
                               },
                               "attributes": {
-                                "contentType": "application/json"
+                                "contentType": "application/schema+json"
                               },
                               "content": "{\n    \"type\": \"object\",\n    \"properties\": {\n        \"id\": {\n            \"type\": \"string\"\n        },\n        \"title\": {\n            \"type\": \"string\"\n        },\n        \"content\": {\n            \"type\": \"string\"\n        },\n        \"tags\": {\n            \"type\": \"array\",\n            \"items\": {\n                \"type\": \"string\"\n            }\n        }\n    }\n}\n"
                             }
@@ -162,7 +162,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "Modify a note's data using its unique identifier. You can edit the `title`,\n`content`, and `tags`.\n\n"
+                      "content": "Modify a note's data using its unique identifier. You can edit the `title`,\n`content`, and `tags`."
                     },
                     {
                       "element": "httpTransaction",
@@ -211,7 +211,7 @@
                                 ]
                               },
                               "attributes": {
-                                "contentType": "application/json"
+                                "contentType": "application/schema+json"
                               },
                               "content": "{\n    \"type\": \"object\",\n    \"properties\": {\n        \"title\": {\n            \"type\": \"string\"\n        },\n        \"content\": {\n            \"type\": \"string\"\n        },\n        \"tags\": {\n            \"type\": \"array\",\n            \"items\": {\n                \"type\": \"string\"\n            }\n        }\n    },\n    \"additionalProperties\": false\n}\n"
                             }
@@ -236,3 +236,4 @@
     }
   ]
 }
+
