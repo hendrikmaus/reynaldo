@@ -52,7 +52,7 @@
       "content": [
         {
           "element": "copy",
-          "content": "This API Blueprint demonstrates a real world example documenting a portion of\n[App.net API](http://developers.app.net).\n\nNOTE: This document is a **work in progress**.\n\n"
+          "content": "This API Blueprint demonstrates a real world example documenting a portion of\n[App.net API](http://developers.app.net).\n\nNOTE: This document is a **work in progress**."
         },
         {
           "element": "category",
@@ -65,7 +65,7 @@
           "content": [
             {
               "element": "copy",
-              "content": "This section groups App.net post resources.\n\n"
+              "content": "This section groups App.net post resources."
             },
             {
               "element": "resource",
@@ -80,7 +80,13 @@
                     {
                       "element": "member",
                       "meta": {
-                        "description": "The id of the Post."
+                        "description": "The id of the Post.",
+                        "title": "string"
+                      },
+                      "attributes": {
+                        "typeAttributes": [
+                          "required"
+                        ]
                       },
                       "content": {
                         "key": {
@@ -99,7 +105,7 @@
               "content": [
                 {
                   "element": "copy",
-                  "content": "A Post is the other central object utilized by the App.net Stream API. It has\nrich text and annotations which comprise all of the content a users sees in\ntheir feed. Posts are closely tied to the follow graph...\n\n"
+                  "content": "A Post is the other central object utilized by the App.net Stream API. It has\nrich text and annotations which comprise all of the content a users sees in\ntheir feed. Posts are closely tied to the follow graph..."
                 },
                 {
                   "element": "transition",
@@ -109,7 +115,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "Returns a specific Post.\n\n"
+                      "content": "Returns a specific Post."
                     },
                     {
                       "element": "httpTransaction",
@@ -171,7 +177,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "Delete a Post. The current user must be the same user who created the Post. It\nreturns the deleted Post on success.\n\n"
+                      "content": "Delete a Post. The current user must be the same user who created the Post. It\nreturns the deleted Post on success."
                     },
                     {
                       "element": "httpTransaction",
@@ -207,7 +213,7 @@
               "content": [
                 {
                   "element": "copy",
-                  "content": "A Collection of posts.\n\n"
+                  "content": "A Collection of posts."
                 },
                 {
                   "element": "transition",
@@ -217,7 +223,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "Create a new Post object. Mentions and hashtags will be parsed out of the post\ntext, as will bare URLs...\n\n"
+                      "content": "Create a new Post object. Mentions and hashtags will be parsed out of the post\ntext, as will bare URLs..."
                     },
                     {
                       "element": "httpTransaction",
@@ -310,7 +316,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "Retrieves all posts.\n\n"
+                      "content": "Retrieves all posts."
                     },
                     {
                       "element": "httpTransaction",
@@ -379,7 +385,13 @@
                     {
                       "element": "member",
                       "meta": {
-                        "description": "The id of the Post."
+                        "description": "The id of the Post.",
+                        "title": "string"
+                      },
+                      "attributes": {
+                        "typeAttributes": [
+                          "required"
+                        ]
                       },
                       "content": {
                         "key": {
@@ -398,7 +410,7 @@
               "content": [
                 {
                   "element": "copy",
-                  "content": "A User’s stars are visible to others, but they are not automatically added to\nyour followers’ streams.\n\n"
+                  "content": "A User’s stars are visible to others, but they are not automatically added to\nyour followers’ streams."
                 },
                 {
                   "element": "transition",
@@ -408,7 +420,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "Save a given Post to the current User’s stars. This is just a “save” action,\nnot a sharing action.\n\n*Note: A repost cannot be starred. Please star the parent Post.*\n\n"
+                      "content": "Save a given Post to the current User’s stars. This is just a “save” action,\nnot a sharing action.\n\n*Note: A repost cannot be starred. Please star the parent Post.*"
                     },
                     {
                       "element": "httpTransaction",
@@ -470,7 +482,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "Remove a Star from a Post.\n\n"
+                      "content": "Remove a Star from a Post."
                     },
                     {
                       "element": "httpTransaction",
@@ -532,3 +544,4 @@
     }
   ]
 }
+

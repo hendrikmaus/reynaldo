@@ -34,7 +34,7 @@
       "content": [
         {
           "element": "copy",
-          "content": "This API example demonstrates how to define a standalone endpoint with an identifier.\n\n## API Blueprint\n\n+ [Previous: Advanced Action](12.%20Advanced%20Action.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/13.%20Named%20Endpoints.md)\n\n+ [Next: JSON Schema](14.%20JSON%20Schema.md)\n\n"
+          "content": "This API example demonstrates how to define a standalone endpoint with an identifier.\n\n## API Blueprint\n\n+ [Previous: Advanced Action](12.%20Advanced%20Action.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/13.%20Named%20Endpoints.md)\n\n+ [Next: JSON Schema](14.%20JSON%20Schema.md)"
         },
         {
           "element": "category",
@@ -65,7 +65,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "Start out by creating a message for the world to see.\n\n"
+                      "content": "Start out by creating a message for the world to see."
                     },
                     {
                       "element": "httpTransaction",
@@ -159,7 +159,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "Now create a task that you need to do at a later date.\n\n"
+                      "content": "Now create a task that you need to do at a later date."
                     },
                     {
                       "element": "httpTransaction",
@@ -239,3 +239,4 @@
     }
   ]
 }
+

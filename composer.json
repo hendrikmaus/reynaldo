@@ -13,6 +13,8 @@
     "require": {},
     "require-dev": {
         "codeclimate/php-test-reporter": "^0.3.2",
+        "hmaus/drafter-installer": "^1.0",
+        "hmaus/drafter-php": "^5.0",
         "phpunit/phpunit": "^5.0",
         "symfony/var-dumper": "^3.1"
     },
@@ -32,6 +34,10 @@
     "scripts": {
         "clean": "rm -rf vendor/ ext/ composer.lock",
         "test": "vendor/bin/phpunit",
-        "quicktest": "vendor/bin/phpunit --no-coverage"
+        "quicktest": "vendor/bin/phpunit --no-coverage",
+        "install-drafter": "Hmaus\\Drafter\\Installer::installDrafter"
+    },
+    "extra": {
+        "drafter-installer-tag": "v3.2.7"
     }
 }

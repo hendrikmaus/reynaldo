@@ -34,7 +34,7 @@
       "content": [
         {
           "element": "copy",
-          "content": "The JSON body and JSON Schema for a request or response can be generated from\nthe attributes section MSON data structure. The generated schema can also be\noverridden by providing an explicit schema, as you can see in the examples\nbelow.\n\n## API Blueprint\n\n+ [Previous: JSON Schema](14.%20JSON%20Schema.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/15.%20Advanced%20JSON%20Schema.md)\n\n"
+          "content": "The JSON body and JSON Schema for a request or response can be generated from\nthe attributes section MSON data structure. The generated schema can also be\noverridden by providing an explicit schema, as you can see in the examples\nbelow.\n\n## API Blueprint\n\n+ [Previous: JSON Schema](14.%20JSON%20Schema.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/15.%20Advanced%20JSON%20Schema.md)"
         },
         {
           "element": "category",
@@ -88,7 +88,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "Gets a single note by its unique identifier.\n\n"
+                      "content": "Gets a single note by its unique identifier."
                     },
                     {
                       "element": "httpTransaction",
@@ -233,7 +233,7 @@
                   "content": [
                     {
                       "element": "copy",
-                      "content": "Modify a note's data using its unique identifier. You can edit the `title`,\n`content`, and `tags`.\n\n"
+                      "content": "Modify a note's data using its unique identifier. You can edit the `title`,\n`content`, and `tags`."
                     },
                     {
                       "element": "httpTransaction",
@@ -339,7 +339,7 @@
                                 ]
                               },
                               "attributes": {
-                                "contentType": "application/json"
+                                "contentType": "application/schema+json"
                               },
                               "content": "{\n    \"type\": \"object\",\n    \"description\": \"This is a custom schema!\",\n    \"properties\": {\n        \"title\": {\n            \"type\": \"string\"\n        },\n        \"content\": {\n            \"type\": \"string\"\n        },\n        \"tags\": {\n            \"type\": \"array\",\n            \"items\": {\n                \"type\": \"string\"\n            }\n        }\n    },\n    \"additionalProperties\": false\n}\n"
                             }
@@ -364,3 +364,4 @@
     }
   ]
 }
+

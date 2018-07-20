@@ -13,12 +13,14 @@
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-if (!class_exists('\Hmaus\DrafterPhp\Drafter')) {
-    print "Please install drafter-php `composer require hmaus/drafter-php` and install drafter itself to `vendor/bin/drafter`\n";
+$drafterPath = getenv('DRAFTER') ?: __DIR__ . '/../../vendor/bin/drafter';
+
+if (!file_exists($drafterPath)) {
+    print "Please install drafter and use DRAFTER=/path/to/drafter-executable or run `composer install-drafter`\n";
     exit(1);
 }
 
-$drafter = new \Hmaus\DrafterPhp\Drafter(__DIR__ . '/../../vendor/bin/drafter');
+$drafter = new \Hmaus\DrafterPhp\Drafter($drafterPath);
 $drafter->format('json');
 
 echo "Download file list from:\n";
@@ -31,12 +33,17 @@ foreach ($fileList as $file) {
     $path = __DIR__ . '/' . $file['name'];
     file_put_contents($path, $contents);
 
-    $drafter->input($path);
+    if ($file['name'] == 'README.md') {
+	    echo "Skip readme ;)\n";
+    	continue;
+    }
+
+    $drafter->input(escapeshellarg($path));
 
     echo "Generating refract parse result ...\n";
     $drafter
         ->type('refract')
-        ->output($path . '.refract.json')
+        ->output(escapeshellarg($path . '.refract.json'))
         ->run();
 }
 

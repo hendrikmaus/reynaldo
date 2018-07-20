@@ -4,6 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 The change log itself is written the way that [keepachangelog.com](http://keepachangelog.com/) describes.
 
+## [0.1.4] -
+- Fix fixture scripts
+- Add missing dependencies
+
+
 ## [0.1.3] - 2017-10-04
 ### Fixed:
 - Add support for URI parameters members
