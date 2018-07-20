@@ -34,7 +34,7 @@ foreach ($fileList as $file) {
     file_put_contents($path, $contents);
 
     if ($file['name'] == 'README.md') {
-	    echo "Skipp readme ;)\n";
+	    echo "Skip readme ;)\n";
     	continue;
     }
 
