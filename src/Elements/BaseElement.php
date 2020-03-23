@@ -215,7 +215,7 @@ class BaseElement // todo implement a builder interface to hide methods from the
      */
     public function getTitle()
     {
-        return $this->getMetaData()['title'];
+        return $this->getMetaData()['title'] ?? '';
     }
 
     /**
