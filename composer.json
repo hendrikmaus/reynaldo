@@ -10,7 +10,9 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {},
+    "require": {
+        "php": ">=7.0"
+    },
     "require-dev": {
         "codeclimate/php-test-reporter": "^0.3.2",
         "hmaus/drafter-installer": "^1.0",

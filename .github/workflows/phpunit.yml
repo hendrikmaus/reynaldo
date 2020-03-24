@@ -1,0 +1,48 @@
+name: Unit Tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest]
+        php-versions: [7.0', '7.1', '7.2', '7.3', '7.4']
+    name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-versions }}
+        extensions: mbstring, intl
+        ini-values: post_max_size=256M, short_open_tag=On
+        coverage: xdebug        
+        tools: php-cs-fixer, phpunit, composer
+
+    - name: Install dependencies
+      run: composer install --prefer-source --no-interaction --dev
+    
+    - name: Setup codeclimate test reporter
+      run: |
+        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+        chmod +x ./cc-test-reporter
+        ./cc-test-reporter before-build
+        
+    - name: Run test
+      run: vendor/bin/phpunit
+      
+    - name: Send report to codeclimate
+      env:
+        CC_TEST_REPORTER_ID: 002c9d6c8d2575f00ea1e5eefabe21e45441c22357bfb5ad2c93887339cec084
+      run: ./cc-test-reporter after-build -t clover
+      
+    - name: Report test coverage
+      run: bash <(curl -s https://codecov.io/bash)
