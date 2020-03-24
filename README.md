@@ -2,7 +2,6 @@
 Turn API Blueprint Refract Parse Result (Drafter's output) into a traversable PHP data structure.
 
 [![codecov.io](http://codecov.io/github/hendrikmaus/reynaldo/coverage.svg?branch=master)](http://codecov.io/github/hendrikmaus/reynaldo?branch=master)
-[![Dependency Status](https://www.versioneye.com/user/projects/57c4422a968d640039516a68/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/57c4422a968d640039516a68)
 [![Code Climate](https://img.shields.io/codeclimate/github/kabisaict/flow.svg)](https://codeclimate.com/github/hendrikmaus/reynaldo)
 
 ## What is Reynaldo?
@@ -42,7 +41,7 @@ foreach ($parseResult->getApi()->getResourceGroups() as $apiResourceGroup) {
 
 ## Requirements
 
-* PHP 7..0 or greater
+* PHP 7.0 or greater
 
 ## Installation
 
