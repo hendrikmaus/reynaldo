@@ -15,7 +15,7 @@ class HrefVariablesElement extends BaseElement implements ApiElement, ApiHrefVar
             $memberContent = $member->getContent();
 
             $hrefVariable = new HrefVariable();
-            $hrefVariable->description = $member->getMetaData()['description'];
+            $hrefVariable->description = empty($member->getMetaData()['description']) ? '' : $member->getMetaData()['description'];
             $hrefVariable->name = $memberContent['key']['content'];
 
             $typeAttributes = $member->getAttribute('typeAttributes');
